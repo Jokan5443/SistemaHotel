@@ -1,7 +1,7 @@
 package GestionReservas;
 
 public class Cliente {
-
+ // Ulises chivazo
     private String nombre;
     private String apellido;
     private String telefono;
