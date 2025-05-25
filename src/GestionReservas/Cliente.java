@@ -5,7 +5,7 @@ public class Cliente {
     private String telefono;
     private String email;
     private int dni;
-
+/*PRUEBA*/
     public Cliente(String nombre, String apellido, String telefono, String email, int dni) {
         this.nombre = nombre;
         this.apellido = apellido;
