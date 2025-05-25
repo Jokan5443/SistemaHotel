@@ -1,6 +1,7 @@
 
 package VistaHotel;
 
+import javax.swing.JOptionPane;
 public class VentanaPrincipal extends javax.swing.JFrame {
 
     public VentanaPrincipal() {
@@ -16,6 +17,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        BtnRegresar = new javax.swing.JButton();
+        LblMinimizar = new javax.swing.JLabel();
+        LblCerrar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -44,10 +48,66 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel3.setMinimumSize(new java.awt.Dimension(40, 16));
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 260, 200));
 
+        BtnRegresar.setBackground(new java.awt.Color(33, 44, 116));
+        BtnRegresar.setForeground(new java.awt.Color(255, 255, 255));
+        BtnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/RegresarEV.png"))); // NOI18N
+        BtnRegresar.setText("Regresar");
+        BtnRegresar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtnRegresarMouseClicked(evt);
+            }
+        });
+        jPanel1.add(BtnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 350, 150, 40));
+
+        LblMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/MinimizarEV.png"))); // NOI18N
+        LblMinimizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LblMinimizarMouseClicked(evt);
+            }
+        });
+        jPanel1.add(LblMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 10, -1, 20));
+
+        LblCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CerrarEV.png"))); // NOI18N
+        LblCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LblCerrarMouseClicked(evt);
+            }
+        });
+        jPanel1.add(LblCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 10, -1, 20));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 420));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BtnRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnRegresarMouseClicked
+        // TODO add your handling code here:
+        /* Ir al formulario Login2*/
+        Login retornologin = new Login();
+        retornologin.setVisible(true);
+        /*CIERRA EL FORMULARIO ACTUAL*/
+        this.dispose(); // finaliza el  jframe pero no cierra el programa por completo
+
+    }//GEN-LAST:event_BtnRegresarMouseClicked
+
+    private void LblMinimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LblMinimizarMouseClicked
+        this.setExtendedState(ICONIFIED); // PARA MINIMIZAR EL PROGRAMA
+    }//GEN-LAST:event_LblMinimizarMouseClicked
+
+    private void LblCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LblCerrarMouseClicked
+        //cogido para preguntar si se desea salir o no del programa
+        int respuesta = JOptionPane.showConfirmDialog(
+            VentanaPrincipal.this, // Referencia al componente la ventana actual (Login)
+            "¿Deseas realmente salir?", // Mensaje que se muestra al usuario
+            "Confirmación", // Título de la ventana de diálogo
+            JOptionPane.YES_NO_OPTION // Tipo de opciones que se presentan al usuario (Sí y No)
+        );
+
+        if (respuesta == JOptionPane.YES_OPTION) { // Verifica si el usuario seleccionó "Sí"
+            dispose(); // Cierra la ventana y libera los recursos
+            System.exit(0); // Termina la aplicación por completo
+        }
+    }//GEN-LAST:event_LblCerrarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -85,6 +145,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnRegresar;
+    private javax.swing.JLabel LblCerrar;
+    private javax.swing.JLabel LblMinimizar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;

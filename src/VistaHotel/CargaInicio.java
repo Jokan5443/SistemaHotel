@@ -1,4 +1,3 @@
-
 package VistaHotel;
 
 import java.awt.event.ActionEvent;
@@ -8,66 +7,67 @@ import javax.swing.Timer;
 
 public class CargaInicio extends javax.swing.JFrame {
 
-  
-   private JProgressBar progressBar; // Cambiado para usar progressBar
+    private JProgressBar progressBar; // Cambiado para usar progressBar
     private int progreso = 0;
     private Timer timer; // Para manejar la actualización del progreso
 
     public CargaInicio() {
         initComponents();
         this.setLocationRelativeTo(null); // centra el Jframe
- 
+
         // Asigna el progressBar a tu jProgressBar1
         progressBar = jProgressBar1;
- 
+
         // Configuración del Timer para actualizar la ProgressBar
         timer = new Timer(50, new ActionListener() {
-            @Override 
+            @Override
             public void actionPerformed(ActionEvent e) {
                 progreso += 1; // Incrementa el valor de la variable 'progreso' en 1
                 progressBar.setValue(progreso); // Actualiza el valor de la ProgressBar
                 if (progreso >= 100) { // verifica si el progres bar a llegado al 100%
                     timer.stop();  //Si es así, detiene el Timer para que deje de ejecutarse
-                 openNextForm();
+                    openNextForm();
                 }
             }
         });
         timer.start(); // Inicia el Timer
-
     }
 
-   private void openNextForm() {
+    private void openNextForm() {
         // INICIO
         // Cierra el formulario actual
         this.dispose();
         // Crea y muestra el siguiente formulario
-        Login login = new Login(); // Reemplaza con tu clase de formulario
+        Login login = new Login();// Reemplaza con tu clase de formulario
         login.setVisible(true); //  Hace visible la instancia de 'Login2',
         // FIN
     }
-    
-    
-    
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
         jProgressBar1 = new javax.swing.JProgressBar();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 204, 153));
+        setMaximumSize(new java.awt.Dimension(520, 450));
         setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(600, 424));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(33, 44, 116));
+        jPanel1.setMinimumSize(new java.awt.Dimension(600, 420));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, 360, 30));
+        jPanel1.add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 370, 420, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 420));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/5-estrellas (3).png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, 270, 270));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 450));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -108,6 +108,7 @@ public class CargaInicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JProgressBar jProgressBar1;
     // End of variables declaration//GEN-END:variables

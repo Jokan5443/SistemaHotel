@@ -1,7 +1,5 @@
 package GestionReservas;
-
 public class Cliente {
- // Ulises chivazo, recontra
     private String nombre;
     private String apellido;
     private String telefono;
@@ -56,9 +54,8 @@ public class Cliente {
         this.dni = dni;
     }
 
-
     @Override
     public String toString() {
-        return "Cliente: " + nombre + ", Apellido: " + apellido  + ", Teléfono: " + telefono + ", Email: " + email  + ", Dni: " + dni ;
+        return "Cliente: " + nombre + ", Apellido: " + apellido + ", Teléfono: " + telefono + ", Email: " + email + ", Dni: " + dni;
     }
 }
