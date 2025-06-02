@@ -46,6 +46,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jLabel3.setMaximumSize(new java.awt.Dimension(40, 16));
         jLabel3.setMinimumSize(new java.awt.Dimension(40, 16));
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 260, 200));
 
         BtnRegresar.setBackground(new java.awt.Color(33, 44, 116));
@@ -108,6 +113,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             System.exit(0); // Termina la aplicación por completo
         }
     }//GEN-LAST:event_LblCerrarMouseClicked
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        // TODO add your handling code here:
+        
+          // INICIO
+        // Cierra el formulario actual
+        this.dispose();
+        // Crea y muestra el siguiente formulario
+        Reservacion reserv = new Reservacion();// Reemplaza con tu clase de formulario
+        reserv.setVisible(true); //  Hace visible la instancia de 'Login2',
+        // FIN
+        
+    }//GEN-LAST:event_jLabel3MouseClicked
 
     /**
      * @param args the command line arguments

@@ -4,8 +4,8 @@ public class CambioContraseña extends javax.swing.JFrame {
 
     public CambioContraseña() {
         initComponents();
-         this.setLocationRelativeTo(null);
-          this.ocultar.setVisible(false);
+        this.setLocationRelativeTo(null);
+        this.ocultar.setVisible(false);
         this.ocultar1.setVisible(false);
         this.ocultar2.setVisible(false);
     }
@@ -318,13 +318,13 @@ public class CambioContraseña extends javax.swing.JFrame {
 
     private void BtnRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnRegresarMouseClicked
         // TODO add your handling code here:
-         /* Ir al formulario Login2*/
+
         Login retornologin = new Login();
         retornologin.setVisible(true);
         /*CIERRA EL FORMULARIO ACTUAL*/
         this.dispose(); // finaliza el  jframe pero no cierra el programa por completo 
 
-        
+
     }//GEN-LAST:event_BtnRegresarMouseClicked
 
     /**

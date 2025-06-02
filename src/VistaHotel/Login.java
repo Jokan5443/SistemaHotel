@@ -168,7 +168,7 @@ public class Login extends javax.swing.JFrame {
     private void LblCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LblCerrarMouseClicked
         //cogido para preguntar si se desea salir o no del programa
         int respuesta = JOptionPane.showConfirmDialog(
-         Login.this, // Referencia al componente la ventana actual (Login2)
+         Login.this, // Referencia al componente la ventana actual 
          "¿Deseas realmente salir?", // Mensaje que se muestra al usuario
          "Confirmación", // Título de la ventana de diálogo
          JOptionPane.YES_NO_OPTION // Tipo de opciones que se presentan al usuario (Sí y No)
