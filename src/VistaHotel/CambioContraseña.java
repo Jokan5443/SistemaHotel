@@ -1,5 +1,12 @@
 package VistaHotel;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 public class CambioContraseña extends javax.swing.JFrame {
 
     public CambioContraseña() {
@@ -175,6 +182,11 @@ public class CambioContraseña extends javax.swing.JFrame {
         BtnAceptar.setForeground(new java.awt.Color(255, 255, 255));
         BtnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AceptarEV.png"))); // NOI18N
         BtnAceptar.setText("Aceptar");
+        BtnAceptar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtnAceptarMouseClicked(evt);
+            }
+        });
         jPanel1.add(BtnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, 150, 40));
 
         BtnRegresar.setBackground(new java.awt.Color(33, 44, 116));
@@ -327,9 +339,116 @@ public class CambioContraseña extends javax.swing.JFrame {
 
     }//GEN-LAST:event_BtnRegresarMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
+    private void BtnAceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnAceptarMouseClicked
+        // TODO add your handling code here:
+
+        CambioContrasena();
+    }//GEN-LAST:event_BtnAceptarMouseClicked
+
+    // METODO VALIDAR INGRESO - INICIO
+    private void CambioContrasena() {
+
+        String usuario = TxtUsuario.getText();
+        String contrasena = new String(TxtContraseña.getPassword());
+        String ncontrasena1 = new String(TxtNContraseña1.getPassword());
+        String ncontrasena2 = new String(TxtNContraseña2.getPassword());
+        String contrasenactual;
+
+        if (usuario.equals("Ingrese su nombre de usuario") || contrasena.equals("*****") || ncontrasena1.equals("*****") || ncontrasena2.equals("*****")) {
+            JOptionPane.showMessageDialog(this, "Por favor ingrese sus datos.");
+            return;
+        }
+
+        if (usuario.equals("") || contrasena.equals("") || ncontrasena1.equals("") || ncontrasena2.equals("")) {
+            JOptionPane.showMessageDialog(this, "Por favor ingrese sus datos.");
+            return;
+        }
+        /*INICIO - COMPROBAR IGUALDAD DE LAS NUEVAS CONTRASEÑAS*/
+        if (ncontrasena1.equals(ncontrasena2)) {
+            contrasenactual = ncontrasena1;
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Contraseñas no coinciden");
+            TxtNContraseña1.setText("");
+            TxtNContraseña2.setText("");
+            return;
+        }
+        /* FIN - IGUALDAD DE LAS NUEVAS CONTRASEÑAS*/
+
+        // Conectarse a la base de datos y verificar credenciales
+        try {
+            // Parámetros de conexión
+            String url = "--------------";
+            //JDBC actúa como un puente entre una aplicación Java y una base de datos relacional.
+            String dbUser = "-------------";
+            String dbPassword = "------------------";
+
+            // Conexión a la base de datos
+            Connection connection = DriverManager.getConnection(url, dbUser, dbPassword);
+            //devuelve la conexion con la base de datos a travez de esa variable 
+
+            // Consulta SQL para verificar las credenciales
+            String query = "SELECT * FROM sql10742054.usuarios WHERE NombreUsuario = ? AND contrasena = ?";
+            //los ? son marcadores de posicion que los datos se reemplazaran dinamicamente que se remplazaran                   con el uuario y contraseña cuando se hace la ejecucion 
+            // preguntar lo que tiene la base de datos
+            PreparedStatement statement = connection.prepareStatement(query);
+            // atajo directo a la consulta (precompilar)   statement/variable) --- preparando la conexion con la que se tiene
+            statement.setString(1, usuario);
+            // statement es una clase utilizada para ejecutar consultas SQL directamente en una base de datos.
+            //asigna el valor de la variable usuario al primer ? de la consulta SQL preparada.
+            statement.setString(2, contrasena);
+            //asigna el valor de la variable contraseña al segundo ? de la consulta SQL preparada.
+            ResultSet resultSet = statement.executeQuery();
+            //executeQuery(): Ejecuta la consulta SQL preparada.
+            //ResultSet: Contiene las filas (datos) devueltas por la consulta.
+            if (resultSet.next()) {
+                String queryUpdate = "UPDATE sql10742054.usuarios SET contrasena = ? WHERE NombreUsuario = ? AND contrasena = ?";
+                //Si se encuentra una fila con el NombreUsuario y contrasena especificados, la contraseña                       se actualiza.
+                //Si no coincide ninguna fila, no se realiza la actualización.
+                PreparedStatement statement2 = connection.prepareStatement(queryUpdate);
+                statement2.setString(1, contrasenactual);
+                statement2.setString(2, usuario);
+                statement2.setString(3, contrasena);
+                int filasActualizadas = statement2.executeUpdate();
+                //Devuelve un número entero que indica cuántas filas de la base de datos fueron afectadas por la consulta.
+                if (filasActualizadas > 0) {
+                    //Verifica si al menos una fila fue afectada.
+                    //Si es verdadero, significa que la consulta se ejecutó correctamente y se modificó al menos una fila.
+                    JOptionPane.showMessageDialog(this, "La contraseña se actualizó correctamente.");
+                    /* Ir al formulario Login2*/
+                    Login retornologin = new Login();
+                    retornologin.setVisible(true);
+                    /*CIERRA EL FORMULARIO ACTUAL*/
+                    this.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(this, "No se pudo actualizar la contraseña.");
+                }
+
+                /* JOptionPane.showMessageDialog(this, "¡Se actualizó la contraseña!");
+            // Cierra la ventana de login*/
+            } else {
+                JOptionPane.showMessageDialog(this, "No se pudo actualizar la contraseña por datos incorrectos");
+                TxtUsuario.setText("Ingrese su nombre de usuario");
+                TxtContraseña.setText("*****");
+                TxtNContraseña1.setText("*****");
+                TxtNContraseña2.setText("*****");
+
+                return;
+            }
+
+            // Cerrar la conexión y recursos
+            resultSet.close();
+            statement.close();
+            connection.close();
+
+        } catch (SQLException e) {
+            //Se lanza cuando ocurre un error al interactuar con una base de datos mediante JDBC
+            //(E) A través de e, puedes obtener información detallada del error, como el mensaje, código de                 error, o estado SQL.
+            JOptionPane.showMessageDialog(this, "Error al conectar con la base de datos: " + e.getMessage());
+        }
+    }
+// METODO VALIDAR INGRESO - FIN
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

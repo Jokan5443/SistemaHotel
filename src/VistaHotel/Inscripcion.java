@@ -1,10 +1,31 @@
 package VistaHotel;
 
+import GestionReservas.Cliente;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import javax.swing.JPanel;
+
 public class Inscripcion extends javax.swing.JFrame {
 
     public Inscripcion() {
         initComponents();
         this.setLocationRelativeTo(null);
+
+    }
+    private ReservarHabitacion panelReservarHabitacion;
+
+    // Nuevo constructor que recibe datos
+    public Inscripcion(String numero, String tipo, String precio, ReservarHabitacion panel) {
+        initComponents();
+        this.setLocationRelativeTo(null);
+        this.panelReservarHabitacion = panel;
+        // Asume que tienes JTextFields con estos nombres en Inscripcion
+        TxtNumHabitacion.setText(numero);
+        TxtTipoH.setText(tipo);
+        TxtPrecioPorNoche.setText(precio);
     }
 
     @SuppressWarnings("unchecked")
@@ -12,7 +33,7 @@ public class Inscripcion extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        TxtTelefono = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -22,44 +43,53 @@ public class Inscripcion extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jTextField2 = new javax.swing.JTextField();
+        TxtDni = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
-        jTextField3 = new javax.swing.JTextField();
+        TxtApellido = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
-        jTextField4 = new javax.swing.JTextField();
+        TxtNombre = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
         jPanel3 = new javax.swing.JPanel();
-        jTextField5 = new javax.swing.JTextField();
+        TxtTipoH = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
-        jTextField6 = new javax.swing.JTextField();
         jSeparator6 = new javax.swing.JSeparator();
-        jTextField7 = new javax.swing.JTextField();
+        TxtPrecioPorNoche = new javax.swing.JTextField();
         jSeparator7 = new javax.swing.JSeparator();
-        jTextField8 = new javax.swing.JTextField();
+        TxtNumHabitacion = new javax.swing.JTextField();
         jSeparator8 = new javax.swing.JSeparator();
         jPanel4 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
-        jTextField11 = new javax.swing.JTextField();
+        TxtResAdelanto = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jSeparator11 = new javax.swing.JSeparator();
-        jTextField12 = new javax.swing.JTextField();
+        TxtResPrecio = new javax.swing.JTextField();
         jSeparator12 = new javax.swing.JSeparator();
-        jTextField13 = new javax.swing.JTextField();
         jSeparator13 = new javax.swing.JSeparator();
-        jTextField14 = new javax.swing.JTextField();
         jSeparator14 = new javax.swing.JSeparator();
         jLabel19 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        TxtDireccion = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jSeparator9 = new javax.swing.JSeparator();
+        TxtCorreo = new javax.swing.JTextField();
+        jSeparator10 = new javax.swing.JSeparator();
+        TxtDescripcion = new javax.swing.JTextField();
+        jLabel20 = new javax.swing.JLabel();
+        jSeparator15 = new javax.swing.JSeparator();
+        jDateChooserSalida = new com.toedter.calendar.JDateChooser();
+        jDateChooserEntrada = new com.toedter.calendar.JDateChooser();
+        TxaObservacion = new javax.swing.JTextField();
+        jSeparator16 = new javax.swing.JSeparator();
+        CbEstado = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(null);
@@ -71,25 +101,25 @@ public class Inscripcion extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(33, 44, 116));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField1.setBackground(new java.awt.Color(33, 44, 116));
-        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField1.setBorder(null);
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 170, 20));
+        TxtTelefono.setBackground(new java.awt.Color(33, 44, 116));
+        TxtTelefono.setForeground(new java.awt.Color(255, 255, 255));
+        TxtTelefono.setBorder(null);
+        jPanel1.add(TxtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, 170, 20));
 
         jLabel2.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("APELLIDOS");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, 20));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, -1, 20));
 
         jLabel3.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("TELEFONO");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, -1, 30));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, -1, 30));
 
         jLabel4.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("DNI");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, -1, 20));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, -1, 20));
 
         BtnRegistrar.setBackground(new java.awt.Color(33, 44, 116));
         BtnRegistrar.setForeground(new java.awt.Color(255, 255, 255));
@@ -100,12 +130,12 @@ public class Inscripcion extends javax.swing.JFrame {
                 BtnRegistrarMouseClicked(evt);
             }
         });
-        jPanel1.add(BtnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 150, 40));
+        jPanel1.add(BtnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 150, 40));
 
         jLabel5.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("NOMBRE");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, 20));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, -1, 20));
 
         BtnRegresar1.setBackground(new java.awt.Color(33, 44, 116));
         BtnRegresar1.setForeground(new java.awt.Color(255, 255, 255));
@@ -116,7 +146,7 @@ public class Inscripcion extends javax.swing.JFrame {
                 BtnRegresar1MouseClicked(evt);
             }
         });
-        jPanel1.add(BtnRegresar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 340, 150, 40));
+        jPanel1.add(BtnRegresar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 370, 150, 40));
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -127,73 +157,68 @@ public class Inscripcion extends javax.swing.JFrame {
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, -1, 40));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 360, 40));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 260, 170, 10));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 170, 10));
 
-        jTextField2.setBackground(new java.awt.Color(33, 44, 116));
-        jTextField2.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField2.setBorder(null);
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 170, 20));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, 170, 10));
+        TxtDni.setBackground(new java.awt.Color(33, 44, 116));
+        TxtDni.setForeground(new java.awt.Color(255, 255, 255));
+        TxtDni.setBorder(null);
+        jPanel1.add(TxtDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 170, 20));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 170, 10));
 
-        jTextField3.setBackground(new java.awt.Color(33, 44, 116));
-        jTextField3.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField3.setBorder(null);
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 170, 20));
-        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 170, 10));
+        TxtApellido.setBackground(new java.awt.Color(33, 44, 116));
+        TxtApellido.setForeground(new java.awt.Color(255, 255, 255));
+        TxtApellido.setBorder(null);
+        jPanel1.add(TxtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 170, 20));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 170, 10));
 
-        jTextField4.setBackground(new java.awt.Color(33, 44, 116));
-        jTextField4.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField4.setBorder(null);
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, 170, 20));
-        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 170, 10));
+        TxtNombre.setBackground(new java.awt.Color(33, 44, 116));
+        TxtNombre.setForeground(new java.awt.Color(255, 255, 255));
+        TxtNombre.setBorder(null);
+        jPanel1.add(TxtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 170, 20));
+        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 170, 10));
 
         jPanel3.setBackground(new java.awt.Color(0, 0, 0));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, 10, 440));
 
-        jTextField5.setBackground(new java.awt.Color(33, 44, 116));
-        jTextField5.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField5.setBorder(null);
-        jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 150, 170, 20));
+        TxtTipoH.setBackground(new java.awt.Color(33, 44, 116));
+        TxtTipoH.setForeground(new java.awt.Color(255, 255, 255));
+        TxtTipoH.setBorder(null);
+        jPanel1.add(TxtTipoH, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 140, 170, 20));
 
         jLabel7.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("PRECIO");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, -1, 30));
+        jLabel7.setText("PRECIO NOCHE");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, 110, 30));
 
         jLabel8.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("CAPACIDAD");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 150, -1, 30));
+        jLabel8.setText("TIPO");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 140, 50, 30));
 
         jLabel9.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("ESTADO");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 120, -1, 30));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 110, -1, 30));
 
         jLabel10.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("N. HABITACION");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, -1, 30));
-        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 170, 170, 10));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 50, -1, 30));
+        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 160, 170, 10));
+        jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 130, 170, 10));
 
-        jTextField6.setBackground(new java.awt.Color(33, 44, 116));
-        jTextField6.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField6.setBorder(null);
-        jPanel1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 120, 170, 20));
-        jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 140, 170, 10));
+        TxtPrecioPorNoche.setBackground(new java.awt.Color(33, 44, 116));
+        TxtPrecioPorNoche.setForeground(new java.awt.Color(255, 255, 255));
+        TxtPrecioPorNoche.setBorder(null);
+        jPanel1.add(TxtPrecioPorNoche, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 80, 170, 20));
+        jPanel1.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 100, 170, 10));
 
-        jTextField7.setBackground(new java.awt.Color(33, 44, 116));
-        jTextField7.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField7.setBorder(null);
-        jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 90, 170, 20));
-        jPanel1.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 110, 170, 10));
-
-        jTextField8.setBackground(new java.awt.Color(33, 44, 116));
-        jTextField8.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField8.setBorder(null);
-        jPanel1.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 60, 170, 20));
-        jPanel1.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 80, 170, 10));
+        TxtNumHabitacion.setBackground(new java.awt.Color(33, 44, 116));
+        TxtNumHabitacion.setForeground(new java.awt.Color(255, 255, 255));
+        TxtNumHabitacion.setBorder(null);
+        jPanel1.add(TxtNumHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 50, 170, 20));
+        jPanel1.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 70, 170, 10));
 
         jPanel4.setBackground(new java.awt.Color(0, 0, 0));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -213,64 +238,90 @@ public class Inscripcion extends javax.swing.JFrame {
         jLabel14.setText("DETALLE RESERVACION");
         jPanel5.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, -1, 40));
 
-        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 190, 390, -1));
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 210, 390, -1));
 
-        jTextField11.setBackground(new java.awt.Color(33, 44, 116));
-        jTextField11.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField11.setBorder(null);
-        jPanel1.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 330, 170, 20));
+        TxtResAdelanto.setBackground(new java.awt.Color(33, 44, 116));
+        TxtResAdelanto.setForeground(new java.awt.Color(255, 255, 255));
+        TxtResAdelanto.setBorder(null);
+        jPanel1.add(TxtResAdelanto, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 350, 170, 20));
 
         jLabel15.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("F. SALIDA");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 270, -1, 30));
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 290, -1, 30));
 
         jLabel16.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("ADELANTO");
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 330, 80, 30));
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 350, 80, 30));
 
         jLabel17.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("PRECIO");
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 300, -1, 30));
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 320, -1, 30));
 
         jLabel18.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("F. ENTRADA");
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 240, -1, 30));
-        jPanel1.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 350, 170, 10));
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 260, -1, 30));
+        jPanel1.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 370, 170, 10));
 
-        jTextField12.setBackground(new java.awt.Color(33, 44, 116));
-        jTextField12.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField12.setBorder(null);
-        jPanel1.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 300, 170, 20));
-        jPanel1.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 320, 170, 10));
-
-        jTextField13.setBackground(new java.awt.Color(33, 44, 116));
-        jTextField13.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField13.setBorder(null);
-        jPanel1.add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 270, 170, 20));
-        jPanel1.add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 290, 170, 10));
-
-        jTextField14.setBackground(new java.awt.Color(33, 44, 116));
-        jTextField14.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField14.setBorder(null);
-        jPanel1.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 240, 170, 20));
-        jPanel1.add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 260, 170, 10));
+        TxtResPrecio.setBackground(new java.awt.Color(33, 44, 116));
+        TxtResPrecio.setForeground(new java.awt.Color(255, 255, 255));
+        TxtResPrecio.setBorder(null);
+        jPanel1.add(TxtResPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 320, 170, 20));
+        jPanel1.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 340, 170, 10));
+        jPanel1.add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 310, 170, -1));
+        jPanel1.add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 280, 170, 0));
 
         jLabel19.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText("OBSERVACION");
         jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 380, 120, 30));
 
-        jTextArea1.setBackground(new java.awt.Color(33, 44, 116));
-        jTextArea1.setColumns(20);
-        jTextArea1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        TxtDireccion.setBackground(new java.awt.Color(33, 44, 116));
+        TxtDireccion.setForeground(new java.awt.Color(255, 255, 255));
+        TxtDireccion.setBorder(null);
+        jPanel1.add(TxtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, 170, 20));
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(554, 356, 170, 80));
+        jLabel11.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("DIRECCION");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 80, 30));
+
+        jLabel12.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("CORREO");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 80, 30));
+        jPanel1.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, 170, 10));
+
+        TxtCorreo.setBackground(new java.awt.Color(33, 44, 116));
+        TxtCorreo.setForeground(new java.awt.Color(255, 255, 255));
+        TxtCorreo.setBorder(null);
+        jPanel1.add(TxtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 260, 170, 20));
+        jPanel1.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, 170, 10));
+
+        TxtDescripcion.setBackground(new java.awt.Color(33, 44, 116));
+        TxtDescripcion.setForeground(new java.awt.Color(255, 255, 255));
+        TxtDescripcion.setBorder(null);
+        jPanel1.add(TxtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 170, 170, 20));
+
+        jLabel20.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel20.setText("DESCRIPCION");
+        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 170, 100, 30));
+        jPanel1.add(jSeparator15, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 190, 170, 10));
+        jPanel1.add(jDateChooserSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 290, 170, -1));
+        jPanel1.add(jDateChooserEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 260, 170, -1));
+
+        TxaObservacion.setBackground(new java.awt.Color(33, 44, 116));
+        TxaObservacion.setForeground(new java.awt.Color(255, 255, 255));
+        TxaObservacion.setBorder(null);
+        jPanel1.add(TxaObservacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 380, 170, 20));
+        jPanel1.add(jSeparator16, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 400, 170, 10));
+
+        CbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DISPONIBLE", "OCUPADO", "LIMPIEZA" }));
+        jPanel1.add(CbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 110, 170, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 450));
 
@@ -279,8 +330,63 @@ public class Inscripcion extends javax.swing.JFrame {
 
     private void BtnRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnRegistrarMouseClicked
 
+        // Leer datos CLIENTES
+        String nombre = TxtNombre.getText();
+        String apellido = TxtApellido.getText();
+        String dni = TxtDni.getText();
+        String telefono = TxtTelefono.getText();
+        String correo = TxtCorreo.getText();
+        String direccion = TxtDireccion.getText();
 
+        // Leer datos HABITACION
+        String numHabitacion = TxtNumHabitacion.getText();
+        String precioPorNoche = TxtPrecioPorNoche.getText();
+        String estadoSeleccionado = (String) CbEstado.getSelectedItem();
+        String tipoHabitacion = TxtTipoH.getText();
+        String descripcion = TxtDescripcion.getText();
+
+        // Crear objeto Cliente
+        Cliente nuevoCliente = new Cliente(nombre, apellido, telefono, correo, Integer.parseInt(dni), direccion);
+        nuevoCliente.setDireccion(direccion); // Asignamos la dirección
+        // Conexión y guardado en base de datos
+        try (Connection conn = ConexionBaseDeDatos.ConexionBD.conectar()) {
+            if (conn != null) {
+                // insertar datos en la tabla CLIENTES
+                String sql = "INSERT INTO Clientes (nombre, apellido, dni_pasaporte, correo, telefono, direccion) VALUES (?, ?, ?, ?, ?, ?)";
+                java.sql.PreparedStatement stmt = conn.prepareStatement(sql);
+                stmt.setString(1, nuevoCliente.getNombre());
+                stmt.setString(2, nuevoCliente.getApellido());
+                stmt.setString(3, String.valueOf(nuevoCliente.getDni()));
+                stmt.setString(4, nuevoCliente.getCorreo());
+                stmt.setString(5, nuevoCliente.getTelefono());
+                stmt.setString(6, nuevoCliente.getDireccion());
+                stmt.executeUpdate();
+                // insertar datos en la tabla HABITACIONES
+                String sqlHabitacion = "INSERT INTO Habitaciones (numero_habitacion, tipo, descripcion, precio_por_noche, estado) VALUES (?, ?, ?, ?, ?)";
+                PreparedStatement stmtHabitacion = conn.prepareStatement(sqlHabitacion);
+                stmtHabitacion.setString(1, numHabitacion);                          // Ej: "101"
+                stmtHabitacion.setString(2, tipoHabitacion);                         // Ej: "Suite"
+                stmtHabitacion.setString(3, descripcion);                            // Ej: "Vista al mar"
+                stmtHabitacion.setDouble(4, Double.parseDouble(precioPorNoche));    // Ej: "250.00"
+                stmtHabitacion.setString(5, estadoSeleccionado);                    // SELECCION DEL CB DE ESTADO
+                stmtHabitacion.executeUpdate();
+
+                // Suponiendo que estás en Inscripcion.java y quieres notificar a ReservarHabitacion:
+                if (panelReservarHabitacion != null) {
+                    panelReservarHabitacion.actualizarColorPanelPorEstado(numHabitacion, estadoSeleccionado);
+                  
+                }
+
+                javax.swing.JOptionPane.showMessageDialog(null, "Habitaciones registrado correctamente.");
+                this.dispose();
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(null, "No se pudo conectar a la base de datos.");
+            }
+        } catch (Exception e) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Error al registrar habitacionessss: " + e.getMessage());
+        }
     }//GEN-LAST:event_BtnRegistrarMouseClicked
+
 
     private void BtnRegresar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnRegresar1MouseClicked
 
@@ -325,7 +431,25 @@ public class Inscripcion extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnRegistrar;
     private javax.swing.JButton BtnRegresar1;
+    private javax.swing.JComboBox<String> CbEstado;
+    private javax.swing.JTextField TxaObservacion;
+    private javax.swing.JTextField TxtApellido;
+    private javax.swing.JTextField TxtCorreo;
+    private javax.swing.JTextField TxtDescripcion;
+    private javax.swing.JTextField TxtDireccion;
+    private javax.swing.JTextField TxtDni;
+    private javax.swing.JTextField TxtNombre;
+    private javax.swing.JTextField TxtNumHabitacion;
+    private javax.swing.JTextField TxtPrecioPorNoche;
+    private javax.swing.JTextField TxtResAdelanto;
+    private javax.swing.JTextField TxtResPrecio;
+    private javax.swing.JTextField TxtTelefono;
+    private javax.swing.JTextField TxtTipoH;
+    private com.toedter.calendar.JDateChooser jDateChooserEntrada;
+    private com.toedter.calendar.JDateChooser jDateChooserSalida;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -334,6 +458,7 @@ public class Inscripcion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -346,12 +471,14 @@ public class Inscripcion extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator12;
     private javax.swing.JSeparator jSeparator13;
     private javax.swing.JSeparator jSeparator14;
+    private javax.swing.JSeparator jSeparator15;
+    private javax.swing.JSeparator jSeparator16;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
@@ -359,18 +486,6 @@ public class Inscripcion extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
+    private javax.swing.JSeparator jSeparator9;
     // End of variables declaration//GEN-END:variables
 }

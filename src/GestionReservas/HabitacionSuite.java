@@ -1,9 +1,9 @@
-
 package GestionReservas;
 
 public class HabitacionSuite extends Habitacion {
-    public HabitacionSuite(int numeroHabitacion) {
-        super(numeroHabitacion, 300.0, 2);
+
+    public HabitacionSuite(String numeroHabitacion) {
+        super(numeroHabitacion, "Suite", "Suite de lujo con sala de estar, jacuzzi y vista panorámica.", 300.0, "Disponible");
     }
 
     @Override

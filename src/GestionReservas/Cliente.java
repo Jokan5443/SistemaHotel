@@ -1,19 +1,25 @@
 package GestionReservas;
+
 public class Cliente {
+
     private String nombre;
     private String apellido;
     private String telefono;
-    private String email;
+    private String correo;
     private int dni;
-/*PRUEBA*/
-    public Cliente(String nombre, String apellido, String telefono, String email, int dni) {
+    private String direccion;
+
+    /*METODO*/
+    public Cliente(String nombre, String apellido, String telefono, String correo, int dni, String direccion) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.telefono = telefono;
-        this.email = email;
+        this.correo = correo;
         this.dni = dni;
+        this.direccion = direccion;
     }
 
+    /*METODOS GET Y SET*/
     public String getNombre() {
         return nombre;
     }
@@ -38,14 +44,6 @@ public class Cliente {
         this.telefono = telefono;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public int getDni() {
         return dni;
     }
@@ -54,8 +52,19 @@ public class Cliente {
         this.dni = dni;
     }
 
-    @Override
-    public String toString() {
-        return "Cliente: " + nombre + ", Apellido: " + apellido + ", Teléfono: " + telefono + ", Email: " + email + ", Dni: " + dni;
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 }

@@ -1,9 +1,9 @@
-
 package GestionReservas;
 
 public class HabitacionEstandar extends Habitacion {
-    public HabitacionEstandar(int numeroHabitacion) {
-        super(numeroHabitacion, 100.0, 2);
+
+    public HabitacionEstandar(String numeroHabitacion) {
+        super(numeroHabitacion, "Estandar", "Habitación estándar con comodidades básicas para una o dos personas.", 100.0, "Disponible");
     }
 
     @Override

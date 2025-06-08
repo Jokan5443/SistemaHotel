@@ -1,7 +1,10 @@
 
 package VistaHotel;
 
+
 import javax.swing.JOptionPane;
+import javax.swing.UIClientPropertyKey;
+import javax.swing.UIManager;
 public class VentanaPrincipal extends javax.swing.JFrame {
 
     public VentanaPrincipal() {
@@ -154,9 +157,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
         //</editor-fold>
 
+    
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                
                 new VentanaPrincipal().setVisible(true);
             }
         });

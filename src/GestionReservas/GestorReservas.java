@@ -1,4 +1,3 @@
-
 package GestionReservas;
 
 import java.time.LocalDate;
@@ -15,13 +14,13 @@ public class GestorReservas {
     }
 
     public Reserva crearReserva(Cliente cliente, Habitacion habitacion, LocalDate fechaEntrada, LocalDate fechaSalida) {
-        if (!habitacion.isDisponible()) {
+        if (!habitacion.getEstado().equalsIgnoreCase("Disponible")) {
             System.out.println("La habitación no está disponible.");
             return null;
         }
         Reserva nuevaReserva = new Reserva(idReservaActual++, cliente, habitacion, fechaEntrada, fechaSalida);
         reservas.add(nuevaReserva);
-        habitacion.setDisponible(false);
+        habitacion.setEstado("Ocupada");
         return nuevaReserva;
     }
 
@@ -32,7 +31,7 @@ public class GestorReservas {
     public boolean cancelarReserva(int idReserva) {
         for (Reserva reserva : reservas) {
             if (reserva.getIdReserva() == idReserva) {
-                reserva.getHabitacion().setDisponible(true);
+                reserva.getHabitacion().setEstado("Disponible");
                 reservas.remove(reserva);
                 return true;
             }

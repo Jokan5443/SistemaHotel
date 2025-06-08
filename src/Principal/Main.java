@@ -2,10 +2,10 @@ package Principal;
 
 import java.time.LocalDate;
 import GestionReservas.*;
+
 public class Main {
 
     public static void main(String[] args) {
-        // este es el inicio de todo ssssssssssssssssssssssss          
 
         /* modulo empleados 3  ---- mpdulo gestion de reserva 
             
@@ -19,14 +19,15 @@ public class Main {
         GestorReservas gestor = new GestorReservas();
 
         // Crear algunos clientes
-        Cliente cliente1 = new Cliente("Juan"," Perez", "987654321", "juan@example.com",12345678);
-        Cliente cliente2 = new Cliente("Maria"," Lopez", "912345678", "maria@example.com",23165478);
+        Cliente cliente1 = new Cliente("Juan", " Perez", "987654321", "juan@example.com", 12345678, "AV LOS OLIVOS");
+        Cliente cliente2 = new Cliente("Maria", " Lopez", "912345678", "maria@example.com", 23165478, "PANAMERICANA");
 
         // Crear algunas habitaciones
-        Habitacion hab1 = new HabitacionEstandar(101);
-        Habitacion hab2 = new HabitacionDoble(102);
-        Habitacion hab3 = new HabitacionFamiliar(103);
-        Habitacion hab4 = new HabitacionSuite(104);
+        // Crear algunas habitaciones
+        Habitacion hab1 = new HabitacionEstandar("101");
+        Habitacion hab2 = new HabitacionDoble("102");
+        Habitacion hab3 = new HabitacionFamiliar("103");
+        Habitacion hab4 = new HabitacionSuite("104");
 
         // Crear algunas reservas
         Reserva reserva1 = gestor.crearReserva(cliente1, hab1, LocalDate.of(2025, 6, 1), LocalDate.of(2025, 6, 5));

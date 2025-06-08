@@ -2,6 +2,6 @@
 package GestionReservas;
 
 
-public class Factura {
+public class Pago {
 /*SSSSSSSSSSSSSSSSSSSSSS*/
 }

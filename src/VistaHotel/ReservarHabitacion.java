@@ -1,10 +1,24 @@
 package VistaHotel;
 
+import java.awt.Color;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import ConexionBaseDeDatos.ConexionBD;
+
 public class ReservarHabitacion extends javax.swing.JPanel {
 
     public ReservarHabitacion() {
         initComponents();
+        cargarEstadosDesdeBD();
+    }
 
+    public ReservarHabitacion(String numero, String tipo, String precio) {
+        initComponents();
     }
 
     @SuppressWarnings("unchecked")
@@ -12,78 +26,78 @@ public class ReservarHabitacion extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jPanel15 = new javax.swing.JPanel();
-        jButton14 = new javax.swing.JButton();
-        jLabel53 = new javax.swing.JLabel();
-        jLabel54 = new javax.swing.JLabel();
-        jLabel55 = new javax.swing.JLabel();
-        jLabel56 = new javax.swing.JLabel();
-        jPanel16 = new javax.swing.JPanel();
-        jButton15 = new javax.swing.JButton();
-        jLabel57 = new javax.swing.JLabel();
-        jLabel58 = new javax.swing.JLabel();
-        jLabel59 = new javax.swing.JLabel();
-        jLabel60 = new javax.swing.JLabel();
-        jPanel17 = new javax.swing.JPanel();
-        jButton16 = new javax.swing.JButton();
-        jLabel61 = new javax.swing.JLabel();
-        jLabel62 = new javax.swing.JLabel();
-        jLabel63 = new javax.swing.JLabel();
-        jLabel64 = new javax.swing.JLabel();
-        jPanel18 = new javax.swing.JPanel();
-        jButton17 = new javax.swing.JButton();
-        jLabel65 = new javax.swing.JLabel();
-        jLabel66 = new javax.swing.JLabel();
-        jLabel67 = new javax.swing.JLabel();
-        jLabel68 = new javax.swing.JLabel();
-        jPanel19 = new javax.swing.JPanel();
-        jButton18 = new javax.swing.JButton();
-        jLabel69 = new javax.swing.JLabel();
-        jLabel70 = new javax.swing.JLabel();
-        jLabel71 = new javax.swing.JLabel();
-        jLabel72 = new javax.swing.JLabel();
-        jPanel20 = new javax.swing.JPanel();
-        jButton19 = new javax.swing.JButton();
-        jLabel73 = new javax.swing.JLabel();
-        jLabel74 = new javax.swing.JLabel();
-        jLabel75 = new javax.swing.JLabel();
-        jLabel76 = new javax.swing.JLabel();
-        jPanel21 = new javax.swing.JPanel();
-        jButton20 = new javax.swing.JButton();
-        jLabel77 = new javax.swing.JLabel();
-        jLabel78 = new javax.swing.JLabel();
-        jLabel79 = new javax.swing.JLabel();
-        jLabel80 = new javax.swing.JLabel();
-        jPanel22 = new javax.swing.JPanel();
-        jButton21 = new javax.swing.JButton();
-        jLabel81 = new javax.swing.JLabel();
-        jLabel82 = new javax.swing.JLabel();
-        jLabel83 = new javax.swing.JLabel();
-        jLabel84 = new javax.swing.JLabel();
-        jPanel23 = new javax.swing.JPanel();
-        jButton22 = new javax.swing.JButton();
-        jLabel85 = new javax.swing.JLabel();
-        jLabel86 = new javax.swing.JLabel();
-        jLabel87 = new javax.swing.JLabel();
-        jLabel88 = new javax.swing.JLabel();
-        jPanel24 = new javax.swing.JPanel();
-        jButton23 = new javax.swing.JButton();
-        jLabel89 = new javax.swing.JLabel();
-        jLabel90 = new javax.swing.JLabel();
-        jLabel91 = new javax.swing.JLabel();
-        jLabel92 = new javax.swing.JLabel();
-        jPanel25 = new javax.swing.JPanel();
-        jButton24 = new javax.swing.JButton();
-        jLabel93 = new javax.swing.JLabel();
-        jLabel94 = new javax.swing.JLabel();
-        jLabel95 = new javax.swing.JLabel();
-        jLabel96 = new javax.swing.JLabel();
+        Panel9 = new javax.swing.JPanel();
+        BtnReservar9 = new javax.swing.JButton();
+        img9 = new javax.swing.JLabel();
+        lblPrecio9 = new javax.swing.JLabel();
+        LblNumero9 = new javax.swing.JLabel();
+        LblTipo9 = new javax.swing.JLabel();
+        Panel1 = new javax.swing.JPanel();
+        BtnReservar1 = new javax.swing.JButton();
+        img1 = new javax.swing.JLabel();
+        lblPrecio1 = new javax.swing.JLabel();
+        LblNumero1 = new javax.swing.JLabel();
+        LblTipo1 = new javax.swing.JLabel();
+        Panel5 = new javax.swing.JPanel();
+        BtnReservar5 = new javax.swing.JButton();
+        img5 = new javax.swing.JLabel();
+        lblPrecio5 = new javax.swing.JLabel();
+        LblNumero5 = new javax.swing.JLabel();
+        LblTipo5 = new javax.swing.JLabel();
+        Panel10 = new javax.swing.JPanel();
+        BtnReservar10 = new javax.swing.JButton();
+        img10 = new javax.swing.JLabel();
+        lblPrecio10 = new javax.swing.JLabel();
+        LblNumero10 = new javax.swing.JLabel();
+        LblTipo10 = new javax.swing.JLabel();
+        Panel6 = new javax.swing.JPanel();
+        BtnReservar6 = new javax.swing.JButton();
+        img6 = new javax.swing.JLabel();
+        lblPrecio6 = new javax.swing.JLabel();
+        LblNumero6 = new javax.swing.JLabel();
+        LblTipo6 = new javax.swing.JLabel();
+        Panel11 = new javax.swing.JPanel();
+        BtnReservar11 = new javax.swing.JButton();
+        img11 = new javax.swing.JLabel();
+        lblPrecio11 = new javax.swing.JLabel();
+        LblNumero11 = new javax.swing.JLabel();
+        LblTipo11 = new javax.swing.JLabel();
+        Panel7 = new javax.swing.JPanel();
+        BtnReservar7 = new javax.swing.JButton();
+        img7 = new javax.swing.JLabel();
+        lblPrecio7 = new javax.swing.JLabel();
+        LblNumero7 = new javax.swing.JLabel();
+        LblTipo7 = new javax.swing.JLabel();
+        Panel12 = new javax.swing.JPanel();
+        BtnReservar12 = new javax.swing.JButton();
+        img12 = new javax.swing.JLabel();
+        lblPrecio12 = new javax.swing.JLabel();
+        LblNumero12 = new javax.swing.JLabel();
+        LblTipo12 = new javax.swing.JLabel();
+        Panel8 = new javax.swing.JPanel();
+        BtnReservar8 = new javax.swing.JButton();
+        img8 = new javax.swing.JLabel();
+        lblPrecio8 = new javax.swing.JLabel();
+        LblNumero8 = new javax.swing.JLabel();
+        LblTipo8 = new javax.swing.JLabel();
+        Panel2 = new javax.swing.JPanel();
+        BtnReservar2 = new javax.swing.JButton();
+        img2 = new javax.swing.JLabel();
+        lblPrecio2 = new javax.swing.JLabel();
+        LblNumero2 = new javax.swing.JLabel();
+        LblTipo2 = new javax.swing.JLabel();
+        Panel3 = new javax.swing.JPanel();
+        BtnReservar3 = new javax.swing.JButton();
+        img3 = new javax.swing.JLabel();
+        lblPrecio3 = new javax.swing.JLabel();
+        LblNumero3 = new javax.swing.JLabel();
+        LblTipo3 = new javax.swing.JLabel();
+        Panel4 = new javax.swing.JPanel();
+        BtnReservar4 = new javax.swing.JButton();
+        img4 = new javax.swing.JLabel();
+        lblPrecio4 = new javax.swing.JLabel();
+        LblNumero4 = new javax.swing.JLabel();
+        LblTipo4 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -101,489 +115,584 @@ public class ReservarHabitacion extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(750, 450));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Panel9.setBackground(new java.awt.Color(255, 255, 255));
+        Panel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton2.setBackground(new java.awt.Color(33, 44, 116));
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llave-de-la-habitacion-del-hotel (1).png"))); // NOI18N
-        jButton2.setText("Reservar");
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+        BtnReservar9.setBackground(new java.awt.Color(33, 44, 116));
+        BtnReservar9.setForeground(new java.awt.Color(255, 255, 255));
+        BtnReservar9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llave-de-la-habitacion-del-hotel (1).png"))); // NOI18N
+        BtnReservar9.setText("Reservar");
+        BtnReservar9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
+                BtnReservar9MouseClicked(evt);
             }
         });
-        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, 30));
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cama-alternativa.png"))); // NOI18N
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 70, 60));
-
-        jLabel6.setText("S/500");
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 40, 20));
-
-        jLabel7.setText("NUM 001");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 60, 20));
-
-        jLabel8.setText("SUIT");
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 40, 20));
-
-        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 150, 130));
-
-        jPanel15.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel15.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton14.setBackground(new java.awt.Color(33, 44, 116));
-        jButton14.setForeground(new java.awt.Color(255, 255, 255));
-        jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llave-de-la-habitacion-del-hotel (1).png"))); // NOI18N
-        jButton14.setText("Reservar");
-        jButton14.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton14MouseClicked(evt);
+        BtnReservar9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnReservar9ActionPerformed(evt);
             }
         });
-        jPanel15.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, 30));
+        Panel9.add(BtnReservar9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, 30));
 
-        jLabel53.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cama-alternativa.png"))); // NOI18N
-        jPanel15.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 70, 60));
+        img9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cama-alternativa.png"))); // NOI18N
+        Panel9.add(img9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 70, 60));
 
-        jLabel54.setText("S/500");
-        jPanel15.add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 40, 20));
+        lblPrecio9.setText("S/500");
+        Panel9.add(lblPrecio9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 40, 20));
 
-        jLabel55.setText("NUM 001");
-        jPanel15.add(jLabel55, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 60, 20));
+        LblNumero9.setText("NUM 001");
+        Panel9.add(LblNumero9, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 60, 20));
 
-        jLabel56.setText("SUIT");
-        jPanel15.add(jLabel56, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 40, 20));
+        LblTipo9.setText("FAMILIAR");
+        Panel9.add(LblTipo9, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 60, 20));
 
-        add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 150, 130));
+        add(Panel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 150, 130));
 
-        jPanel16.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel16.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Panel1.setBackground(new java.awt.Color(255, 255, 255));
+        Panel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton15.setBackground(new java.awt.Color(33, 44, 116));
-        jButton15.setForeground(new java.awt.Color(255, 255, 255));
-        jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llave-de-la-habitacion-del-hotel (1).png"))); // NOI18N
-        jButton15.setText("Reservar");
-        jButton15.addMouseListener(new java.awt.event.MouseAdapter() {
+        BtnReservar1.setBackground(new java.awt.Color(33, 44, 116));
+        BtnReservar1.setForeground(new java.awt.Color(255, 255, 255));
+        BtnReservar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llave-de-la-habitacion-del-hotel (1).png"))); // NOI18N
+        BtnReservar1.setText("Reservar");
+        BtnReservar1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton15MouseClicked(evt);
+                BtnReservar1MouseClicked(evt);
             }
         });
-        jPanel16.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, 30));
-
-        jLabel57.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cama-alternativa.png"))); // NOI18N
-        jPanel16.add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 70, 60));
-
-        jLabel58.setText("S/500");
-        jPanel16.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 40, 20));
-
-        jLabel59.setText("NUM 001");
-        jPanel16.add(jLabel59, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 60, 20));
-
-        jLabel60.setText("SUIT");
-        jPanel16.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 40, 20));
-
-        add(jPanel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 150, 130));
-
-        jPanel17.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel17.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton16.setBackground(new java.awt.Color(33, 44, 116));
-        jButton16.setForeground(new java.awt.Color(255, 255, 255));
-        jButton16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llave-de-la-habitacion-del-hotel (1).png"))); // NOI18N
-        jButton16.setText("Reservar");
-        jButton16.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton16MouseClicked(evt);
+        BtnReservar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnReservar1ActionPerformed(evt);
             }
         });
-        jPanel17.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, 30));
+        Panel1.add(BtnReservar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 120, 30));
 
-        jLabel61.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cama-alternativa.png"))); // NOI18N
-        jPanel17.add(jLabel61, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 70, 60));
+        img1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cama-alternativa.png"))); // NOI18N
+        Panel1.add(img1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 70, 60));
 
-        jLabel62.setText("S/500");
-        jPanel17.add(jLabel62, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 40, 20));
+        lblPrecio1.setText("S/500");
+        Panel1.add(lblPrecio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 40, 20));
 
-        jLabel63.setText("NUM 001");
-        jPanel17.add(jLabel63, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 60, 20));
+        LblNumero1.setText("NUM 001");
+        Panel1.add(LblNumero1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 60, 20));
 
-        jLabel64.setText("SUIT");
-        jPanel17.add(jLabel64, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 40, 20));
+        LblTipo1.setText("SUIT");
+        Panel1.add(LblTipo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 40, 20));
 
-        add(jPanel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 310, 150, 130));
+        add(Panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 150, 130));
 
-        jPanel18.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel18.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Panel5.setBackground(new java.awt.Color(255, 255, 255));
+        Panel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton17.setBackground(new java.awt.Color(33, 44, 116));
-        jButton17.setForeground(new java.awt.Color(255, 255, 255));
-        jButton17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llave-de-la-habitacion-del-hotel (1).png"))); // NOI18N
-        jButton17.setText("Reservar");
-        jButton17.addMouseListener(new java.awt.event.MouseAdapter() {
+        BtnReservar5.setBackground(new java.awt.Color(33, 44, 116));
+        BtnReservar5.setForeground(new java.awt.Color(255, 255, 255));
+        BtnReservar5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llave-de-la-habitacion-del-hotel (1).png"))); // NOI18N
+        BtnReservar5.setText("Reservar");
+        BtnReservar5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton17MouseClicked(evt);
+                BtnReservar5MouseClicked(evt);
             }
         });
-        jPanel18.add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, 30));
+        Panel5.add(BtnReservar5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, 30));
 
-        jLabel65.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cama-alternativa.png"))); // NOI18N
-        jPanel18.add(jLabel65, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 70, 60));
+        img5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cama-alternativa.png"))); // NOI18N
+        Panel5.add(img5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 70, 60));
 
-        jLabel66.setText("S/500");
-        jPanel18.add(jLabel66, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 40, 20));
+        lblPrecio5.setText("S/250");
+        Panel5.add(lblPrecio5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 40, 20));
 
-        jLabel67.setText("NUM 001");
-        jPanel18.add(jLabel67, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 60, 20));
+        LblNumero5.setText("NUM 001");
+        Panel5.add(LblNumero5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 60, 20));
 
-        jLabel68.setText("SUIT");
-        jPanel18.add(jLabel68, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 40, 20));
+        LblTipo5.setText("DOUBLE");
+        Panel5.add(LblTipo5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 50, 20));
 
-        add(jPanel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, 150, 130));
+        add(Panel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 150, 130));
 
-        jPanel19.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel19.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Panel10.setBackground(new java.awt.Color(255, 255, 255));
+        Panel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton18.setBackground(new java.awt.Color(33, 44, 116));
-        jButton18.setForeground(new java.awt.Color(255, 255, 255));
-        jButton18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llave-de-la-habitacion-del-hotel (1).png"))); // NOI18N
-        jButton18.setText("Reservar");
-        jButton18.addMouseListener(new java.awt.event.MouseAdapter() {
+        BtnReservar10.setBackground(new java.awt.Color(33, 44, 116));
+        BtnReservar10.setForeground(new java.awt.Color(255, 255, 255));
+        BtnReservar10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llave-de-la-habitacion-del-hotel (1).png"))); // NOI18N
+        BtnReservar10.setText("Reservar");
+        BtnReservar10.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton18MouseClicked(evt);
+                BtnReservar10MouseClicked(evt);
             }
         });
-        jPanel19.add(jButton18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, 30));
+        Panel10.add(BtnReservar10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, 30));
 
-        jLabel69.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cama-alternativa.png"))); // NOI18N
-        jPanel19.add(jLabel69, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 70, 60));
+        img10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cama-alternativa.png"))); // NOI18N
+        Panel10.add(img10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 70, 60));
 
-        jLabel70.setText("S/500");
-        jPanel19.add(jLabel70, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 40, 20));
+        lblPrecio10.setText("S/350");
+        Panel10.add(lblPrecio10, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 40, 20));
 
-        jLabel71.setText("NUM 001");
-        jPanel19.add(jLabel71, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 60, 20));
+        LblNumero10.setText("NUM 002");
+        Panel10.add(LblNumero10, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 60, 20));
 
-        jLabel72.setText("SUIT");
-        jPanel19.add(jLabel72, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 40, 20));
+        LblTipo10.setText("FAMILIAR");
+        Panel10.add(LblTipo10, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 60, 20));
 
-        add(jPanel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 310, 150, 130));
+        add(Panel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 310, 150, 130));
 
-        jPanel20.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel20.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Panel6.setBackground(new java.awt.Color(255, 255, 255));
+        Panel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton19.setBackground(new java.awt.Color(33, 44, 116));
-        jButton19.setForeground(new java.awt.Color(255, 255, 255));
-        jButton19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llave-de-la-habitacion-del-hotel (1).png"))); // NOI18N
-        jButton19.setText("Reservar");
-        jButton19.addMouseListener(new java.awt.event.MouseAdapter() {
+        BtnReservar6.setBackground(new java.awt.Color(33, 44, 116));
+        BtnReservar6.setForeground(new java.awt.Color(255, 255, 255));
+        BtnReservar6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llave-de-la-habitacion-del-hotel (1).png"))); // NOI18N
+        BtnReservar6.setText("Reservar");
+        BtnReservar6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton19MouseClicked(evt);
+                BtnReservar6MouseClicked(evt);
             }
         });
-        jPanel20.add(jButton19, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, 30));
+        Panel6.add(BtnReservar6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, 30));
 
-        jLabel73.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cama-alternativa.png"))); // NOI18N
-        jPanel20.add(jLabel73, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 70, 60));
+        img6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cama-alternativa.png"))); // NOI18N
+        Panel6.add(img6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 70, 60));
 
-        jLabel74.setText("S/500");
-        jPanel20.add(jLabel74, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 40, 20));
+        lblPrecio6.setText("S/250");
+        Panel6.add(lblPrecio6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 40, 20));
 
-        jLabel75.setText("NUM 001");
-        jPanel20.add(jLabel75, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 60, 20));
+        LblNumero6.setText("NUM 002");
+        Panel6.add(LblNumero6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 60, 20));
 
-        jLabel76.setText("SUIT");
-        jPanel20.add(jLabel76, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 40, 20));
+        LblTipo6.setText("DOUBLE");
+        Panel6.add(LblTipo6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 50, 20));
 
-        add(jPanel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, 150, 130));
+        add(Panel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, 150, 130));
 
-        jPanel21.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel21.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Panel11.setBackground(new java.awt.Color(255, 255, 255));
+        Panel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton20.setBackground(new java.awt.Color(33, 44, 116));
-        jButton20.setForeground(new java.awt.Color(255, 255, 255));
-        jButton20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llave-de-la-habitacion-del-hotel (1).png"))); // NOI18N
-        jButton20.setText("Reservar");
-        jButton20.addMouseListener(new java.awt.event.MouseAdapter() {
+        BtnReservar11.setBackground(new java.awt.Color(33, 44, 116));
+        BtnReservar11.setForeground(new java.awt.Color(255, 255, 255));
+        BtnReservar11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llave-de-la-habitacion-del-hotel (1).png"))); // NOI18N
+        BtnReservar11.setText("Reservar");
+        BtnReservar11.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton20MouseClicked(evt);
+                BtnReservar11MouseClicked(evt);
             }
         });
-        jPanel21.add(jButton20, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, 30));
+        Panel11.add(BtnReservar11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, 30));
 
-        jLabel77.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cama-alternativa.png"))); // NOI18N
-        jPanel21.add(jLabel77, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 70, 60));
+        img11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cama-alternativa.png"))); // NOI18N
+        Panel11.add(img11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 70, 60));
 
-        jLabel78.setText("S/500");
-        jPanel21.add(jLabel78, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 40, 20));
+        lblPrecio11.setText("S/350");
+        Panel11.add(lblPrecio11, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 40, 20));
 
-        jLabel79.setText("NUM 001");
-        jPanel21.add(jLabel79, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 60, 20));
+        LblNumero11.setText("NUM 003");
+        Panel11.add(LblNumero11, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 60, 20));
 
-        jLabel80.setText("SUIT");
-        jPanel21.add(jLabel80, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 40, 20));
+        LblTipo11.setText("FAMILIAR");
+        Panel11.add(LblTipo11, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 60, 20));
 
-        add(jPanel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 310, 150, 130));
+        add(Panel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 310, 150, 130));
 
-        jPanel22.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel22.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Panel7.setBackground(new java.awt.Color(255, 255, 255));
+        Panel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton21.setBackground(new java.awt.Color(33, 44, 116));
-        jButton21.setForeground(new java.awt.Color(255, 255, 255));
-        jButton21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llave-de-la-habitacion-del-hotel (1).png"))); // NOI18N
-        jButton21.setText("Reservar");
-        jButton21.addMouseListener(new java.awt.event.MouseAdapter() {
+        BtnReservar7.setBackground(new java.awt.Color(33, 44, 116));
+        BtnReservar7.setForeground(new java.awt.Color(255, 255, 255));
+        BtnReservar7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llave-de-la-habitacion-del-hotel (1).png"))); // NOI18N
+        BtnReservar7.setText("Reservar");
+        BtnReservar7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton21MouseClicked(evt);
+                BtnReservar7MouseClicked(evt);
             }
         });
-        jPanel22.add(jButton21, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, 30));
+        Panel7.add(BtnReservar7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, 30));
 
-        jLabel81.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cama-alternativa.png"))); // NOI18N
-        jPanel22.add(jLabel81, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 70, 60));
+        img7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cama-alternativa.png"))); // NOI18N
+        Panel7.add(img7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 70, 60));
 
-        jLabel82.setText("S/500");
-        jPanel22.add(jLabel82, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 40, 20));
+        lblPrecio7.setText("S/250");
+        Panel7.add(lblPrecio7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 40, 20));
 
-        jLabel83.setText("NUM 001");
-        jPanel22.add(jLabel83, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 60, 20));
+        LblNumero7.setText("NUM 003");
+        Panel7.add(LblNumero7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 60, 20));
 
-        jLabel84.setText("SUIT");
-        jPanel22.add(jLabel84, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 40, 20));
+        LblTipo7.setText("DOUBLE");
+        Panel7.add(LblTipo7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 50, 20));
 
-        add(jPanel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 160, 150, 130));
+        add(Panel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, 150, 130));
 
-        jPanel23.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel23.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Panel12.setBackground(new java.awt.Color(255, 255, 255));
+        Panel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton22.setBackground(new java.awt.Color(33, 44, 116));
-        jButton22.setForeground(new java.awt.Color(255, 255, 255));
-        jButton22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llave-de-la-habitacion-del-hotel (1).png"))); // NOI18N
-        jButton22.setText("Reservar");
-        jButton22.addMouseListener(new java.awt.event.MouseAdapter() {
+        BtnReservar12.setBackground(new java.awt.Color(33, 44, 116));
+        BtnReservar12.setForeground(new java.awt.Color(255, 255, 255));
+        BtnReservar12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llave-de-la-habitacion-del-hotel (1).png"))); // NOI18N
+        BtnReservar12.setText("Reservar");
+        BtnReservar12.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton22MouseClicked(evt);
+                BtnReservar12MouseClicked(evt);
             }
         });
-        jPanel23.add(jButton22, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, 30));
+        Panel12.add(BtnReservar12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, 30));
 
-        jLabel85.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cama-alternativa.png"))); // NOI18N
-        jPanel23.add(jLabel85, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 70, 60));
+        img12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cama-alternativa.png"))); // NOI18N
+        Panel12.add(img12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 70, 60));
 
-        jLabel86.setText("S/500");
-        jPanel23.add(jLabel86, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 40, 20));
+        lblPrecio12.setText("S/350");
+        Panel12.add(lblPrecio12, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 40, 20));
 
-        jLabel87.setText("NUM 001");
-        jPanel23.add(jLabel87, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 60, 20));
+        LblNumero12.setText("NUM 004");
+        Panel12.add(LblNumero12, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 60, 20));
 
-        jLabel88.setText("SUIT");
-        jPanel23.add(jLabel88, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 40, 20));
+        LblTipo12.setText("FAMILIAR");
+        Panel12.add(LblTipo12, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 60, 20));
 
-        add(jPanel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 150, 130));
+        add(Panel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 310, 150, 130));
 
-        jPanel24.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel24.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Panel8.setBackground(new java.awt.Color(255, 255, 255));
+        Panel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton23.setBackground(new java.awt.Color(33, 44, 116));
-        jButton23.setForeground(new java.awt.Color(255, 255, 255));
-        jButton23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llave-de-la-habitacion-del-hotel (1).png"))); // NOI18N
-        jButton23.setText("Reservar");
-        jButton23.addMouseListener(new java.awt.event.MouseAdapter() {
+        BtnReservar8.setBackground(new java.awt.Color(33, 44, 116));
+        BtnReservar8.setForeground(new java.awt.Color(255, 255, 255));
+        BtnReservar8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llave-de-la-habitacion-del-hotel (1).png"))); // NOI18N
+        BtnReservar8.setText("Reservar");
+        BtnReservar8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton23MouseClicked(evt);
+                BtnReservar8MouseClicked(evt);
             }
         });
-        jPanel24.add(jButton23, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, 30));
+        Panel8.add(BtnReservar8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, 30));
 
-        jLabel89.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cama-alternativa.png"))); // NOI18N
-        jPanel24.add(jLabel89, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 70, 60));
+        img8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cama-alternativa.png"))); // NOI18N
+        Panel8.add(img8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 70, 60));
 
-        jLabel90.setText("S/500");
-        jPanel24.add(jLabel90, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 40, 20));
+        lblPrecio8.setText("S/250");
+        Panel8.add(lblPrecio8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 40, 20));
 
-        jLabel91.setText("NUM 001");
-        jPanel24.add(jLabel91, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 60, 20));
+        LblNumero8.setText("NUM 004");
+        Panel8.add(LblNumero8, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 60, 20));
 
-        jLabel92.setText("SUIT");
-        jPanel24.add(jLabel92, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 40, 20));
+        LblTipo8.setText("DOUBLE");
+        Panel8.add(LblTipo8, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 60, 20));
 
-        add(jPanel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, 150, 130));
+        add(Panel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 160, 150, 130));
 
-        jPanel25.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel25.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Panel2.setBackground(new java.awt.Color(255, 255, 255));
+        Panel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton24.setBackground(new java.awt.Color(33, 44, 116));
-        jButton24.setForeground(new java.awt.Color(255, 255, 255));
-        jButton24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llave-de-la-habitacion-del-hotel (1).png"))); // NOI18N
-        jButton24.setText("Reservar");
-        jButton24.addMouseListener(new java.awt.event.MouseAdapter() {
+        BtnReservar2.setBackground(new java.awt.Color(33, 44, 116));
+        BtnReservar2.setForeground(new java.awt.Color(255, 255, 255));
+        BtnReservar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llave-de-la-habitacion-del-hotel (1).png"))); // NOI18N
+        BtnReservar2.setText("Reservar");
+        BtnReservar2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton24MouseClicked(evt);
+                BtnReservar2MouseClicked(evt);
             }
         });
-        jPanel25.add(jButton24, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, 30));
+        Panel2.add(BtnReservar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, 30));
 
-        jLabel93.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cama-alternativa.png"))); // NOI18N
-        jPanel25.add(jLabel93, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 70, 60));
+        img2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cama-alternativa.png"))); // NOI18N
+        Panel2.add(img2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 70, 60));
 
-        jLabel94.setText("S/500");
-        jPanel25.add(jLabel94, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 40, 20));
+        lblPrecio2.setText("S/500");
+        Panel2.add(lblPrecio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 40, 20));
 
-        jLabel95.setText("NUM 001");
-        jPanel25.add(jLabel95, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 60, 20));
+        LblNumero2.setText("NUM 002");
+        Panel2.add(LblNumero2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 60, 20));
 
-        jLabel96.setText("SUIT");
-        jPanel25.add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 40, 20));
+        LblTipo2.setText("SUIT");
+        Panel2.add(LblTipo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 40, 20));
 
-        add(jPanel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 10, 150, 130));
+        add(Panel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 150, 130));
+
+        Panel3.setBackground(new java.awt.Color(255, 255, 255));
+        Panel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        BtnReservar3.setBackground(new java.awt.Color(33, 44, 116));
+        BtnReservar3.setForeground(new java.awt.Color(255, 255, 255));
+        BtnReservar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llave-de-la-habitacion-del-hotel (1).png"))); // NOI18N
+        BtnReservar3.setText("Reservar");
+        BtnReservar3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtnReservar3MouseClicked(evt);
+            }
+        });
+        Panel3.add(BtnReservar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, 30));
+
+        img3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cama-alternativa.png"))); // NOI18N
+        Panel3.add(img3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 70, 60));
+
+        lblPrecio3.setText("S/500");
+        Panel3.add(lblPrecio3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 40, 20));
+
+        LblNumero3.setText("NUM 003");
+        Panel3.add(LblNumero3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 60, 20));
+
+        LblTipo3.setText("SUIT");
+        Panel3.add(LblTipo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 40, 20));
+
+        add(Panel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, 150, 130));
+
+        Panel4.setBackground(new java.awt.Color(255, 255, 255));
+        Panel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        BtnReservar4.setBackground(new java.awt.Color(33, 44, 116));
+        BtnReservar4.setForeground(new java.awt.Color(255, 255, 255));
+        BtnReservar4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llave-de-la-habitacion-del-hotel (1).png"))); // NOI18N
+        BtnReservar4.setText("Reservar");
+        BtnReservar4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtnReservar4MouseClicked(evt);
+            }
+        });
+        Panel4.add(BtnReservar4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, 30));
+
+        img4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cama-alternativa.png"))); // NOI18N
+        Panel4.add(img4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 70, 60));
+
+        lblPrecio4.setText("S/500");
+        Panel4.add(lblPrecio4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 40, 20));
+
+        LblNumero4.setText("NUM 004");
+        Panel4.add(LblNumero4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 60, 20));
+
+        LblTipo4.setText("SUIT");
+        Panel4.add(LblTipo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 40, 20));
+
+        add(Panel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 10, 150, 130));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        Inscripcion inscr = new Inscripcion();
-        inscr.setVisible(true);
-    }//GEN-LAST:event_jButton2MouseClicked
+    // METODO PARA QUE SE MUESTRE LOS ESTADOS ACTUALES DE LAS HABITACIONES 
+    private void cargarEstadosDesdeBD() {
+    try (Connection conn = ConexionBaseDeDatos.ConexionBD.conectar()) {
+        String sql = "SELECT numero_habitacion, estado FROM Habitaciones";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        ResultSet rs = stmt.executeQuery();
 
-    private void jButton14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton14MouseClicked
-        // TODO add your handling code here:
-        Inscripcion inscr = new Inscripcion();
-        inscr.setVisible(true);
-    }//GEN-LAST:event_jButton14MouseClicked
+        while (rs.next()) {
+            String numero = rs.getString("numero_habitacion");
+            String estado = rs.getString("estado");
+            actualizarColorPanelPorEstado(numero, estado);
+        }
+    } catch (Exception e) {
+        System.out.println("Error al cargar estados: " + e.getMessage());
+    }
+}
 
-    private void jButton15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton15MouseClicked
-        // TODO add your handling code here:
-        
-        Inscripcion inscr = new Inscripcion();
-        inscr.setVisible(true);
-    }//GEN-LAST:event_jButton15MouseClicked
+    
+    
+    
+    
+    
+    // CREAMOS UN METODO PARA REUTILIZAR COD
+    private void abrirInscripcion(JLabel lblNum, JLabel lblTipo, JLabel lblPrecio) {
+        String numero = lblNum.getText();
+        String tipo = lblTipo.getText();
+        String precio = lblPrecio.getText();
 
-    private void jButton16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton16MouseClicked
-        // TODO add your handling code here:
-        Inscripcion inscr = new Inscripcion();
-        inscr.setVisible(true);
-    }//GEN-LAST:event_jButton16MouseClicked
+        Inscripcion ins = new Inscripcion(numero, tipo, precio, this); // <-- Aquí agregas 'this'
+        ins.setVisible(true);
+    }
+    // CREAMOS UN METODO PARA PODER ACTUALIZAR EL COLOR DEL ESYADO QUE VAMOS A UTILIZAR
 
-    private void jButton17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton17MouseClicked
-        // TODO add your handling code here:
-        Inscripcion inscr = new Inscripcion();
-        inscr.setVisible(true);
-    }//GEN-LAST:event_jButton17MouseClicked
+    public void actualizarColorPanelPorEstado(String numeroHabitacion, String estado) {
+         
+        JPanel panel = null;
 
-    private void jButton18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton18MouseClicked
-        // TODO add your handling code here:
-        Inscripcion inscr = new Inscripcion();
-        inscr.setVisible(true);
-    }//GEN-LAST:event_jButton18MouseClicked
+        // SE BUSCA EL PANEL DEPENDIENDO LA HABITACION QUE SE HA SELEECIONADO
+        switch (numeroHabitacion) {
+            case "1":
+                panel = Panel1;
+                break;
+            case "2":
+                panel = Panel2;
+                break;
+            case "3":
+                panel = Panel3;
+                break;
+            case "4":
+                panel = Panel4;
+                break;
+            case "5":
+                panel = Panel5;
+                break;
+            case "6":
+                panel = Panel6;
+                break;
+            case "7":
+                panel = Panel7;
+                break;
+            case "8":
+                panel = Panel8;
+                break;
+            case "9":
+                panel = Panel9;
+                break;
+            case "10":
+                panel = Panel10;
+                break;
+            case "11":
+                panel = Panel11;
+                break;
+            case "12":
+                panel = Panel12;
+                break;
+            default:
+                return; // SI NO COINCIDE SALE DEL BUCLE
+        }
 
-    private void jButton19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton19MouseClicked
-        // TODO add your handling code here:
-        Inscripcion inscr = new Inscripcion();
-        inscr.setVisible(true);
-    }//GEN-LAST:event_jButton19MouseClicked
+        // APLICAMOS EL ESTADO SEGUN EL ESTADO QUE SE MARCA
+        if (panel != null) {
+            switch (estado.toLowerCase()) {
+                case "disponible":
+                    panel.setBackground(Color.GREEN);
+                    break;
+                case "ocupado":
+                    panel.setBackground(Color.RED);
+                    break;
+                case "limpieza":
+                    panel.setBackground(new Color(173, 216, 230)); // Celeste
+                    break;
+                default:
+                    panel.setBackground(Color.GRAY);
+                    break;
+            }
+             panel.setOpaque(true); 
+              panel.repaint();
+        }
+    }
 
-    private void jButton20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton20MouseClicked
-        // TODO add your handling code here:
-        Inscripcion inscr = new Inscripcion();
-        inscr.setVisible(true);
-    }//GEN-LAST:event_jButton20MouseClicked
 
-    private void jButton21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton21MouseClicked
-        // TODO add your handling code here:
-        Inscripcion inscr = new Inscripcion();
-        inscr.setVisible(true);
-    }//GEN-LAST:event_jButton21MouseClicked
+    private void BtnReservar9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnReservar9MouseClicked
+        abrirInscripcion(LblNumero9, LblTipo9, lblPrecio9);
+    }//GEN-LAST:event_BtnReservar9MouseClicked
 
-    private void jButton22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton22MouseClicked
-        // TODO add your handling code here:
-        Inscripcion inscr = new Inscripcion();
-        inscr.setVisible(true);
-    }//GEN-LAST:event_jButton22MouseClicked
+    private void BtnReservar5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnReservar5MouseClicked
+        abrirInscripcion(LblNumero5, LblTipo5, lblPrecio5);
+    }//GEN-LAST:event_BtnReservar5MouseClicked
 
-    private void jButton23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton23MouseClicked
-        // TODO add your handling code here:
-        Inscripcion inscr = new Inscripcion();
-        inscr.setVisible(true);
-    }//GEN-LAST:event_jButton23MouseClicked
+    private void BtnReservar10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnReservar10MouseClicked
+        abrirInscripcion(LblNumero10, LblTipo10, lblPrecio10);
+    }//GEN-LAST:event_BtnReservar10MouseClicked
 
-    private void jButton24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton24MouseClicked
-        // TODO add your handling code here:
-        Inscripcion inscr = new Inscripcion();
-        inscr.setVisible(true);
-    }//GEN-LAST:event_jButton24MouseClicked
+    private void BtnReservar6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnReservar6MouseClicked
+        abrirInscripcion(LblNumero6, LblTipo6, lblPrecio6);
+    }//GEN-LAST:event_BtnReservar6MouseClicked
+
+    private void BtnReservar11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnReservar11MouseClicked
+        abrirInscripcion(LblNumero11, LblTipo11, lblPrecio11);
+    }//GEN-LAST:event_BtnReservar11MouseClicked
+
+    private void BtnReservar7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnReservar7MouseClicked
+        abrirInscripcion(LblNumero7, LblTipo7, lblPrecio7);
+    }//GEN-LAST:event_BtnReservar7MouseClicked
+
+    private void BtnReservar12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnReservar12MouseClicked
+        abrirInscripcion(LblNumero12, LblTipo12, lblPrecio12);
+    }//GEN-LAST:event_BtnReservar12MouseClicked
+
+    private void BtnReservar8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnReservar8MouseClicked
+        abrirInscripcion(LblNumero8, LblTipo8, lblPrecio8);
+    }//GEN-LAST:event_BtnReservar8MouseClicked
+
+    private void BtnReservar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnReservar2MouseClicked
+        abrirInscripcion(LblNumero2, LblTipo2, lblPrecio2);
+    }//GEN-LAST:event_BtnReservar2MouseClicked
+
+    private void BtnReservar3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnReservar3MouseClicked
+        abrirInscripcion(LblNumero3, LblTipo3, lblPrecio3);
+    }//GEN-LAST:event_BtnReservar3MouseClicked
+
+    private void BtnReservar4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnReservar4MouseClicked
+        abrirInscripcion(LblNumero4, LblTipo4, lblPrecio4);
+    }//GEN-LAST:event_BtnReservar4MouseClicked
+
+    private void BtnReservar9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnReservar9ActionPerformed
+
+    }//GEN-LAST:event_BtnReservar9ActionPerformed
+
+    private void BtnReservar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnReservar1ActionPerformed
+
+    }//GEN-LAST:event_BtnReservar1ActionPerformed
+
+    private void BtnReservar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnReservar1MouseClicked
+        abrirInscripcion(LblNumero1, LblTipo1, lblPrecio1);
+    }//GEN-LAST:event_BtnReservar1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton17;
-    private javax.swing.JButton jButton18;
-    private javax.swing.JButton jButton19;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton20;
-    private javax.swing.JButton jButton21;
-    private javax.swing.JButton jButton22;
-    private javax.swing.JButton jButton23;
-    private javax.swing.JButton jButton24;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel53;
-    private javax.swing.JLabel jLabel54;
-    private javax.swing.JLabel jLabel55;
-    private javax.swing.JLabel jLabel56;
-    private javax.swing.JLabel jLabel57;
-    private javax.swing.JLabel jLabel58;
-    private javax.swing.JLabel jLabel59;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel60;
-    private javax.swing.JLabel jLabel61;
-    private javax.swing.JLabel jLabel62;
-    private javax.swing.JLabel jLabel63;
-    private javax.swing.JLabel jLabel64;
-    private javax.swing.JLabel jLabel65;
-    private javax.swing.JLabel jLabel66;
-    private javax.swing.JLabel jLabel67;
-    private javax.swing.JLabel jLabel68;
-    private javax.swing.JLabel jLabel69;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel70;
-    private javax.swing.JLabel jLabel71;
-    private javax.swing.JLabel jLabel72;
-    private javax.swing.JLabel jLabel73;
-    private javax.swing.JLabel jLabel74;
-    private javax.swing.JLabel jLabel75;
-    private javax.swing.JLabel jLabel76;
-    private javax.swing.JLabel jLabel77;
-    private javax.swing.JLabel jLabel78;
-    private javax.swing.JLabel jLabel79;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel80;
-    private javax.swing.JLabel jLabel81;
-    private javax.swing.JLabel jLabel82;
-    private javax.swing.JLabel jLabel83;
-    private javax.swing.JLabel jLabel84;
-    private javax.swing.JLabel jLabel85;
-    private javax.swing.JLabel jLabel86;
-    private javax.swing.JLabel jLabel87;
-    private javax.swing.JLabel jLabel88;
-    private javax.swing.JLabel jLabel89;
-    private javax.swing.JLabel jLabel90;
-    private javax.swing.JLabel jLabel91;
-    private javax.swing.JLabel jLabel92;
-    private javax.swing.JLabel jLabel93;
-    private javax.swing.JLabel jLabel94;
-    private javax.swing.JLabel jLabel95;
-    private javax.swing.JLabel jLabel96;
+    private javax.swing.JButton BtnReservar1;
+    private javax.swing.JButton BtnReservar10;
+    private javax.swing.JButton BtnReservar11;
+    private javax.swing.JButton BtnReservar12;
+    private javax.swing.JButton BtnReservar2;
+    private javax.swing.JButton BtnReservar3;
+    private javax.swing.JButton BtnReservar4;
+    private javax.swing.JButton BtnReservar5;
+    private javax.swing.JButton BtnReservar6;
+    private javax.swing.JButton BtnReservar7;
+    private javax.swing.JButton BtnReservar8;
+    private javax.swing.JButton BtnReservar9;
+    private javax.swing.JLabel LblNumero1;
+    private javax.swing.JLabel LblNumero10;
+    private javax.swing.JLabel LblNumero11;
+    private javax.swing.JLabel LblNumero12;
+    private javax.swing.JLabel LblNumero2;
+    private javax.swing.JLabel LblNumero3;
+    private javax.swing.JLabel LblNumero4;
+    private javax.swing.JLabel LblNumero5;
+    private javax.swing.JLabel LblNumero6;
+    private javax.swing.JLabel LblNumero7;
+    private javax.swing.JLabel LblNumero8;
+    private javax.swing.JLabel LblNumero9;
+    private javax.swing.JLabel LblTipo1;
+    private javax.swing.JLabel LblTipo10;
+    private javax.swing.JLabel LblTipo11;
+    private javax.swing.JLabel LblTipo12;
+    private javax.swing.JLabel LblTipo2;
+    private javax.swing.JLabel LblTipo3;
+    private javax.swing.JLabel LblTipo4;
+    private javax.swing.JLabel LblTipo5;
+    private javax.swing.JLabel LblTipo6;
+    private javax.swing.JLabel LblTipo7;
+    private javax.swing.JLabel LblTipo8;
+    private javax.swing.JLabel LblTipo9;
+    private javax.swing.JPanel Panel1;
+    private javax.swing.JPanel Panel10;
+    private javax.swing.JPanel Panel11;
+    private javax.swing.JPanel Panel12;
+    private javax.swing.JPanel Panel2;
+    private javax.swing.JPanel Panel3;
+    private javax.swing.JPanel Panel4;
+    private javax.swing.JPanel Panel5;
+    private javax.swing.JPanel Panel6;
+    private javax.swing.JPanel Panel7;
+    private javax.swing.JPanel Panel8;
+    private javax.swing.JPanel Panel9;
+    private javax.swing.JLabel img1;
+    private javax.swing.JLabel img10;
+    private javax.swing.JLabel img11;
+    private javax.swing.JLabel img12;
+    private javax.swing.JLabel img2;
+    private javax.swing.JLabel img3;
+    private javax.swing.JLabel img4;
+    private javax.swing.JLabel img5;
+    private javax.swing.JLabel img6;
+    private javax.swing.JLabel img7;
+    private javax.swing.JLabel img8;
+    private javax.swing.JLabel img9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel15;
-    private javax.swing.JPanel jPanel16;
-    private javax.swing.JPanel jPanel17;
-    private javax.swing.JPanel jPanel18;
-    private javax.swing.JPanel jPanel19;
-    private javax.swing.JPanel jPanel20;
-    private javax.swing.JPanel jPanel21;
-    private javax.swing.JPanel jPanel22;
-    private javax.swing.JPanel jPanel23;
-    private javax.swing.JPanel jPanel24;
-    private javax.swing.JPanel jPanel25;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel lblPrecio1;
+    private javax.swing.JLabel lblPrecio10;
+    private javax.swing.JLabel lblPrecio11;
+    private javax.swing.JLabel lblPrecio12;
+    private javax.swing.JLabel lblPrecio2;
+    private javax.swing.JLabel lblPrecio3;
+    private javax.swing.JLabel lblPrecio4;
+    private javax.swing.JLabel lblPrecio5;
+    private javax.swing.JLabel lblPrecio6;
+    private javax.swing.JLabel lblPrecio7;
+    private javax.swing.JLabel lblPrecio8;
+    private javax.swing.JLabel lblPrecio9;
     // End of variables declaration//GEN-END:variables
 }
