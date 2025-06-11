@@ -1,15 +1,16 @@
 package Interfaz;
 
 import GestionEmpleados.Empleado;
+import GestionEmpleados.GestorEmpleados;
 import GestionEmpleados.RegistroPago;
 import java.time.LocalDateTime;
 
 public interface IAccionesGerente {
     void aprobarPago(RegistroPago pago);
     void aprobarDespido(Empleado empleado);
-    void asensoOperario(Empleado operario);
-    void asensoSupervisor(Empleado supervisor);
-    void asensoJefe(Empleado jefe);
+    void asensoOperario(GestorEmpleados gestorEmpleados, Empleado nuevoOperario, int idSupervisor);
+    void asensoSupervisor(GestorEmpleados gestorEmpleados, Empleado nuevoSupervisor, int idJefe);
+    void asensoJefe(GestorEmpleados gestorEmpleados,Empleado nuevoJefe);
     void renovarContrato(Empleado empleado,
                         LocalDateTime nuevaTermino,
                         LocalDateTime nuevaRenovacion);

@@ -4,10 +4,6 @@ import Interfaz.IGestionEmpleados;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Representa un área o departamento de la organización.
- * Gestiona los empleados asignados mediante identificadores.
- */
 public class Area implements IGestionEmpleados {
 
     // Identificador único del área

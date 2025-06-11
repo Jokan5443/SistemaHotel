@@ -43,20 +43,28 @@ public class GerenteGeneral extends Entidad implements IAccionesGerente {
 
     // Gestiona el ascenso de un operario a supervisor.
     @Override
-    public void asensoOperario(Empleado nuevoOperario) {
-        // TODO: implementar lógica de ascenso de Operario a Supervisor
+    public void asensoOperario(GestorEmpleados gestorEmpleados, Empleado nuevoOperario, int idSupervisor) {
+        Operario operarioAsignado = (Operario)(nuevoOperario);
+        operarioAsignado.setIdSupervisor(idSupervisor);
+        gestorEmpleados.dropEmpleado(nuevoOperario);
+        gestorEmpleados.addEmpleado(operarioAsignado);
     }
 
     // Gestiona el ascenso de un supervisor a jefe.
     @Override
-    public void asensoSupervisor(Empleado nuevoSupervisor) {
-        // TODO: implementar lógica de ascenso de Supervisor a Jefe
+    public void asensoSupervisor(GestorEmpleados gestorEmpleados, Empleado nuevoSupervisor, int idJefe) {
+        Supervisor supervisorAsignado = (Supervisor)(nuevoSupervisor);
+        supervisorAsignado.setIdJefe(idJefe);
+        gestorEmpleados.dropEmpleado(nuevoSupervisor);
+        gestorEmpleados.addEmpleado(supervisorAsignado);
     }
 
     // Gestiona el ascenso de un jefe a Gerente General.
     @Override
-    public void asensoJefe(Empleado nuevoJefe) {
-        // TODO: implementar lógica de ascenso de Jefe a Gerente General
+    public void asensoJefe(GestorEmpleados gestorEmpleados,Empleado nuevoJefe) {
+        Jefe jefeAsignado = (Jefe)(nuevoJefe);
+        gestorEmpleados.dropEmpleado(nuevoJefe);
+        gestorEmpleados.addEmpleado(jefeAsignado);
     }
 
     // Renueva el contrato de un empleado actualizando sus fechas.

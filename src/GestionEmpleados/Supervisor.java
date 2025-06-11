@@ -9,7 +9,9 @@ import java.util.List;
 public class Supervisor extends Empleado implements IGestionOperativa {
 
     // Lista de IDs de operarios a cargo del supervisor
-    private final List<Integer> listaOperarioIds;
+    private final List<Integer> listaOperarioIds = new ArrayList<>();
+    // Identificador del jefe responsable
+    private int idJefe;
 
     // Constructor principal.
     public Supervisor(int idArea,
@@ -23,10 +25,9 @@ public class Supervisor extends Empleado implements IGestionOperativa {
                       LocalDateTime fechaTermino,
                       LocalDateTime fechaRenovacion,
                       TipoContrato tipoContrato,
-                      List<Integer> operarioIds) {
+                      int idJefe) {
         super(idArea, tarifaPorHora, id, nombre, apellido, email, dni,
               fechaIngreso, fechaTermino, fechaRenovacion, tipoContrato);
-        this.listaOperarioIds = new ArrayList<>();
     }
 
     // Constructor alternativo: fechaIngreso al momento actual.
@@ -40,10 +41,9 @@ public class Supervisor extends Empleado implements IGestionOperativa {
                       LocalDateTime fechaTermino,
                       LocalDateTime fechaRenovacion,
                       TipoContrato tipoContrato,
-                      List<Integer> operarioIds) {
+                      int idJefe) {
         this(idArea, tarifaPorHora, id, nombre, apellido, email, dni,
-             LocalDateTime.now(), fechaTermino, fechaRenovacion, tipoContrato,
-             operarioIds);
+             LocalDateTime.now(), fechaTermino, fechaRenovacion, tipoContrato, idJefe);
     }
     
     // Calcula el salario.
@@ -82,5 +82,15 @@ public class Supervisor extends Empleado implements IGestionOperativa {
     // Obtiene la lista de IDs de operarios asignados (solo lectura), evitando enlazar las listas.
     public List<Integer> getListaOperarioIds() {
         return List.copyOf(listaOperarioIds);
+    }
+    
+    // Obtiene el identificador del jefe.
+    public int getIdJefe() {
+        return idJefe;
+    }
+
+    // Establece el identificador del jefe.
+    public void setIdJefe(int idJefe) {
+        this.idJefe = idJefe;
     }
 }

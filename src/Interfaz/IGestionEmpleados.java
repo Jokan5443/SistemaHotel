@@ -2,7 +2,7 @@ package Interfaz;
 import GestionEmpleados.Empleado;
 
   public interface IGestionEmpleados {
-    void addEmpleado(Empleado empleado);
-    void dropEmpleado(int edEmpleado);
-    void dropEmpleado(Empleado empleado);
+    void addEmpleado(Empleado area);
+    void dropEmpleado(int idEmpleado);
+    void dropEmpleado(Empleado area);
 }

@@ -59,7 +59,6 @@ public class Operario extends Empleado {
     }
 
     // Obtiene el identificador del supervisor.
-
     public int getIdSupervisor() {
         return idSupervisor;
     }
