@@ -1,10 +1,9 @@
 package GestionEmpleados;
 
-import Interfaz.IGestionEmpleados;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Area implements IGestionEmpleados {
+public class Area{
 
     // Identificador único del área
     private final int idArea;
@@ -16,36 +15,66 @@ public class Area implements IGestionEmpleados {
     private final List<Integer> listaEmpleadoIds;
 
     // Constructor principal.
-    public Area(int idArea, String nombre, List<Integer> listaEmpleadoIds) {
+    public Area(int idArea, String nombre) {
         this.idArea = idArea;
         this.nombre = nombre;
         this.listaEmpleadoIds = new ArrayList<>();
+    }
+    
+    // Agrega un empleado al área.
+    public void addEmpleado(Empleado empleado) {
+        listaEmpleadoIds.add(empleado.getId());
+    }
+
+    // Elimina un empleado del área por su objeto.
+    public void dropEmpleado(Empleado empleado) {
+        if (empleado != null)
+            dropEmpleado(empleado.getId());
+    }
+
+    // Elimina un empleado del área por su identificador.
+    public void dropEmpleado(int idEmpleado) {
+        listaEmpleadoIds.remove(idEmpleado);
+    }    
+            
+    // Devuelve a un empleado, en caso de que este pertenezca a la área correspondiente.
+    public Empleado getEmpleado(int idEmpleado, GestorEmpleados gestor) {
+        Empleado empleado = null;
+
+        if(!listaEmpleadoIds.isEmpty()){
+            for(Integer id : listaEmpleadoIds){
+                if(id == idEmpleado){
+                    empleado = gestor.getEmpleado(idEmpleado);
+                    return empleado;
+                }
+            }
+        }
+
+        return empleado;
+    }
+
+    // Devuelve a un empleado, en caso de que este pertenezca a la área correspondiente.
+    public Empleado getEmpleado(Empleado empleado, GestorEmpleados gestor) {
+        Empleado resultado = null;
+
+        if (empleado != null && !listaEmpleadoIds.isEmpty()) {
+            for (Integer id : listaEmpleadoIds) {
+                if (id == empleado.getId()) {
+                    resultado = gestor.getEmpleado(id);
+                    return resultado;
+                }
+            }
+        }
+
+        return resultado;
     }
     
     // Cuenta cuántos empleados tiene asignados el área.
     public int contarEmpleados() {
         return listaEmpleadoIds.size();
     }
+
     
-    // Agrega un empleado al área.
-    @Override
-    public void addEmpleado(Empleado empleado) {
-        listaEmpleadoIds.add(empleado.getId());
-    }
-
-    // Elimina un empleado del área por su identificador.
-    @Override
-    public void dropEmpleado(int idEmpleado) {
-        listaEmpleadoIds.remove(idEmpleado);
-    }
-
-    // Elimina un empleado del área por su objeto.
-    @Override
-    public void dropEmpleado(Empleado empleado) {
-        if (empleado != null)
-            dropEmpleado(empleado.getId());
-    }
-
     // Obtiene la lista de IDs de empleados asignados (solo lectura), evitando enlazar las listas.
     public List<Integer> getListaEmpleadoIds() {
         return List.copyOf(listaEmpleadoIds);
@@ -65,6 +94,8 @@ public class Area implements IGestionEmpleados {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+
 }
 
 

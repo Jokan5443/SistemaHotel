@@ -12,7 +12,7 @@ public class Jefe extends Empleado implements IGestionSupervisores {
     private final List<Integer> listaSupervisorIds;
 
     // Bono fijo que recibe el jefe por gestión
-    private static final int BONO_JEFE = 380;
+    private static final double BONO_JEFE = 380;
 
     // Constructor principal.
     public Jefe(int idArea,

@@ -25,9 +25,6 @@ public class RegistroPago {
                         int idEmpleado,
                         LocalDateTime fechaPago,
                         double monto) {
-        if (monto < 0) {
-            throw new IllegalArgumentException("El monto no puede ser negativo");
-        }
         this.idPago = idPago;
         this.idEmpleado = idEmpleado;
         this.fechaPago = fechaPago;
@@ -39,9 +36,6 @@ public class RegistroPago {
     public RegistroPago(int idPago,
                         int idEmpleado,
                         double monto) {
-        if (monto < 0) {
-            throw new IllegalArgumentException("El monto no puede ser negativo");
-        }
         this.idPago = idPago;
         this.idEmpleado = idEmpleado;
         this.fechaPago = LocalDateTime.now();
@@ -81,9 +75,6 @@ public class RegistroPago {
 
     // Actualiza el monto a pagar. Nuevo monto (debe ser >= 0).
     public void setMonto(double monto) {
-        if (monto < 0) {
-            throw new IllegalArgumentException("El monto no puede ser negativo");
-        }
         this.monto = monto;
     }
 

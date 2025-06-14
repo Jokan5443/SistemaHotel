@@ -13,7 +13,7 @@ import java.util.Map;
 public abstract class Empleado extends Entidad 
     implements IRegistrarHorasDiarias, IAsistenciaSemanal {
 
-    // Salario base o calculado
+    // Salario calculado
     protected double salario;
     
     // Fecha y hora de término de contrato
@@ -137,33 +137,17 @@ public abstract class Empleado extends Entidad
 
     // Getters y setters
 
-    public int getAreaLabor() {
-        return idArea;
-    }
+    public int getAreaLabor() { return idArea; }
+    public void setAreaLabor(int idArea) { this.idArea = idArea; }
 
-    public void setAreaLabor(int idArea) {
-        this.idArea = idArea;
-    }
-
-    public double getTarifaPorHora() {
-        return tarifaPorHora;
-    }
-
-    public void setTarifaPorHora(double tarifaPorHora) {
-        this.tarifaPorHora = tarifaPorHora;
-    }
+    public double getTarifaPorHora() { return tarifaPorHora; }
+    public void setTarifaPorHora(double tarifaPorHora) { this.tarifaPorHora = tarifaPorHora; }
 
     // Obtiene las horas trabajadas por día (solo lectura), evitando enlazar las listas.
-    public List<Integer> getHorasTrabajadasPorDia() {
-        return List.copyOf(horasTrabajadasPorDia);
-    }
+    public List<Integer> getHorasTrabajadasPorDia() { return List.copyOf(horasTrabajadasPorDia); }
 
     // Obtiene el registro de asistencias (solo lectura), evitando enlazar las listas.
-    public Map<LocalDateTime, Boolean> getListaAsistencias() {
-        return Map.copyOf(listaAsistencias);
-    }
-    
-    
+    public Map<LocalDateTime, Boolean> getListaAsistencias() { return Map.copyOf(listaAsistencias); }
     
     public LocalDateTime getFechaTermino() { return fechaTermino; }
     public void setFechaTermino(LocalDateTime fechaTermino) { this.fechaTermino = fechaTermino;}
