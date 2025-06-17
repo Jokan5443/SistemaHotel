@@ -2,18 +2,18 @@ package GestionEmpleados;
 
 import java.util.ArrayList;
 import java.util.List;
-
+    
 public class Area{
-
+    
     // Identificador único del área
     private final int idArea;
-
+    
     // Nombre descriptivo del área
     private String nombre;
-
+    
     // Lista de IDs de empleados asignados al área
     private final List<Integer> listaEmpleadoIds;
-
+    
     // Constructor principal.
     public Area(int idArea, String nombre) {
         this.idArea = idArea;
