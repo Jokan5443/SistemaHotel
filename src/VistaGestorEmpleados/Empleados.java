@@ -10,12 +10,12 @@ import javax.swing.*;
  *
  * @author User
  */
-public class MenuPrincipal extends javax.swing.JFrame {
+public class Empleados extends javax.swing.JFrame {
 
     /**
      * Creates new form MenuPrincipal
      */
-    public MenuPrincipal() {
+    public Empleados() {
         initComponents();
         
         Icon miIcono = new ImageIcon(new ImageIcon(getClass().getResource("/Imagenes/5-estrellas (2).png")).getImage().getScaledInstance(lbImagen.getWidth(), lbImagen.getHeight(), 0));
@@ -411,18 +411,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel CantAreas;
     private javax.swing.JPanel CantEmpleados;
-    private javax.swing.JPanel CantEmpleados1;
-    private javax.swing.JPanel CantEmpleados2;
-    private javax.swing.JPanel CantEmpleados3;
-    private javax.swing.JPanel CantEmpleados4;
-    private javax.swing.JPanel CantEmpleados5;
-    private javax.swing.JPanel CantEmpleados6;
-    private javax.swing.JPanel CantEmpleados7;
     private javax.swing.JPanel CantJefes;
     private javax.swing.JPanel CantPagosPendientes;
     private javax.swing.JPanel CantPagosRealizados;
-    private javax.swing.JPanel CantPagosRealizados1;
-    private javax.swing.JPanel CantPagosRealizados2;
     private javax.swing.JPanel CantSupervisores;
     private javax.swing.JPanel Menu;
     private javax.swing.JLabel TextPagos1;
@@ -441,8 +432,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnPagos;
     private javax.swing.JButton btnReporte;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JLabel lbCantAreas;
     private javax.swing.JLabel lbCantEmpleados;
     private javax.swing.JLabel lbCantJefes;
