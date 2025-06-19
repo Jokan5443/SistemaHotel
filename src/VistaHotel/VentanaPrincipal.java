@@ -1,7 +1,6 @@
 
 package VistaHotel;
 
-
 import javax.swing.JOptionPane;
 import javax.swing.UIClientPropertyKey;
 import javax.swing.UIManager;
