@@ -1,63 +1,75 @@
 package VistaHotel;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import javax.swing.BorderFactory;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.BoxLayout;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 public class SalidaHabitacion extends javax.swing.JPanel {
-
+ReservarHabitacion panelReservas;
     public SalidaHabitacion() {
         initComponents();
-        this.setLayout(new java.awt.GridLayout(0, 3, 10, 10)); // 3 columnas, con espacio de 10px
+   
+
+
+        panelReservas = new ReservarHabitacion(); // Creamos una instancia para acceder a los paneles ya diseñados
+        cargarHabitacionesOcupadas(); // Cargamos solo los ocupados
+        
+         
     }
 
 // Método para cargar solo habitaciones con estado 'ocupado'
     public void cargarHabitacionesOcupadas() {
-        // Limpia lo que haya en el panel
-        this.removeAll();
+        
+          this.removeAll();  // Limpia el panel para recargar
 
-        try (Connection conn = ConexionBaseDeDatos.ConexionBD.conectar()) {
-            if (conn != null) {
-                String sql = "SELECT numero_habitacion, tipo, descripcion, precio_por_noche FROM Habitaciones WHERE estado = 'ocupado'";
-                PreparedStatement ps = conn.prepareStatement(sql);
-                ResultSet rs = ps.executeQuery();
+    try (Connection conn = ConexionBaseDeDatos.ConexionBD.conectar()) {
+        String sql = "SELECT numero_habitacion, tipo, descripcion, precio_por_noche FROM Habitaciones WHERE estado = 'ocupado'";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        ResultSet rs = stmt.executeQuery();
 
-                while (rs.next()) {
-                    String numero = rs.getString("numero_habitacion");
-                    String tipo = rs.getString("tipo");
-                    String descripcion = rs.getString("descripcion");
-                    double precio = rs.getDouble("precio_por_noche");
+        while (rs.next()) {
+            String numero = rs.getString("numero_habitacion");
+            String tipo = rs.getString("tipo");
+            String descripcion = rs.getString("descripcion");
+            String precio = rs.getString("precio_por_noche");
 
-                    JPanel habitacionPanel = new JPanel();
-                    habitacionPanel.setLayout(new BoxLayout(habitacionPanel, BoxLayout.Y_AXIS));
-                    habitacionPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-                    habitacionPanel.setBackground(new Color(255, 102, 102)); // color rojo para ocupado
+            JPanel panelHabitacion = crearPanelHabitacion(numero, tipo, descripcion, precio);
 
-                    habitacionPanel.add(new JLabel("Número: " + numero));
-                    habitacionPanel.add(new JLabel("Tipo: " + tipo));
-                    habitacionPanel.add(new JLabel("Descripción: " + descripcion));
-                    habitacionPanel.add(new JLabel("Precio por noche: $" + precio));
-
-                    this.add(habitacionPanel);
-                }
-
-                // Refresca la vista
-                this.revalidate();
-                this.repaint();
-
-            } else {
-                JOptionPane.showMessageDialog(null, "No se pudo conectar a la base de datos.");
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al cargar habitaciones ocupadas: " + e.getMessage());
+            this.add(panelHabitacion);
         }
+
+        this.revalidate();
+        this.repaint();
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error al cargar paneles ocupados: " + e.getMessage());
     }
+        
+     
+        
+    }
+    
+    private JPanel crearPanelHabitacion(String numero, String tipo, String descripcion, String precio) {
+    JPanel panel = new JPanel();
+    panel.setBackground(Color.RED);  // porque están ocupadas
+    panel.setBorder(javax.swing.BorderFactory.createLineBorder(Color.BLACK));
+    panel.setLayout(new java.awt.GridLayout(4, 1));
+    panel.setPreferredSize(new java.awt.Dimension(150, 100));
+
+    panel.add(new javax.swing.JLabel("Número: " + numero));
+    panel.add(new javax.swing.JLabel("Tipo: " + tipo));
+    panel.add(new javax.swing.JLabel("Descripción: " + descripcion));
+    panel.add(new javax.swing.JLabel("Precio: $" + precio));
+
+    return panel;
+}
+
+    
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

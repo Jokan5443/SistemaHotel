@@ -9,7 +9,7 @@ public class Reservacion extends javax.swing.JFrame {
     private ReservarHabitacion rh;
 
     public Reservacion() {
-        initComponents();
+            initComponents();
         this.setLocationRelativeTo(null); // centra el Jframe
     }
 

@@ -20,7 +20,7 @@ public class detalle extends javax.swing.JFrame {
     public detalle() {
         initComponents();
     }
-
+// iimprimir detalles en pdf 
     public void exportarComoPDF(String nombreArchivoPDF) {
     try {
         int width = this.getWidth();

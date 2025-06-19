@@ -262,82 +262,64 @@ public class Login extends javax.swing.JFrame {
    private int intentos = 0; //Variable para controlar el intentos de accesos incorrectos
 
 // METODO VALIDAR INGRESO - INICIO
-    private void validarIngreso() {
-        // Obtiene el texto ingresado en los campos de usuario y contraseña
-        String usuario = TxtUsuario.getText(); //Campo usuario
-        String contrasena = new String(TxtContraseña.getPassword()); //Campo contraseña
+private void validarIngreso() {
+    String usuario = TxtUsuario.getText(); // Campo usuario
+    String contrasena = new String(TxtContraseña.getPassword()); // Campo contraseña
 
-// Verifica si los campos de usuario o contraseña contienen los valores predeterminados o están vacíos
-        if (usuario.equals("Ingrese su nombre de usuario") || contrasena.equals("*****")) {
-            // Muestra un mensaje de advertencia solicitando que se ingresen los datos
-            JOptionPane.showMessageDialog(this, "Por favor ingrese sus datos.");
-            return;// Finaliza la ejecución del método si los campos no son válidos
-        }
-
-        if (usuario.equals("") || contrasena.equals("")) {
-            // Muestra el mismo mensaje si los campos están vacíos
-            JOptionPane.showMessageDialog(this, "Por favor ingrese sus datos.");
-            return;// Termina el método
-        }
-
-        // Conectarse a la base de datos y verificar credenciales
-        try {
-            // Parámetros de conexión
-            // Define la URL de la base de datos y las credenciales para la conexión
-            String url = "jdbc:mysql://sql10.freesqldatabase.com:3306/sql10742054"; //URL
-            String dbUser = "sql10742054"; //NOMBRE DE USUARIO DE LA BASE DE DATOS
-            String dbPassword = "c2HfX6vUVE"; // CONTRASEÑA DE LA BASE DE DATOS
-
-            // Crea la Conexión a la base de datos
-            Connection connection = DriverManager.getConnection(url, dbUser, dbPassword);
-            //JOptionPane.showMessageDialog(this, "Conexión a la base de datos exitosa."); // Mensaje si la conexión es exitosa
-
-            // Consulta SQL para verificar las credenciales
-            String query = "SELECT * FROM sql10742054.usuarios WHERE NombreUsuario = ? AND contrasena = ?";
-            //PREPAREDSTATEMENT es un objeto que representa una consulta SQL precompilada, Los parámetros se                manejan de manera segura y se pasan al motor de base de datos como valores
-            PreparedStatement statement = connection.prepareStatement(query);
-            //STATEMENT: Usado para ejecutar sentencias SQL sin parámetros dinámicos.
-            statement.setString(1, usuario);  //Sustituye el primer parámetro por el usuario ingresado
-            statement.setString(2, contrasena); // Sustituye el segundo parámetro por la contraseña ingresada
-
-            // Ejecuta la consulta y obtiene el resultado
-            ResultSet resultSet = statement.executeQuery();
-            // Verifica si se encontró una coincidencia en la base de datos
-            if (resultSet.next()) {
-            // Muestra un mensaje de acceso correcto
-                JOptionPane.showMessageDialog(this, "¡Acceso correcto!");
-                intentos = 0; // Reinicia el contador de intentos
-
-                // Ir al formulario MenuPrincipal
-                VentanaPrincipal nuevoFormulario = new VentanaPrincipal();
-                nuevoFormulario.setVisible(true);
-                this.dispose(); // Cierra la ventana de login
-            } else {
-                intentos++; // Incrementa el contador de intentos fallidos y muestra un mensaje de error
-                JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos. Intento " + intentos + " de 3.");
-                // RESTABLECE los campos de USUARIO y CONTRASEÑA a sus valores predeterminados
-                TxtUsuario.setText("Ingrese su nombre de usuario");
-                TxtContraseña.setText("*****");
-                
-                // Si se superan los 3 intentos, muestra un mensaje y cierra la aplicación
-                if (intentos >= 3) {
-                    JOptionPane.showMessageDialog(this, "Demasiados intentos fallidos. El sistema se cerrará.");
-                    System.exit(0); // Cierra la aplicación tras 3 intentos fallidos
-                }
-            }
-
-            // Cerrar la conexión y recursos
-      resultSet.close(); // Cierra el objeto 'ResultSet', después de haber terminado de procesar los datos
-      statement.close(); // Cierra el objeto 'Statement', liberando los recursos asociados a la consulta SQL.
-      connection.close();// Cierra la conexión con la base de datos, liberando la conexión a la base de datos.
-            
-        // Maneja cualquier excepción que ocurra durante la conexión o consulta a la base de datos
-        } catch (SQLException e) {
-            // Imprime el error en la consola para depuración
-            JOptionPane.showMessageDialog(this, "Error al conectar con la base de datos: " + e.getMessage());
-        }
+    // Verifica si los campos contienen los valores por defecto o están vacíos
+    if (usuario.equals("Ingrese su nombre de usuario") || contrasena.equals("*****") ||
+        usuario.isEmpty() || contrasena.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Por favor ingrese sus datos.");
+        return;
     }
+
+    try {
+        // Conexión a la base de datos de Clever Cloud
+        String url = "jdbc:mysql://bb8eb94l4tbafdhhua6p-mysql.services.clever-cloud.com:3306/bb8eb94l4tbafdhhua6p";
+        String dbUser = "u7bx0koexr09nu6w";
+        String dbPassword = "KXufvIJGaeouglbc9GsG";
+
+        Connection connection = DriverManager.getConnection(url, dbUser, dbPassword);
+
+        // Consulta para verificar usuario y contraseña
+        String query = "SELECT * FROM usuarios WHERE NombreUsuario = ? AND contrasena = ?";
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setString(1, usuario);
+        statement.setString(2, contrasena);
+
+        ResultSet resultSet = statement.executeQuery();
+
+        if (resultSet.next()) {
+            JOptionPane.showMessageDialog(this, "¡Acceso correcto!");
+            intentos = 0;
+
+            // Abre la ventana principal
+            VentanaPrincipal nuevoFormulario = new VentanaPrincipal();
+            nuevoFormulario.setVisible(true);
+            this.dispose(); // Cierra la ventana de login
+        } else {
+            intentos++;
+            JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos. Intento " + intentos + " de 3.");
+            TxtUsuario.setText("Ingrese su nombre de usuario");
+            TxtContraseña.setText("*****");
+
+            if (intentos >= 3) {
+                JOptionPane.showMessageDialog(this, "Demasiados intentos fallidos. El sistema se cerrará.");
+                System.exit(0);
+            }
+        }
+
+        // Cierre de recursos
+        resultSet.close();
+        statement.close();
+        connection.close();
+
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(this, "Error al conectar con la base de datos: " + e.getMessage());
+    }
+}
 // METODO VALIDAR INGRESO - FIN
+
     
     
     

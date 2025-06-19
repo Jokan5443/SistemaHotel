@@ -1,16 +1,15 @@
 package VistaHotel;
-
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import ConexionBaseDeDatos.ConexionBD;
 
 public class ReservarHabitacion extends javax.swing.JPanel {
+
 
     public ReservarHabitacion() {
         initComponents();
@@ -479,11 +478,6 @@ public class ReservarHabitacion extends javax.swing.JPanel {
     }
 }
 
-    
-    
-    
-    
-    
     // CREAMOS UN METODO PARA REUTILIZAR COD
     private void abrirInscripcion(JLabel lblNum, JLabel lblTipo, JLabel lblPrecio) {
         String numero = lblNum.getText();
@@ -657,18 +651,18 @@ public class ReservarHabitacion extends javax.swing.JPanel {
     private javax.swing.JLabel LblTipo7;
     private javax.swing.JLabel LblTipo8;
     private javax.swing.JLabel LblTipo9;
-    private javax.swing.JPanel Panel1;
-    private javax.swing.JPanel Panel10;
-    private javax.swing.JPanel Panel11;
-    private javax.swing.JPanel Panel12;
-    private javax.swing.JPanel Panel2;
-    private javax.swing.JPanel Panel3;
-    private javax.swing.JPanel Panel4;
-    private javax.swing.JPanel Panel5;
-    private javax.swing.JPanel Panel6;
-    private javax.swing.JPanel Panel7;
-    private javax.swing.JPanel Panel8;
-    private javax.swing.JPanel Panel9;
+    public javax.swing.JPanel Panel1;
+    public javax.swing.JPanel Panel10;
+    public javax.swing.JPanel Panel11;
+    public javax.swing.JPanel Panel12;
+    public javax.swing.JPanel Panel2;
+    public javax.swing.JPanel Panel3;
+    public javax.swing.JPanel Panel4;
+    public javax.swing.JPanel Panel5;
+    public javax.swing.JPanel Panel6;
+    public javax.swing.JPanel Panel7;
+    public javax.swing.JPanel Panel8;
+    public javax.swing.JPanel Panel9;
     private javax.swing.JLabel img1;
     private javax.swing.JLabel img10;
     private javax.swing.JLabel img11;

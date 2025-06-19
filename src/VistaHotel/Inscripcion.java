@@ -6,7 +6,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import javax.swing.JPanel;
+import java.sql.Date;
+import javax.swing.JOptionPane;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class Inscripcion extends javax.swing.JFrame {
 
@@ -345,6 +350,27 @@ public class Inscripcion extends javax.swing.JFrame {
         String tipoHabitacion = TxtTipoH.getText();
         String descripcion = TxtDescripcion.getText();
 
+        // Leer fechas desde JDateChooser
+        java.util.Date fechaEntradaUtil = jDateChooserEntrada.getDate();
+        java.util.Date fechaSalidaUtil = jDateChooserSalida.getDate();
+
+        if (fechaEntradaUtil == null || fechaSalidaUtil == null) {
+            JOptionPane.showMessageDialog(null, "Selecciona ambas fechas de entrada y salida.");
+            return;
+        }
+
+        java.sql.Date fechaEntrada = new java.sql.Date(fechaEntradaUtil.getTime());
+        java.sql.Date fechaSalida = new java.sql.Date(fechaSalidaUtil.getTime());
+
+        // Validar que dni sea número (ajusta si DNI es otro tipo)
+        int dniInt;
+        try {
+            dniInt = Integer.parseInt(dni);
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "DNI debe ser un número válido.");
+            return;
+        }
+
         // Crear objeto Cliente
         Cliente nuevoCliente = new Cliente(nombre, apellido, telefono, correo, Integer.parseInt(dni), direccion);
         nuevoCliente.setDireccion(direccion); // Asignamos la dirección
@@ -353,14 +379,30 @@ public class Inscripcion extends javax.swing.JFrame {
             if (conn != null) {
                 // insertar datos en la tabla CLIENTES
                 String sql = "INSERT INTO Clientes (nombre, apellido, dni_pasaporte, correo, telefono, direccion) VALUES (?, ?, ?, ?, ?, ?)";
-                java.sql.PreparedStatement stmt = conn.prepareStatement(sql);
-                stmt.setString(1, nuevoCliente.getNombre());
-                stmt.setString(2, nuevoCliente.getApellido());
-                stmt.setString(3, String.valueOf(nuevoCliente.getDni()));
-                stmt.setString(4, nuevoCliente.getCorreo());
-                stmt.setString(5, nuevoCliente.getTelefono());
-                stmt.setString(6, nuevoCliente.getDireccion());
-                stmt.executeUpdate();
+                java.sql.PreparedStatement stmtCliente = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
+                stmtCliente.setString(1, nuevoCliente.getNombre());
+                stmtCliente.setString(2, nuevoCliente.getApellido());
+                stmtCliente.setString(3, String.valueOf(nuevoCliente.getDni()));
+                stmtCliente.setString(4, nuevoCliente.getCorreo());
+                stmtCliente.setString(5, nuevoCliente.getTelefono());
+                stmtCliente.setString(6, nuevoCliente.getDireccion());
+                int filasCliente = stmtCliente.executeUpdate();
+                if (filasCliente == 0) {
+                    JOptionPane.showMessageDialog(null, "Error al insertar cliente.");
+                    return;
+                }
+
+                // Obtener id_cliente generado
+                int idCliente = -1;
+                try (ResultSet generatedKeys = stmtCliente.getGeneratedKeys()) {
+                    if (generatedKeys.next()) {
+                        idCliente = generatedKeys.getInt(1);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No se pudo obtener el ID del cliente.");
+                        return;
+                    }
+                }
                 // insertar datos en la tabla HABITACIONES
                 String sqlHabitacion = "INSERT INTO Habitaciones (numero_habitacion, tipo, descripcion, precio_por_noche, estado) VALUES (?, ?, ?, ?, ?)";
                 PreparedStatement stmtHabitacion = conn.prepareStatement(sqlHabitacion);
@@ -370,11 +412,21 @@ public class Inscripcion extends javax.swing.JFrame {
                 stmtHabitacion.setDouble(4, Double.parseDouble(precioPorNoche));    // Ej: "250.00"
                 stmtHabitacion.setString(5, estadoSeleccionado);                    // SELECCION DEL CB DE ESTADO
                 stmtHabitacion.executeUpdate();
+                // Definir estado reserva (ajusta este id segun tus datos en Estados_Reserva)
+                int idEstadoReserva = 1; // por ejemplo: 1 = "Reservado"
+                // Insertar RESERVA
+                String sqlReserva = "INSERT INTO Reservas (id_cliente, fecha_entrada, fecha_salida, id_estado) VALUES (?, ?, ?, ?)";
+                PreparedStatement stmtReserva = conn.prepareStatement(sqlReserva);
+                stmtReserva.setInt(1, idCliente);
+                stmtReserva.setDate(2, fechaEntrada);
+                stmtReserva.setDate(3, fechaSalida);
+                stmtReserva.setInt(4, idEstadoReserva);
+                stmtReserva.executeUpdate();
 
                 // Suponiendo que estás en Inscripcion.java y quieres notificar a ReservarHabitacion:
                 if (panelReservarHabitacion != null) {
                     panelReservarHabitacion.actualizarColorPanelPorEstado(numHabitacion, estadoSeleccionado);
-                  
+
                 }
 
                 javax.swing.JOptionPane.showMessageDialog(null, "Habitaciones registrado correctamente.");
