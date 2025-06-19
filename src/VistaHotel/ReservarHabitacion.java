@@ -8,8 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import ConexionBaseDeDatos.ConexionBD;
-import java.util.HashMap;
-import java.util.Map;
+
 
 
 public  class ReservarHabitacion extends javax.swing.JPanel {
@@ -490,48 +489,74 @@ public  class ReservarHabitacion extends javax.swing.JPanel {
         Inscripcion ins = new Inscripcion(numero, tipo, precio, this); // <-- Aquí agregas 'this'
         ins.setVisible(true);
     }
-    // CREAMOS UNA COLECCION;NAVEGAR EN LAS HABITACIONES
+     // CREAMOS UN METODO PARA PODER ACTUALIZAR EL COLOR DEL ESYADO QUE VAMOS A UTILIZAR
 
-    private final Map<String, JPanel> mapaHabitaciones = new HashMap<>();
+    public void actualizarColorPanelPorEstado(String numeroHabitacion, String estado) {
+         
+        JPanel panel = null;
 
-    private void inicializarMapaHabitaciones() {
-        mapaHabitaciones.put("1", Panel1);
-        mapaHabitaciones.put("2", Panel2);
-        mapaHabitaciones.put("3", Panel3);
-        mapaHabitaciones.put("4", Panel4);
-        mapaHabitaciones.put("5", Panel5);
-        mapaHabitaciones.put("6", Panel6);
-        mapaHabitaciones.put("7", Panel7);
-        mapaHabitaciones.put("8", Panel8);
-        mapaHabitaciones.put("9", Panel9);
-        mapaHabitaciones.put("10", Panel10);
-        mapaHabitaciones.put("11", Panel11);
-        mapaHabitaciones.put("12", Panel12);
-        // etc.
-    }
-    //METODO PARA ACTUALIZAR EL COLOR DEL ESYADO QUE VAMOS A UTILIZAR
-public void actualizarColorPanelPorEstado(String numeroHabitacion, String estado) {
-    JPanel panel = mapaHabitaciones.get(numeroHabitacion);
-
-    if (panel != null) {
-        switch (estado.toLowerCase()) {
-            case "disponible":
-                panel.setBackground(Color.GREEN);
+        // SE BUSCA EL PANEL DEPENDIENDO LA HABITACION QUE SE HA SELEECIONADO
+        switch (numeroHabitacion) {
+            case "1":
+                panel = Panel1;
                 break;
-            case "ocupado":
-                panel.setBackground(Color.RED);
+            case "2":
+                panel = Panel2;
                 break;
-            case "limpieza":
-                panel.setBackground(new Color(173, 216, 230));
+            case "3":
+                panel = Panel3;
+                break;
+            case "4":
+                panel = Panel4;
+                break;
+            case "5":
+                panel = Panel5;
+                break;
+            case "6":
+                panel = Panel6;
+                break;
+            case "7":
+                panel = Panel7;
+                break;
+            case "8":
+                panel = Panel8;
+                break;
+            case "9":
+                panel = Panel9;
+                break;
+            case "10":
+                panel = Panel10;
+                break;
+            case "11":
+                panel = Panel11;
+                break;
+            case "12":
+                panel = Panel12;
                 break;
             default:
-                panel.setBackground(Color.GRAY);
+                return; // SI NO COINCIDE SALE DEL BUCLE
         }
-        panel.setOpaque(true);
-        panel.repaint();
-    }
-}
 
+        // APLICAMOS EL ESTADO SEGUN EL ESTADO QUE SE MARCA
+        if (panel != null) {
+            switch (estado.toLowerCase()) {
+                case "disponible":
+                    panel.setBackground(Color.GREEN);
+                    break;
+                case "ocupado":
+                    panel.setBackground(Color.RED);
+                    break;
+                case "limpieza":
+                    panel.setBackground(new Color(173, 216, 230)); // Celeste
+                    break;
+                default:
+                    panel.setBackground(Color.GRAY);
+                    break;
+            }
+             panel.setOpaque(true); 
+              panel.repaint();
+        }
+    }
 
 
     private void BtnReservar9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnReservar9MouseClicked
