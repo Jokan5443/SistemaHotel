@@ -168,7 +168,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="10" y="90" width="120" height="30"/>
+              <AbsoluteConstraints x="10" y="90" width="130" height="30"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -186,21 +186,21 @@
         </Component>
         <Component class="javax.swing.JLabel" name="lblPrecio1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="S/500"/>
+            <Property name="text" type="java.lang.String" value="500"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="100" y="60" width="40" height="20"/>
+              <AbsoluteConstraints x="110" y="60" width="30" height="20"/>
             </Constraint>
           </Constraints>
         </Component>
         <Component class="javax.swing.JLabel" name="LblNumero1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="NUM 001"/>
+            <Property name="text" type="java.lang.String" value="1"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="90" y="10" width="60" height="20"/>
+              <AbsoluteConstraints x="130" y="10" width="10" height="20"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -211,6 +211,16 @@
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="110" y="30" width="40" height="20"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="NUM"/>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="90" y="10" width="-1" height="20"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -866,21 +876,21 @@
         </Component>
         <Component class="javax.swing.JLabel" name="lblPrecio2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="S/500"/>
+            <Property name="text" type="java.lang.String" value="500"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="100" y="60" width="40" height="20"/>
+              <AbsoluteConstraints x="110" y="60" width="30" height="20"/>
             </Constraint>
           </Constraints>
         </Component>
         <Component class="javax.swing.JLabel" name="LblNumero2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="NUM 002"/>
+            <Property name="text" type="java.lang.String" value="2"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="90" y="10" width="60" height="20"/>
+              <AbsoluteConstraints x="130" y="10" width="10" height="20"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -891,6 +901,16 @@
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="110" y="30" width="40" height="20"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel3">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="NUM"/>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="90" y="10" width="-1" height="20"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -951,21 +971,21 @@
         </Component>
         <Component class="javax.swing.JLabel" name="lblPrecio3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="S/500"/>
+            <Property name="text" type="java.lang.String" value="500"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="100" y="60" width="40" height="20"/>
+              <AbsoluteConstraints x="110" y="60" width="30" height="20"/>
             </Constraint>
           </Constraints>
         </Component>
         <Component class="javax.swing.JLabel" name="LblNumero3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="NUM 003"/>
+            <Property name="text" type="java.lang.String" value="3"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="90" y="10" width="60" height="20"/>
+              <AbsoluteConstraints x="130" y="10" width="20" height="20"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -976,6 +996,16 @@
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="110" y="30" width="40" height="20"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel4">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="NUM"/>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="90" y="10" width="-1" height="20"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -1036,21 +1066,21 @@
         </Component>
         <Component class="javax.swing.JLabel" name="lblPrecio4">
           <Properties>
-            <Property name="text" type="java.lang.String" value="S/500"/>
+            <Property name="text" type="java.lang.String" value="500"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="100" y="60" width="40" height="20"/>
+              <AbsoluteConstraints x="110" y="60" width="30" height="20"/>
             </Constraint>
           </Constraints>
         </Component>
         <Component class="javax.swing.JLabel" name="LblNumero4">
           <Properties>
-            <Property name="text" type="java.lang.String" value="NUM 004"/>
+            <Property name="text" type="java.lang.String" value="4"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="90" y="10" width="60" height="20"/>
+              <AbsoluteConstraints x="130" y="10" width="20" height="20"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -1061,6 +1091,16 @@
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="110" y="30" width="40" height="20"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="NUM"/>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="90" y="10" width="-1" height="20"/>
             </Constraint>
           </Constraints>
         </Component>

@@ -2,11 +2,33 @@ package Principal;
 
 import java.time.LocalDate;
 import GestionReservas.*;
-
+import VistaHotel.*;
 public class Main {
 
     public static void main(String[] args) {
 
+        
+        CargaInicio ci= new CargaInicio();
+        
+        
+        ci.setVisible(true); //  // se hace visible Carga Inicio
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         /* modulo empleados 3  ---- mpdulo gestion de reserva 
             
             BASES DE DATOS PLANEADAS:
@@ -30,8 +52,8 @@ public class Main {
         Habitacion hab4 = new HabitacionSuite("104");
 
         // Crear algunas reservas
-        Reserva reserva1 = gestor.crearReserva(cliente1, hab1, LocalDate.of(2025, 6, 1), LocalDate.of(2025, 6, 5));
-        Reserva reserva2 = gestor.crearReserva(cliente2, hab4, LocalDate.of(2025, 6, 10), LocalDate.of(2025, 6, 15));
+       // Reserva reserva1 = gestor.crearReserva(cliente1, hab1, LocalDate.of(2025, 6, 1), LocalDate.of(2025, 6, 5));
+       // Reserva reserva2 = gestor.crearReserva(cliente2, hab4, LocalDate.of(2025, 6, 10), LocalDate.of(2025, 6, 15));
 
         // Mostrar las reservas creadas
         System.out.println("\nReservas Actuales:");

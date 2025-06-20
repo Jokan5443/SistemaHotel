@@ -39,6 +39,7 @@ public  class ReservarHabitacion extends javax.swing.JPanel {
         lblPrecio1 = new javax.swing.JLabel();
         LblNumero1 = new javax.swing.JLabel();
         LblTipo1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         Panel5 = new javax.swing.JPanel();
         BtnReservar5 = new javax.swing.JButton();
         img5 = new javax.swing.JLabel();
@@ -87,18 +88,21 @@ public  class ReservarHabitacion extends javax.swing.JPanel {
         lblPrecio2 = new javax.swing.JLabel();
         LblNumero2 = new javax.swing.JLabel();
         LblTipo2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         Panel3 = new javax.swing.JPanel();
         BtnReservar3 = new javax.swing.JButton();
         img3 = new javax.swing.JLabel();
         lblPrecio3 = new javax.swing.JLabel();
         LblNumero3 = new javax.swing.JLabel();
         LblTipo3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         Panel4 = new javax.swing.JPanel();
         BtnReservar4 = new javax.swing.JButton();
         img4 = new javax.swing.JLabel();
         lblPrecio4 = new javax.swing.JLabel();
         LblNumero4 = new javax.swing.JLabel();
         LblTipo4 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -166,19 +170,22 @@ public  class ReservarHabitacion extends javax.swing.JPanel {
                 BtnReservar1ActionPerformed(evt);
             }
         });
-        Panel1.add(BtnReservar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 120, 30));
+        Panel1.add(BtnReservar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, 30));
 
         img1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cama-alternativa.png"))); // NOI18N
         Panel1.add(img1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 70, 60));
 
-        lblPrecio1.setText("S/500");
-        Panel1.add(lblPrecio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 40, 20));
+        lblPrecio1.setText("500");
+        Panel1.add(lblPrecio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 30, 20));
 
-        LblNumero1.setText("NUM 001");
-        Panel1.add(LblNumero1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 60, 20));
+        LblNumero1.setText("1");
+        Panel1.add(LblNumero1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 10, 20));
 
         LblTipo1.setText("SUIT");
         Panel1.add(LblTipo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 40, 20));
+
+        jLabel2.setText("NUM");
+        Panel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, 20));
 
         add(Panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 150, 130));
 
@@ -395,14 +402,17 @@ public  class ReservarHabitacion extends javax.swing.JPanel {
         img2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cama-alternativa.png"))); // NOI18N
         Panel2.add(img2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 70, 60));
 
-        lblPrecio2.setText("S/500");
-        Panel2.add(lblPrecio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 40, 20));
+        lblPrecio2.setText("500");
+        Panel2.add(lblPrecio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 30, 20));
 
-        LblNumero2.setText("NUM 002");
-        Panel2.add(LblNumero2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 60, 20));
+        LblNumero2.setText("2");
+        Panel2.add(LblNumero2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 10, 20));
 
         LblTipo2.setText("SUIT");
         Panel2.add(LblTipo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 40, 20));
+
+        jLabel3.setText("NUM");
+        Panel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, 20));
 
         add(Panel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 150, 130));
 
@@ -423,14 +433,17 @@ public  class ReservarHabitacion extends javax.swing.JPanel {
         img3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cama-alternativa.png"))); // NOI18N
         Panel3.add(img3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 70, 60));
 
-        lblPrecio3.setText("S/500");
-        Panel3.add(lblPrecio3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 40, 20));
+        lblPrecio3.setText("500");
+        Panel3.add(lblPrecio3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 30, 20));
 
-        LblNumero3.setText("NUM 003");
-        Panel3.add(LblNumero3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 60, 20));
+        LblNumero3.setText("3");
+        Panel3.add(LblNumero3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 20, 20));
 
         LblTipo3.setText("SUIT");
         Panel3.add(LblTipo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 40, 20));
+
+        jLabel4.setText("NUM");
+        Panel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, 20));
 
         add(Panel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, 150, 130));
 
@@ -451,14 +464,17 @@ public  class ReservarHabitacion extends javax.swing.JPanel {
         img4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cama-alternativa.png"))); // NOI18N
         Panel4.add(img4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 70, 60));
 
-        lblPrecio4.setText("S/500");
-        Panel4.add(lblPrecio4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 40, 20));
+        lblPrecio4.setText("500");
+        Panel4.add(lblPrecio4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 30, 20));
 
-        LblNumero4.setText("NUM 004");
-        Panel4.add(LblNumero4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 60, 20));
+        LblNumero4.setText("4");
+        Panel4.add(LblNumero4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 20, 20));
 
         LblTipo4.setText("SUIT");
         Panel4.add(LblTipo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 40, 20));
+
+        jLabel1.setText("NUM");
+        Panel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, 20));
 
         add(Panel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 10, 150, 130));
     }// </editor-fold>//GEN-END:initComponents
@@ -677,6 +693,10 @@ public  class ReservarHabitacion extends javax.swing.JPanel {
     private javax.swing.JLabel img7;
     private javax.swing.JLabel img8;
     private javax.swing.JLabel img9;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblPrecio1;
     private javax.swing.JLabel lblPrecio10;

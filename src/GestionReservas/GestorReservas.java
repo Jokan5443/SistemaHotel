@@ -13,12 +13,12 @@ public class GestorReservas {
         this.idReservaActual = 1;
     }
 
-    public Reserva crearReserva(Cliente cliente, Habitacion habitacion, LocalDate fechaEntrada, LocalDate fechaSalida) {
+    public Reserva crearReserva(Cliente cliente, Habitacion habitacion, LocalDate fechaEntrada, LocalDate fechaSalida,Double precio, String Observacion) {
         if (!habitacion.getEstado().equalsIgnoreCase("Disponible")) {
             System.out.println("La habitación no está disponible.");
             return null;
         }
-        Reserva nuevaReserva = new Reserva(idReservaActual++, cliente, habitacion, fechaEntrada, fechaSalida);
+        Reserva nuevaReserva = new Reserva(idReservaActual++, cliente, habitacion, fechaEntrada, fechaSalida,precio,Observacion  );
         reservas.add(nuevaReserva);
         habitacion.setEstado("Ocupada");
         return nuevaReserva;
@@ -27,7 +27,7 @@ public class GestorReservas {
     public List<Reserva> listarReservas() {
         return reservas;
     }
-
+// METODO PARA LAS SALIDAS
     public boolean cancelarReserva(int idReserva) {
         for (Reserva reserva : reservas) {
             if (reserva.getIdReserva() == idReserva) {

@@ -18,6 +18,18 @@ public class Inscripcion extends javax.swing.JFrame {
     public Inscripcion() {
         initComponents();
         this.setLocationRelativeTo(null);
+        // --------- AQUI: PON LOS LISTENERS DE FECHAS ---------
+        jDateChooserEntrada.getDateEditor().addPropertyChangeListener(evt -> {
+            if ("date".equals(evt.getPropertyName())) {
+                calcularTotalReserva();
+            }
+        });
+
+        jDateChooserSalida.getDateEditor().addPropertyChangeListener(evt -> {
+            if ("date".equals(evt.getPropertyName())) {
+                calcularTotalReserva();
+            }
+        });
 
     }
     private ReservarHabitacion panelReservarHabitacion;
@@ -31,6 +43,44 @@ public class Inscripcion extends javax.swing.JFrame {
         TxtNumHabitacion.setText(numero);
         TxtTipoH.setText(tipo);
         TxtPrecioPorNoche.setText(precio);
+
+        // --------- AQUI TAMBIÉN: PON LOS LISTENERS DE FECHAS ---------
+        jDateChooserEntrada.getDateEditor().addPropertyChangeListener(evt -> {
+            if ("date".equals(evt.getPropertyName())) {
+                calcularTotalReserva();
+            }
+        });
+
+        jDateChooserSalida.getDateEditor().addPropertyChangeListener(evt -> {
+            if ("date".equals(evt.getPropertyName())) {
+                calcularTotalReserva();
+            }
+        });
+
+    }
+
+    // --------- AQUI: MÉTODO PARA CALCULAR EL TOTAL ---------
+    private void calcularTotalReserva() {
+        java.util.Date fechaEntradaUtil = jDateChooserEntrada.getDate();
+        java.util.Date fechaSalidaUtil = jDateChooserSalida.getDate();
+
+        if (fechaEntradaUtil != null && fechaSalidaUtil != null) {
+            long diferenciaMillis = fechaSalidaUtil.getTime() - fechaEntradaUtil.getTime();
+            int nroNoches = (int) (diferenciaMillis / (1000 * 60 * 60 * 24));
+
+            if (nroNoches <= 0) {
+                TxtResPrecio.setText("0.00");
+                return;
+            }
+
+            try {
+                double precioPorNoche = Double.parseDouble(TxtPrecioPorNoche.getText());
+                double total = nroNoches * precioPorNoche;
+                TxtResPrecio.setText(String.format("%.2f", total));
+            } catch (NumberFormatException ex) {
+                TxtResPrecio.setText("Precio inválido");
+            }
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -70,12 +120,9 @@ public class Inscripcion extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
-        TxtResAdelanto = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        jSeparator11 = new javax.swing.JSeparator();
         TxtResPrecio = new javax.swing.JTextField();
         jSeparator12 = new javax.swing.JSeparator();
         jSeparator13 = new javax.swing.JSeparator();
@@ -92,7 +139,7 @@ public class Inscripcion extends javax.swing.JFrame {
         jSeparator15 = new javax.swing.JSeparator();
         jDateChooserSalida = new com.toedter.calendar.JDateChooser();
         jDateChooserEntrada = new com.toedter.calendar.JDateChooser();
-        TxaObservacion = new javax.swing.JTextField();
+        TxtObservacion = new javax.swing.JTextField();
         jSeparator16 = new javax.swing.JSeparator();
         CbEstado = new javax.swing.JComboBox<>();
 
@@ -245,20 +292,10 @@ public class Inscripcion extends javax.swing.JFrame {
 
         jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 210, 390, -1));
 
-        TxtResAdelanto.setBackground(new java.awt.Color(33, 44, 116));
-        TxtResAdelanto.setForeground(new java.awt.Color(255, 255, 255));
-        TxtResAdelanto.setBorder(null);
-        jPanel1.add(TxtResAdelanto, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 350, 170, 20));
-
         jLabel15.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("F. SALIDA");
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 290, -1, 30));
-
-        jLabel16.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel16.setText("ADELANTO");
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 350, 80, 30));
 
         jLabel17.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
@@ -269,7 +306,6 @@ public class Inscripcion extends javax.swing.JFrame {
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("F. ENTRADA");
         jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 260, -1, 30));
-        jPanel1.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 370, 170, 10));
 
         TxtResPrecio.setBackground(new java.awt.Color(33, 44, 116));
         TxtResPrecio.setForeground(new java.awt.Color(255, 255, 255));
@@ -282,7 +318,7 @@ public class Inscripcion extends javax.swing.JFrame {
         jLabel19.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText("OBSERVACION");
-        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 380, 120, 30));
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 360, 120, 30));
 
         TxtDireccion.setBackground(new java.awt.Color(33, 44, 116));
         TxtDireccion.setForeground(new java.awt.Color(255, 255, 255));
@@ -319,11 +355,11 @@ public class Inscripcion extends javax.swing.JFrame {
         jPanel1.add(jDateChooserSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 290, 170, -1));
         jPanel1.add(jDateChooserEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 260, 170, -1));
 
-        TxaObservacion.setBackground(new java.awt.Color(33, 44, 116));
-        TxaObservacion.setForeground(new java.awt.Color(255, 255, 255));
-        TxaObservacion.setBorder(null);
-        jPanel1.add(TxaObservacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 380, 170, 20));
-        jPanel1.add(jSeparator16, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 400, 170, 10));
+        TxtObservacion.setBackground(new java.awt.Color(33, 44, 116));
+        TxtObservacion.setForeground(new java.awt.Color(255, 255, 255));
+        TxtObservacion.setBorder(null);
+        jPanel1.add(TxtObservacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 360, 170, 20));
+        jPanel1.add(jSeparator16, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 380, 170, 10));
 
         CbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DISPONIBLE", "OCUPADO", "LIMPIEZA" }));
         jPanel1.add(CbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 110, 170, -1));
@@ -332,6 +368,11 @@ public class Inscripcion extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BtnRegresar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnRegresar1MouseClicked
+
+        this.dispose(); // finaliza el  jframe pero no cierra el programa por completo
+    }//GEN-LAST:event_BtnRegresar1MouseClicked
 
     private void BtnRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnRegistrarMouseClicked
 
@@ -353,6 +394,9 @@ public class Inscripcion extends javax.swing.JFrame {
         // Leer fechas desde JDateChooser
         java.util.Date fechaEntradaUtil = jDateChooserEntrada.getDate();
         java.util.Date fechaSalidaUtil = jDateChooserSalida.getDate();
+
+        String precio = TxtResPrecio.getText();
+        String observacion = TxtObservacion.getText();
 
         if (fechaEntradaUtil == null || fechaSalidaUtil == null) {
             JOptionPane.showMessageDialog(null, "Selecciona ambas fechas de entrada y salida.");
@@ -414,14 +458,66 @@ public class Inscripcion extends javax.swing.JFrame {
                 stmtHabitacion.executeUpdate();
                 // Definir estado reserva (ajusta este id segun tus datos en Estados_Reserva)
                 int idEstadoReserva = 1; // por ejemplo: 1 = "Reservado"
-                // Insertar RESERVA
+                // INSERTAR  TABLA RESERVA
                 String sqlReserva = "INSERT INTO Reservas (id_cliente, fecha_entrada, fecha_salida, id_estado) VALUES (?, ?, ?, ?)";
-                PreparedStatement stmtReserva = conn.prepareStatement(sqlReserva);
+                PreparedStatement stmtReserva = conn.prepareStatement(sqlReserva, Statement.RETURN_GENERATED_KEYS);
                 stmtReserva.setInt(1, idCliente);
                 stmtReserva.setDate(2, fechaEntrada);
                 stmtReserva.setDate(3, fechaSalida);
                 stmtReserva.setInt(4, idEstadoReserva);
                 stmtReserva.executeUpdate();
+                // INSERTAR EN TABLA DETALLE RESERVA
+
+                // Obtener id_reserva generado
+                int idReserva = -1;
+                try (ResultSet generatedReservaKeys = stmtReserva.getGeneratedKeys()) {
+                    if (generatedReservaKeys.next()) {
+                        idReserva = generatedReservaKeys.getInt(1);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No se pudo obtener el ID de la reserva.");
+                        return;
+                    }
+                }
+
+// Obtener id_habitacion por número de habitación
+                int idHabitacion = -1;
+                String sqlGetHabitacionId = "SELECT id_habitacion FROM Habitaciones WHERE numero_habitacion = ?";
+                try (PreparedStatement stmtGetHabitacion = conn.prepareStatement(sqlGetHabitacionId)) {
+                    stmtGetHabitacion.setString(1, numHabitacion);
+                    ResultSet rsHabitacion = stmtGetHabitacion.executeQuery();
+                    if (rsHabitacion.next()) {
+                        idHabitacion = rsHabitacion.getInt("id_habitacion");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No se encontró la habitación recién insertada.");
+                        return;
+                    }
+                }
+
+// Calcular número de noches
+                long diferenciaMillis = fechaSalida.getTime() - fechaEntrada.getTime();
+                int nroNoches = (int) (diferenciaMillis / (1000 * 60 * 60 * 24));
+
+                double precioDouble;
+                try {
+                    precioDouble = Double.parseDouble(precio);
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, "El precio ingresado no es válido.");
+                    return;
+                }
+
+// Insertar en tabla Detalle_Reserva
+                String sqlDetalle = "INSERT INTO Detalle_Reserva ( id_reserva, id_habitacion, precio, nro_noches) VALUES (?, ?, ?, ?)";
+
+                PreparedStatement stmtDetalle = conn.prepareStatement(sqlDetalle);
+
+                stmtDetalle.setInt(1, idReserva);
+                stmtDetalle.setInt(2, idHabitacion);
+
+                stmtDetalle.setDouble(3, Double.parseDouble(precio));
+
+                stmtDetalle.setInt(4, nroNoches);
+
+                stmtDetalle.executeUpdate();
 
                 // Suponiendo que estás en Inscripcion.java y quieres notificar a ReservarHabitacion:
                 if (panelReservarHabitacion != null) {
@@ -438,12 +534,6 @@ public class Inscripcion extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(null, "Error al registrar habitacionessss: " + e.getMessage());
         }
     }//GEN-LAST:event_BtnRegistrarMouseClicked
-
-
-    private void BtnRegresar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnRegresar1MouseClicked
-
-        this.dispose(); // finaliza el  jframe pero no cierra el programa por completo
-    }//GEN-LAST:event_BtnRegresar1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -484,7 +574,6 @@ public class Inscripcion extends javax.swing.JFrame {
     private javax.swing.JButton BtnRegistrar;
     private javax.swing.JButton BtnRegresar1;
     private javax.swing.JComboBox<String> CbEstado;
-    private javax.swing.JTextField TxaObservacion;
     private javax.swing.JTextField TxtApellido;
     private javax.swing.JTextField TxtCorreo;
     private javax.swing.JTextField TxtDescripcion;
@@ -492,8 +581,8 @@ public class Inscripcion extends javax.swing.JFrame {
     private javax.swing.JTextField TxtDni;
     private javax.swing.JTextField TxtNombre;
     private javax.swing.JTextField TxtNumHabitacion;
+    private javax.swing.JTextField TxtObservacion;
     private javax.swing.JTextField TxtPrecioPorNoche;
-    private javax.swing.JTextField TxtResAdelanto;
     private javax.swing.JTextField TxtResPrecio;
     private javax.swing.JTextField TxtTelefono;
     private javax.swing.JTextField TxtTipoH;
@@ -505,7 +594,6 @@ public class Inscripcion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
@@ -525,7 +613,6 @@ public class Inscripcion extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
-    private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator12;
     private javax.swing.JSeparator jSeparator13;
     private javax.swing.JSeparator jSeparator14;

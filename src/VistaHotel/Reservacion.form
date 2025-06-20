@@ -67,14 +67,17 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="SALIR"/>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Imagenes/RegresarEV.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="REGRESAR"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton4MouseClicked"/>
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="90" y="440" width="90" height="30"/>
+                  <AbsoluteConstraints x="60" y="430" width="130" height="40"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -86,6 +89,9 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Imagenes/reserva.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="RESERVACION"/>
               </Properties>
               <Events>
@@ -93,7 +99,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="20" y="110" width="160" height="30"/>
+                  <AbsoluteConstraints x="10" y="100" width="180" height="40"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -105,6 +111,9 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Imagenes/servicio-de-habitaciones.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="SERVICIO ADICIONAL"/>
               </Properties>
               <Events>
@@ -112,7 +121,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="20" y="160" width="160" height="30"/>
+                  <AbsoluteConstraints x="10" y="160" width="180" height="40"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -136,6 +145,9 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Imagenes/Carrito.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="PRODUCTOS"/>
               </Properties>
               <Events>
@@ -144,7 +156,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="20" y="210" width="160" height="30"/>
+                  <AbsoluteConstraints x="10" y="220" width="180" height="40"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -156,11 +168,14 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Imagenes/Factura.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="FACTURA"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="20" y="260" width="160" height="30"/>
+                  <AbsoluteConstraints x="10" y="280" width="180" height="40"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -172,6 +187,9 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Imagenes/SalidaHabitacion.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="SALIDAS"/>
               </Properties>
               <Events>
@@ -179,7 +197,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="20" y="320" width="160" height="30"/>
+                  <AbsoluteConstraints x="10" y="340" width="180" height="40"/>
                 </Constraint>
               </Constraints>
             </Component>
