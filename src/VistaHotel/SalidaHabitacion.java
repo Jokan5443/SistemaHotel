@@ -9,67 +9,60 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class SalidaHabitacion extends javax.swing.JPanel {
-ReservarHabitacion panelReservas;
+
+    ReservarHabitacion panelReservas;
+
     public SalidaHabitacion() {
         initComponents();
-   
-
-
         panelReservas = new ReservarHabitacion(); // Creamos una instancia para acceder a los paneles ya diseñados
         cargarHabitacionesOcupadas(); // Cargamos solo los ocupados
-        
-         
+
     }
 
 // Método para cargar solo habitaciones con estado 'ocupado'
     public void cargarHabitacionesOcupadas() {
-        
-          this.removeAll();  // Limpia el panel para recargar
 
-    try (Connection conn = ConexionBaseDeDatos.ConexionBD.conectar()) {
-        String sql = "SELECT numero_habitacion, tipo, descripcion, precio_por_noche FROM Habitaciones WHERE estado = 'ocupado'";
-        PreparedStatement stmt = conn.prepareStatement(sql);
-        ResultSet rs = stmt.executeQuery();
+        this.removeAll();  // Limpia el panel para recargar
 
-        while (rs.next()) {
-            String numero = rs.getString("numero_habitacion");
-            String tipo = rs.getString("tipo");
-            String descripcion = rs.getString("descripcion");
-            String precio = rs.getString("precio_por_noche");
+        try (Connection conn = ConexionBaseDeDatos.ConexionBD.conectar()) {
+            String sql = "SELECT numero_habitacion, tipo, descripcion, precio_por_noche FROM Habitaciones WHERE estado = 'ocupado'";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
 
-            JPanel panelHabitacion = crearPanelHabitacion(numero, tipo, descripcion, precio);
+            while (rs.next()) {
+                String numero = rs.getString("numero_habitacion");
+                String tipo = rs.getString("tipo");
+                String descripcion = rs.getString("descripcion");
+                String precio = rs.getString("precio_por_noche");
 
-            this.add(panelHabitacion);
+                JPanel panelHabitacion = crearPanelHabitacion(numero, tipo, descripcion, precio);
+
+                this.add(panelHabitacion);
+            }
+
+            this.revalidate();
+            this.repaint();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al cargar paneles ocupados: " + e.getMessage());
         }
 
-        this.revalidate();
-        this.repaint();
+    }
 
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Error al cargar paneles ocupados: " + e.getMessage());
-    }
-        
-     
-        
-    }
-    
     private JPanel crearPanelHabitacion(String numero, String tipo, String descripcion, String precio) {
-    JPanel panel = new JPanel();
-    panel.setBackground(Color.RED);  // porque están ocupadas
-    panel.setBorder(javax.swing.BorderFactory.createLineBorder(Color.BLACK));
-    panel.setLayout(new java.awt.GridLayout(4, 1));
-    panel.setPreferredSize(new java.awt.Dimension(150, 100));
+        JPanel panel = new JPanel();
+        panel.setBackground(Color.RED);  // porque están ocupadas
+        panel.setBorder(javax.swing.BorderFactory.createLineBorder(Color.BLACK));
+        panel.setLayout(new java.awt.GridLayout(4, 1));
+        panel.setPreferredSize(new java.awt.Dimension(150, 100));
 
-    panel.add(new javax.swing.JLabel("Número: " + numero));
-    panel.add(new javax.swing.JLabel("Tipo: " + tipo));
-    panel.add(new javax.swing.JLabel("Descripción: " + descripcion));
-    panel.add(new javax.swing.JLabel("Precio: $" + precio));
+        panel.add(new javax.swing.JLabel("Número: " + numero));
+        panel.add(new javax.swing.JLabel("Tipo: " + tipo));
+        panel.add(new javax.swing.JLabel("Descripción: " + descripcion));
+        panel.add(new javax.swing.JLabel("Precio: $" + precio));
 
-    return panel;
-}
-
-    
-    
+        return panel;
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
