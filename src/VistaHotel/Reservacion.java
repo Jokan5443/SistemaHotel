@@ -5,11 +5,10 @@ import javax.swing.JOptionPane;
 
 public class Reservacion extends javax.swing.JFrame {
     // Variable de instancia para guardar la instancia actual de ReservarHabitacion
-
     private ReservarHabitacion rh;
-
+    
     public Reservacion() {
-            initComponents();
+        initComponents();
         this.setLocationRelativeTo(null); // centra el Jframe
     }
 
@@ -19,7 +18,7 @@ public class Reservacion extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jButton4 = new javax.swing.JButton();
+        BtnRegresar = new javax.swing.JButton();
         BtnReservacion = new javax.swing.JButton();
         BtnServicioAdicional = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -39,16 +38,16 @@ public class Reservacion extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton4.setBackground(new java.awt.Color(33, 44, 116));
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/RegresarEV.png"))); // NOI18N
-        jButton4.setText("REGRESAR");
-        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+        BtnRegresar.setBackground(new java.awt.Color(33, 44, 116));
+        BtnRegresar.setForeground(new java.awt.Color(255, 255, 255));
+        BtnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/RegresarEV.png"))); // NOI18N
+        BtnRegresar.setText("REGRESAR");
+        BtnRegresar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton4MouseClicked(evt);
+                BtnRegresarMouseClicked(evt);
             }
         });
-        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 430, 130, 40));
+        jPanel2.add(BtnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 430, 130, 40));
 
         BtnReservacion.setBackground(new java.awt.Color(33, 44, 116));
         BtnReservacion.setForeground(new java.awt.Color(255, 255, 255));
@@ -84,11 +83,6 @@ public class Reservacion extends javax.swing.JFrame {
                 BtnProductosMouseClicked(evt);
             }
         });
-        BtnProductos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnProductosActionPerformed(evt);
-            }
-        });
         jPanel2.add(BtnProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 180, 40));
 
         jButton8.setBackground(new java.awt.Color(33, 44, 116));
@@ -111,6 +105,7 @@ public class Reservacion extends javax.swing.JFrame {
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 490));
 
         JpContent.setBackground(new java.awt.Color(255, 255, 255));
+        JpContent.setLayout(new java.awt.CardLayout());
         jPanel1.add(JpContent, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 760, 460));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 990, 490));
@@ -119,7 +114,7 @@ public class Reservacion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnProductosMouseClicked
-        Product pr = new Product();
+        Producto pr = new Producto();
         pr.setSize(750, 450);
         pr.setLocation(0, 0);
         JpContent.removeAll();
@@ -128,13 +123,7 @@ public class Reservacion extends javax.swing.JFrame {
         JpContent.repaint();
     }//GEN-LAST:event_BtnProductosMouseClicked
 
-    private void BtnProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnProductosActionPerformed
-
-    }//GEN-LAST:event_BtnProductosActionPerformed
-
-    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
-        // TODO add your handling code here:
-
+    private void BtnRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnRegresarMouseClicked
         int respuesta = JOptionPane.showConfirmDialog(
          Reservacion.this, // Referencia al componente la ventana actual 
          "¿Deseas realmente salir?", // Mensaje que se muestra al usuario
@@ -146,7 +135,7 @@ public class Reservacion extends javax.swing.JFrame {
             VentanaPrincipal vprinc = new VentanaPrincipal();
             vprinc.setVisible(true);
         }
-    }//GEN-LAST:event_jButton4MouseClicked
+    }//GEN-LAST:event_BtnRegresarMouseClicked
 
     private void BtnReservacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnReservacionMouseClicked
         rh = new ReservarHabitacion();
@@ -163,7 +152,7 @@ public class Reservacion extends javax.swing.JFrame {
         sradicional.setSize(750, 450);
         sradicional.setLocation(0, 0);
         JpContent.removeAll();
-        JpContent.add(sradicional, BorderLayout.CENTER);
+        JpContent.add(sradicional, BorderLayout.CENTER); // SE ESTA CAMBINDO EL JPANEL COMO CARD LAYAUT PARAQ UE DESAPARESCA EL BLANCO 
         JpContent.revalidate();
         JpContent.repaint();
     }//GEN-LAST:event_BtnServicioAdicionalMouseClicked
@@ -174,15 +163,13 @@ public class Reservacion extends javax.swing.JFrame {
         salidaPanel.setSize(750, 450);
         salidaPanel.setLocation(0, 0);
         salidaPanel.cargarHabitacionesOcupadas(); // Se cargan los datos desde BD
-
         JpContent.removeAll();
         JpContent.add(salidaPanel, BorderLayout.CENTER);
         JpContent.revalidate();
         JpContent.repaint();
-
     }//GEN-LAST:event_BtnSalidaHabitacionMouseClicked
-    
-// Método para obtener la instancia actual de ReservarHabitacion
+
+//Método para obtener la instancia actual de ReservarHabitacion
     public ReservarHabitacion getReservarHabitacion() {
         return rh;
     }
@@ -221,11 +208,11 @@ public class Reservacion extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnProductos;
+    private javax.swing.JButton BtnRegresar;
     private javax.swing.JButton BtnReservacion;
     private javax.swing.JButton BtnSalidaHabitacion;
     private javax.swing.JButton BtnServicioAdicional;
     private javax.swing.JPanel JpContent;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

@@ -7,12 +7,18 @@ import java.sql.SQLException;// Importa SQLException para manejar errores SQL
 public class ConexionBD {
     // Constante con la URL de conexión a la base de datos en Clever Cloud
 
-    private static final String URL = "jdbc:mysql://bb8eb94l4tbafdhhua6p-mysql.services.clever-cloud.com:3306/bb8eb94l4tbafdhhua6p";
+   // private static final String URL = "jdbc:mysql://bb8eb94l4tbafdhhua6p-mysql.services.clever-cloud.com:3306/bb8eb94l4tbafdhhua6p";
     // Usuario de la base de datos proporcionado por Clever Cloud
-    private static final String USER = "u7bx0koexr09nu6w";
+  //  private static final String USER = "u7bx0koexr09nu6w";
     // Contraseña correspondiente al usuario 
-    private static final String PASSWORD = "KXufvIJGaeouglbc9GsG";
+   // private static final String PASSWORD = "KXufvIJGaeouglbc9GsG";
 
+    private static final String URL = "jdbc:mysql://turntable.proxy.rlwy.net:53729/railway";
+private static final String USER = "root";
+private static final String PASSWORD = "zirQsUPTyHwVsaBrzRWZZYYHbjplHGud";
+    
+    
+    
     // Método estático para establecer y retornar una conexión a la base de datos
     public static Connection conectar() {
         Connection con = null;// Inicializa la variable de conexión como nula
@@ -32,7 +38,7 @@ public class ConexionBD {
         Connection con = conectar(); // Llama al método para conectar
         if (con != null) {
             // Si la conexión no es nula, imprime éxito
-            System.out.println("¡Conexión a Clever Cloud exitosa!");
+            System.out.println("¡Conexión a PhpMyAdmin exitosa!");
         } else {
             // Si es nula, algo falló
             System.out.println("Falló la conexión.");

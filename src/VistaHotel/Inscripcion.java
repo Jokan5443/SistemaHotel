@@ -127,7 +127,6 @@ public class Inscripcion extends javax.swing.JFrame {
         jSeparator12 = new javax.swing.JSeparator();
         jSeparator13 = new javax.swing.JSeparator();
         jSeparator14 = new javax.swing.JSeparator();
-        jLabel19 = new javax.swing.JLabel();
         TxtDireccion = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -139,8 +138,6 @@ public class Inscripcion extends javax.swing.JFrame {
         jSeparator15 = new javax.swing.JSeparator();
         jDateChooserSalida = new com.toedter.calendar.JDateChooser();
         jDateChooserEntrada = new com.toedter.calendar.JDateChooser();
-        TxtObservacion = new javax.swing.JTextField();
-        jSeparator16 = new javax.swing.JSeparator();
         CbEstado = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -295,30 +292,25 @@ public class Inscripcion extends javax.swing.JFrame {
         jLabel15.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("F. SALIDA");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 290, -1, 30));
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 320, -1, 30));
 
         jLabel17.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("PRECIO");
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 320, -1, 30));
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 360, -1, 30));
 
         jLabel18.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("F. ENTRADA");
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 260, -1, 30));
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 280, -1, 30));
 
         TxtResPrecio.setBackground(new java.awt.Color(33, 44, 116));
         TxtResPrecio.setForeground(new java.awt.Color(255, 255, 255));
         TxtResPrecio.setBorder(null);
-        jPanel1.add(TxtResPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 320, 170, 20));
-        jPanel1.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 340, 170, 10));
-        jPanel1.add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 310, 170, -1));
+        jPanel1.add(TxtResPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 360, 170, 20));
+        jPanel1.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 380, 170, 10));
+        jPanel1.add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 340, 170, -1));
         jPanel1.add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 280, 170, 0));
-
-        jLabel19.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel19.setText("OBSERVACION");
-        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 360, 120, 30));
 
         TxtDireccion.setBackground(new java.awt.Color(33, 44, 116));
         TxtDireccion.setForeground(new java.awt.Color(255, 255, 255));
@@ -352,14 +344,8 @@ public class Inscripcion extends javax.swing.JFrame {
         jLabel20.setText("DESCRIPCION");
         jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 170, 100, 30));
         jPanel1.add(jSeparator15, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 190, 170, 10));
-        jPanel1.add(jDateChooserSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 290, 170, -1));
-        jPanel1.add(jDateChooserEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 260, 170, -1));
-
-        TxtObservacion.setBackground(new java.awt.Color(33, 44, 116));
-        TxtObservacion.setForeground(new java.awt.Color(255, 255, 255));
-        TxtObservacion.setBorder(null);
-        jPanel1.add(TxtObservacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 360, 170, 20));
-        jPanel1.add(jSeparator16, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 380, 170, 10));
+        jPanel1.add(jDateChooserSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 320, 170, -1));
+        jPanel1.add(jDateChooserEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 280, 170, -1));
 
         CbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DISPONIBLE", "OCUPADO", "LIMPIEZA" }));
         jPanel1.add(CbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 110, 170, -1));
@@ -375,28 +361,24 @@ public class Inscripcion extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnRegresar1MouseClicked
 
     private void BtnRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnRegistrarMouseClicked
-
-        // Leer datos CLIENTES
+            // Leer datos CLIENTES
         String nombre = TxtNombre.getText();
         String apellido = TxtApellido.getText();
         String dni = TxtDni.getText();
         String telefono = TxtTelefono.getText();
         String correo = TxtCorreo.getText();
         String direccion = TxtDireccion.getText();
-
-        // Leer datos HABITACION
+            // Leer datos HABITACION
         String numHabitacion = TxtNumHabitacion.getText();
         String precioPorNoche = TxtPrecioPorNoche.getText();
         String estadoSeleccionado = (String) CbEstado.getSelectedItem();
         String tipoHabitacion = TxtTipoH.getText();
         String descripcion = TxtDescripcion.getText();
-
-        // Leer fechas desde JDateChooser
+            // Leer fechas desde JDateChooser
         java.util.Date fechaEntradaUtil = jDateChooserEntrada.getDate();
         java.util.Date fechaSalidaUtil = jDateChooserSalida.getDate();
 
         String precio = TxtResPrecio.getText();
-        String observacion = TxtObservacion.getText();
 
         if (fechaEntradaUtil == null || fechaSalidaUtil == null) {
             JOptionPane.showMessageDialog(null, "Selecciona ambas fechas de entrada y salida.");
@@ -424,7 +406,6 @@ public class Inscripcion extends javax.swing.JFrame {
                 // insertar datos en la tabla CLIENTES
                 String sql = "INSERT INTO Clientes (nombre, apellido, dni_pasaporte, correo, telefono, direccion) VALUES (?, ?, ?, ?, ?, ?)";
                 java.sql.PreparedStatement stmtCliente = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-
                 stmtCliente.setString(1, nuevoCliente.getNombre());
                 stmtCliente.setString(2, nuevoCliente.getApellido());
                 stmtCliente.setString(3, String.valueOf(nuevoCliente.getDni()));
@@ -479,7 +460,7 @@ public class Inscripcion extends javax.swing.JFrame {
                     }
                 }
 
-// Obtener id_habitacion por número de habitación
+                // Obtener id_habitacion por número de habitación
                 int idHabitacion = -1;
                 String sqlGetHabitacionId = "SELECT id_habitacion FROM Habitaciones WHERE numero_habitacion = ?";
                 try (PreparedStatement stmtGetHabitacion = conn.prepareStatement(sqlGetHabitacionId)) {
@@ -493,10 +474,9 @@ public class Inscripcion extends javax.swing.JFrame {
                     }
                 }
 
-// Calcular número de noches
+                // Calcular número de noches
                 long diferenciaMillis = fechaSalida.getTime() - fechaEntrada.getTime();
                 int nroNoches = (int) (diferenciaMillis / (1000 * 60 * 60 * 24));
-
                 double precioDouble;
                 try {
                     precioDouble = Double.parseDouble(precio);
@@ -505,24 +485,19 @@ public class Inscripcion extends javax.swing.JFrame {
                     return;
                 }
 
-// Insertar en tabla Detalle_Reserva
+                // Insertar en tabla Detalle_Reserva
                 String sqlDetalle = "INSERT INTO Detalle_Reserva ( id_reserva, id_habitacion, precio, nro_noches) VALUES (?, ?, ?, ?)";
 
                 PreparedStatement stmtDetalle = conn.prepareStatement(sqlDetalle);
-
                 stmtDetalle.setInt(1, idReserva);
                 stmtDetalle.setInt(2, idHabitacion);
-
                 stmtDetalle.setDouble(3, Double.parseDouble(precio));
-
                 stmtDetalle.setInt(4, nroNoches);
-
                 stmtDetalle.executeUpdate();
 
                 // Suponiendo que estás en Inscripcion.java y quieres notificar a ReservarHabitacion:
                 if (panelReservarHabitacion != null) {
                     panelReservarHabitacion.actualizarColorPanelPorEstado(numHabitacion, estadoSeleccionado);
-
                 }
 
                 javax.swing.JOptionPane.showMessageDialog(null, "Habitaciones registrado correctamente.");
@@ -581,7 +556,6 @@ public class Inscripcion extends javax.swing.JFrame {
     private javax.swing.JTextField TxtDni;
     private javax.swing.JTextField TxtNombre;
     private javax.swing.JTextField TxtNumHabitacion;
-    private javax.swing.JTextField TxtObservacion;
     private javax.swing.JTextField TxtPrecioPorNoche;
     private javax.swing.JTextField TxtResPrecio;
     private javax.swing.JTextField TxtTelefono;
@@ -596,7 +570,6 @@ public class Inscripcion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
@@ -617,7 +590,6 @@ public class Inscripcion extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator13;
     private javax.swing.JSeparator jSeparator14;
     private javax.swing.JSeparator jSeparator15;
-    private javax.swing.JSeparator jSeparator16;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;

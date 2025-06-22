@@ -12,12 +12,12 @@ import com.lowagie.text.PageSize;
 import com.lowagie.text.Image;
 import com.lowagie.text.pdf.PdfWriter;
 
-public class detalle extends javax.swing.JFrame {
+public class Factura extends javax.swing.JFrame {
 
     /**
      * Creates new form detalle
      */
-    public detalle() {
+    public Factura() {
         initComponents();
     }
 // iimprimir detalles en pdf 
@@ -65,21 +65,21 @@ public class detalle extends javax.swing.JFrame {
     private void initComponents() {
 
         contener = new javax.swing.JPanel();
-        jTextField5 = new javax.swing.JTextField();
+        TxtDetalleDni = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
-        jTextField6 = new javax.swing.JTextField();
+        TxtDetalleCategoria = new javax.swing.JTextField();
         jSeparator6 = new javax.swing.JSeparator();
-        jTextField7 = new javax.swing.JTextField();
+        TxtDetalleCliente = new javax.swing.JTextField();
         jSeparator7 = new javax.swing.JSeparator();
-        jTextField8 = new javax.swing.JTextField();
+        TxtDetalleNHabitacion = new javax.swing.JTextField();
         jSeparator8 = new javax.swing.JSeparator();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        TxtDetalleTelefono = new javax.swing.JTextField();
         jSeparator9 = new javax.swing.JSeparator();
         jLabel13 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -93,7 +93,7 @@ public class detalle extends javax.swing.JFrame {
         jSeparator16 = new javax.swing.JSeparator();
         jTextField15 = new javax.swing.JTextField();
         jSeparator17 = new javax.swing.JSeparator();
-        jTextField16 = new javax.swing.JTextField();
+        TxtDetalleCostoHabitacion = new javax.swing.JTextField();
         jSeparator18 = new javax.swing.JSeparator();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
@@ -112,10 +112,10 @@ public class detalle extends javax.swing.JFrame {
         contener.setPreferredSize(new java.awt.Dimension(750, 450));
         contener.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField5.setBackground(new java.awt.Color(33, 44, 116));
-        jTextField5.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField5.setBorder(null);
-        contener.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, 170, 20));
+        TxtDetalleDni.setBackground(new java.awt.Color(33, 44, 116));
+        TxtDetalleDni.setForeground(new java.awt.Color(255, 255, 255));
+        TxtDetalleDni.setBorder(null);
+        contener.add(TxtDetalleDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, 170, 20));
 
         jLabel7.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -138,22 +138,22 @@ public class detalle extends javax.swing.JFrame {
         contener.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, 290, 30));
         contener.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 100, 170, 10));
 
-        jTextField6.setBackground(new java.awt.Color(33, 44, 116));
-        jTextField6.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField6.setBorder(null);
-        contener.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 50, 170, 20));
+        TxtDetalleCategoria.setBackground(new java.awt.Color(33, 44, 116));
+        TxtDetalleCategoria.setForeground(new java.awt.Color(255, 255, 255));
+        TxtDetalleCategoria.setBorder(null);
+        contener.add(TxtDetalleCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 50, 170, 20));
         contener.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 70, 170, 10));
 
-        jTextField7.setBackground(new java.awt.Color(33, 44, 116));
-        jTextField7.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField7.setBorder(null);
-        contener.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 170, 20));
+        TxtDetalleCliente.setBackground(new java.awt.Color(33, 44, 116));
+        TxtDetalleCliente.setForeground(new java.awt.Color(255, 255, 255));
+        TxtDetalleCliente.setBorder(null);
+        contener.add(TxtDetalleCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 170, 20));
         contener.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 170, 10));
 
-        jTextField8.setBackground(new java.awt.Color(33, 44, 116));
-        jTextField8.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField8.setBorder(null);
-        contener.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 170, 20));
+        TxtDetalleNHabitacion.setBackground(new java.awt.Color(33, 44, 116));
+        TxtDetalleNHabitacion.setForeground(new java.awt.Color(255, 255, 255));
+        TxtDetalleNHabitacion.setBorder(null);
+        contener.add(TxtDetalleNHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 170, 20));
         contener.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 170, 10));
 
         jLabel11.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
@@ -166,10 +166,10 @@ public class detalle extends javax.swing.JFrame {
         jLabel12.setText("TELEFONO");
         contener.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, -1, 30));
 
-        jTextField9.setBackground(new java.awt.Color(33, 44, 116));
-        jTextField9.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField9.setBorder(null);
-        contener.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 170, 20));
+        TxtDetalleTelefono.setBackground(new java.awt.Color(33, 44, 116));
+        TxtDetalleTelefono.setForeground(new java.awt.Color(255, 255, 255));
+        TxtDetalleTelefono.setBorder(null);
+        contener.add(TxtDetalleTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 170, 20));
         contener.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 170, 10));
 
         jLabel13.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 18)); // NOI18N
@@ -208,8 +208,8 @@ public class detalle extends javax.swing.JFrame {
 
         jLabel19.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel19.setText("CANTIDAD ADELANTADO");
-        contener.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, 30));
+        jLabel19.setText("f. entrada");
+        contener.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 70, 30));
 
         jLabel20.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
@@ -234,10 +234,10 @@ public class detalle extends javax.swing.JFrame {
         contener.add(jTextField15, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 220, 170, 20));
         contener.add(jSeparator17, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, 170, 10));
 
-        jTextField16.setBackground(new java.awt.Color(33, 44, 116));
-        jTextField16.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField16.setBorder(null);
-        contener.add(jTextField16, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, 170, 20));
+        TxtDetalleCostoHabitacion.setBackground(new java.awt.Color(33, 44, 116));
+        TxtDetalleCostoHabitacion.setForeground(new java.awt.Color(255, 255, 255));
+        TxtDetalleCostoHabitacion.setBorder(null);
+        contener.add(TxtDetalleCostoHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, 170, 20));
         contener.add(jSeparator18, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, 170, 10));
 
         jLabel22.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
@@ -258,7 +258,7 @@ public class detalle extends javax.swing.JFrame {
         });
         contener.add(BtnExportar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 270, -1, -1));
 
-        getContentPane().add(contener, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 440));
+        getContentPane().add(contener, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 450));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -287,26 +287,33 @@ public class detalle extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(detalle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Factura.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(detalle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Factura.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(detalle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Factura.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(detalle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Factura.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new detalle().setVisible(true);
+                new Factura().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnExportar;
+    private javax.swing.JTextField TxtDetalleCategoria;
+    private javax.swing.JTextField TxtDetalleCliente;
+    private javax.swing.JTextField TxtDetalleCostoHabitacion;
+    private javax.swing.JTextField TxtDetalleDni;
+    private javax.swing.JTextField TxtDetalleNHabitacion;
+    private javax.swing.JTextField TxtDetalleTelefono;
     private javax.swing.JPanel contener;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -334,11 +341,5 @@ public class detalle extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField14;
     private javax.swing.JTextField jTextField15;
-    private javax.swing.JTextField jTextField16;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 }
