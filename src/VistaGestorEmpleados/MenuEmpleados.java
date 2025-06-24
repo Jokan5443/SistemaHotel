@@ -64,6 +64,10 @@ public class MenuEmpleados extends javax.swing.JFrame {
         }
         
         tbLista.setModel(modeloOperario);
+        
+        txtTarifa.setEditable(false);
+        txtBono.setEditable(false);
+        txtTotalPagar.setEditable(false);
     }
 
     /**
@@ -148,6 +152,53 @@ public class MenuEmpleados extends javax.swing.JFrame {
         lblEstadoBuscar = new javax.swing.JLabel();
         listaEstadoBuscar = new javax.swing.JComboBox<>();
         lblBuscarOpc = new javax.swing.JLabel();
+        panelArea = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txtIdAreaRegistrar = new javax.swing.JTextField();
+        txtNombreArea = new javax.swing.JTextField();
+        btnRegistrarArea = new javax.swing.JButton();
+        btnEliminarArea = new javax.swing.JButton();
+        btnEditarArea = new javax.swing.JButton();
+        btnListarArea = new javax.swing.JButton();
+        scrollAreas = new javax.swing.JScrollPane();
+        tablaAreas = new javax.swing.JTable();
+        panelPagos = new javax.swing.JPanel();
+        panelPagosEmp = new javax.swing.JPanel();
+        lbID1 = new javax.swing.JLabel();
+        txtIdEmpleadoPago = new javax.swing.JTextField();
+        lbNombre1 = new javax.swing.JLabel();
+        txtNomEmpPago = new javax.swing.JTextField();
+        lblApellido1 = new javax.swing.JLabel();
+        txtApEmpPago = new javax.swing.JTextField();
+        lblDni1 = new javax.swing.JLabel();
+        txtDNIPago = new javax.swing.JTextField();
+        lblCorreo1 = new javax.swing.JLabel();
+        txtCorreoPago = new javax.swing.JTextField();
+        btnBuscarEmpPago = new javax.swing.JButton();
+        panelPagoReg = new javax.swing.JPanel();
+        lblIdPago = new javax.swing.JLabel();
+        txtIdArea1 = new javax.swing.JTextField();
+        btnCalcularPago = new javax.swing.JButton();
+        lblTarifa = new javax.swing.JLabel();
+        txtTarifa = new javax.swing.JTextField();
+        lblBono = new javax.swing.JLabel();
+        txtBono = new javax.swing.JTextField();
+        lblTotal = new javax.swing.JLabel();
+        txtTotalPagar = new javax.swing.JTextField();
+        btnRegistrarPago = new javax.swing.JButton();
+        panelBusquedaPago = new javax.swing.JPanel();
+        btnBuscarPago = new javax.swing.JButton();
+        jsPagos = new javax.swing.JScrollPane();
+        tbListaPagos = new javax.swing.JTable();
+        jtBuscarPago = new javax.swing.JTabbedPane();
+        panelIdBuscarArea = new javax.swing.JPanel();
+        lblIDBuscar1 = new javax.swing.JLabel();
+        txtIdBuscarPago = new javax.swing.JTextField();
+        panelEstado = new javax.swing.JPanel();
+        lblEstadoPago = new javax.swing.JLabel();
+        listaEstadoBuscarPago = new javax.swing.JComboBox<>();
+        lblBuscarOpc1 = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -839,7 +890,377 @@ public class MenuEmpleados extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Empleados", panelEmpleados);
 
-        jTabbedPane1.setSelectedIndex(1);
+        jLabel1.setText("ID:");
+
+        jLabel2.setText("Nombre:");
+
+        btnRegistrarArea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/escritura.png"))); // NOI18N
+        btnRegistrarArea.setText("Registrar");
+
+        btnEliminarArea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ocultar.png"))); // NOI18N
+        btnEliminarArea.setText("Eliminar");
+
+        btnEditarArea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lista-del-portapapeles.png"))); // NOI18N
+        btnEditarArea.setText("Editar");
+
+        btnListarArea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ver.png"))); // NOI18N
+        btnListarArea.setText("Listar");
+
+        tablaAreas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        scrollAreas.setViewportView(tablaAreas);
+
+        javax.swing.GroupLayout panelAreaLayout = new javax.swing.GroupLayout(panelArea);
+        panelArea.setLayout(panelAreaLayout);
+        panelAreaLayout.setHorizontalGroup(
+            panelAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAreaLayout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addGroup(panelAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnEliminarArea, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                    .addGroup(panelAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(btnRegistrarArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtIdAreaRegistrar)
+                        .addComponent(txtNombreArea)
+                        .addComponent(btnEditarArea, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                        .addComponent(btnListarArea, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(scrollAreas, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        panelAreaLayout.setVerticalGroup(
+            panelAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAreaLayout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addGroup(panelAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtIdAreaRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtNombreArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(51, 51, 51)
+                .addComponent(btnRegistrarArea, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnEliminarArea, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnEditarArea, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnListarArea, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(panelAreaLayout.createSequentialGroup()
+                .addContainerGap(7, Short.MAX_VALUE)
+                .addComponent(scrollAreas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
+        );
+
+        jTabbedPane1.addTab("Areas", panelArea);
+
+        panelPagosEmp.setBackground(new java.awt.Color(255, 255, 255));
+        panelPagosEmp.setBorder(javax.swing.BorderFactory.createTitledBorder("Empleados"));
+
+        lbID1.setText("ID:");
+
+        lbNombre1.setText("Nombre:");
+
+        lblApellido1.setText("Apellido:");
+
+        lblDni1.setText("DNI:");
+
+        lblCorreo1.setText("Correo:");
+
+        btnBuscarEmpPago.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnBuscarEmpPago.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ver.png"))); // NOI18N
+        btnBuscarEmpPago.setText("Buscar");
+
+        javax.swing.GroupLayout panelPagosEmpLayout = new javax.swing.GroupLayout(panelPagosEmp);
+        panelPagosEmp.setLayout(panelPagosEmpLayout);
+        panelPagosEmpLayout.setHorizontalGroup(
+            panelPagosEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPagosEmpLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(panelPagosEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelPagosEmpLayout.createSequentialGroup()
+                        .addComponent(btnBuscarEmpPago, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 15, Short.MAX_VALUE))
+                    .addGroup(panelPagosEmpLayout.createSequentialGroup()
+                        .addGroup(panelPagosEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbNombre1)
+                            .addComponent(lbID1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(14, 14, 14)
+                        .addGroup(panelPagosEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNomEmpPago)
+                            .addComponent(txtIdEmpleadoPago)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPagosEmpLayout.createSequentialGroup()
+                        .addComponent(lblCorreo1)
+                        .addGap(22, 22, 22)
+                        .addComponent(txtCorreoPago))
+                    .addGroup(panelPagosEmpLayout.createSequentialGroup()
+                        .addGroup(panelPagosEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblApellido1)
+                            .addComponent(lblDni1))
+                        .addGap(12, 12, 12)
+                        .addGroup(panelPagosEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtDNIPago)
+                            .addComponent(txtApEmpPago))))
+                .addContainerGap())
+        );
+        panelPagosEmpLayout.setVerticalGroup(
+            panelPagosEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPagosEmpLayout.createSequentialGroup()
+                .addGroup(panelPagosEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbID1)
+                    .addComponent(txtIdEmpleadoPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelPagosEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbNombre1)
+                    .addComponent(txtNomEmpPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelPagosEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblApellido1)
+                    .addComponent(txtApEmpPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelPagosEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDni1)
+                    .addComponent(txtDNIPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelPagosEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblCorreo1)
+                    .addComponent(txtCorreoPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnBuscarEmpPago, javax.swing.GroupLayout.PREFERRED_SIZE, 29, Short.MAX_VALUE))
+        );
+
+        panelPagoReg.setBackground(new java.awt.Color(255, 255, 255));
+        panelPagoReg.setBorder(javax.swing.BorderFactory.createTitledBorder("Nomina Pago"));
+
+        lblIdPago.setText("Id pago:");
+
+        btnCalcularPago.setText("Calcular");
+
+        lblTarifa.setText("Tarifa:");
+
+        lblBono.setText("Bono:");
+
+        lblTotal.setText("Total a pagar:");
+
+        javax.swing.GroupLayout panelPagoRegLayout = new javax.swing.GroupLayout(panelPagoReg);
+        panelPagoReg.setLayout(panelPagoRegLayout);
+        panelPagoRegLayout.setHorizontalGroup(
+            panelPagoRegLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPagoRegLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelPagoRegLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelPagoRegLayout.createSequentialGroup()
+                        .addComponent(lblIdPago)
+                        .addGap(28, 28, 28)
+                        .addComponent(txtIdArea1, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE))
+                    .addGroup(panelPagoRegLayout.createSequentialGroup()
+                        .addComponent(lblBono)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtBono, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPagoRegLayout.createSequentialGroup()
+                        .addComponent(lblTotal)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtTotalPagar, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE))
+                    .addGroup(panelPagoRegLayout.createSequentialGroup()
+                        .addComponent(lblTarifa)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtTarifa, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE))
+                    .addGroup(panelPagoRegLayout.createSequentialGroup()
+                        .addComponent(btnCalcularPago)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        panelPagoRegLayout.setVerticalGroup(
+            panelPagoRegLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPagoRegLayout.createSequentialGroup()
+                .addGroup(panelPagoRegLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblIdPago)
+                    .addComponent(txtIdArea1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnCalcularPago)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panelPagoRegLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTarifa)
+                    .addComponent(txtTarifa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelPagoRegLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblBono)
+                    .addComponent(txtBono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelPagoRegLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTotal)
+                    .addComponent(txtTotalPagar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        btnRegistrarPago.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnRegistrarPago.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/escritura.png"))); // NOI18N
+        btnRegistrarPago.setText("Registrar");
+        btnRegistrarPago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarPagoActionPerformed(evt);
+            }
+        });
+
+        panelBusquedaPago.setBackground(new java.awt.Color(255, 255, 255));
+        panelBusquedaPago.setBorder(javax.swing.BorderFactory.createTitledBorder("PanelBusqueda"));
+
+        btnBuscarPago.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnBuscarPago.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ver.png"))); // NOI18N
+        btnBuscarPago.setText("Buscar");
+
+        jsPagos.setBorder(javax.swing.BorderFactory.createTitledBorder("Lista Empleados"));
+        jsPagos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        tbListaPagos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jsPagos.setViewportView(tbListaPagos);
+
+        jtBuscarPago.setToolTipText("");
+
+        lblIDBuscar1.setText("Id Pago:");
+
+        javax.swing.GroupLayout panelIdBuscarAreaLayout = new javax.swing.GroupLayout(panelIdBuscarArea);
+        panelIdBuscarArea.setLayout(panelIdBuscarAreaLayout);
+        panelIdBuscarAreaLayout.setHorizontalGroup(
+            panelIdBuscarAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelIdBuscarAreaLayout.createSequentialGroup()
+                .addGap(117, 117, 117)
+                .addComponent(lblIDBuscar1)
+                .addGap(18, 18, 18)
+                .addComponent(txtIdBuscarPago, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+                .addGap(171, 171, 171))
+        );
+        panelIdBuscarAreaLayout.setVerticalGroup(
+            panelIdBuscarAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelIdBuscarAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(txtIdBuscarPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblIDBuscar1))
+        );
+
+        jtBuscarPago.addTab("ID", panelIdBuscarArea);
+
+        lblEstadoPago.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblEstadoPago.setText("Estado laboral:");
+
+        listaEstadoBuscarPago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "REALIZADO", "PENDIENTE" }));
+
+        javax.swing.GroupLayout panelEstadoLayout = new javax.swing.GroupLayout(panelEstado);
+        panelEstado.setLayout(panelEstadoLayout);
+        panelEstadoLayout.setHorizontalGroup(
+            panelEstadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEstadoLayout.createSequentialGroup()
+                .addGap(159, 159, 159)
+                .addComponent(lblEstadoPago)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(listaEstadoBuscarPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(138, Short.MAX_VALUE))
+        );
+        panelEstadoLayout.setVerticalGroup(
+            panelEstadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEstadoLayout.createSequentialGroup()
+                .addGroup(panelEstadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(listaEstadoBuscarPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblEstadoPago))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        jtBuscarPago.addTab("Estado", panelEstado);
+
+        lblBuscarOpc1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblBuscarOpc1.setText("Buscar por(en blanco para todos):");
+
+        javax.swing.GroupLayout panelBusquedaPagoLayout = new javax.swing.GroupLayout(panelBusquedaPago);
+        panelBusquedaPago.setLayout(panelBusquedaPagoLayout);
+        panelBusquedaPagoLayout.setHorizontalGroup(
+            panelBusquedaPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBusquedaPagoLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addGroup(panelBusquedaPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jsPagos)
+                    .addGroup(panelBusquedaPagoLayout.createSequentialGroup()
+                        .addGroup(panelBusquedaPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelBusquedaPagoLayout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addComponent(btnBuscarPago, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(panelBusquedaPagoLayout.createSequentialGroup()
+                                .addComponent(lblBuscarOpc1, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addComponent(jtBuscarPago, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        panelBusquedaPagoLayout.setVerticalGroup(
+            panelBusquedaPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBusquedaPagoLayout.createSequentialGroup()
+                .addGroup(panelBusquedaPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelBusquedaPagoLayout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(lblBuscarOpc1)
+                        .addGap(6, 6, 6)
+                        .addComponent(btnBuscarPago, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtBuscarPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jsPagos, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout panelPagosLayout = new javax.swing.GroupLayout(panelPagos);
+        panelPagos.setLayout(panelPagosLayout);
+        panelPagosLayout.setHorizontalGroup(
+            panelPagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPagosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelPagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelPagosLayout.createSequentialGroup()
+                        .addComponent(panelPagosEmp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(panelPagoReg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnRegistrarPago, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPagosLayout.createSequentialGroup()
+                        .addGap(0, 5, Short.MAX_VALUE)
+                        .addComponent(panelBusquedaPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        panelPagosLayout.setVerticalGroup(
+            panelPagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPagosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelPagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnRegistrarPago, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelPagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(panelPagosEmp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(panelPagoReg, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelBusquedaPago, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Pagos", panelPagos);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -888,6 +1309,10 @@ public class MenuEmpleados extends javax.swing.JFrame {
         registrarEmpleado();
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
+    private void btnRegistrarPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarPagoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRegistrarPagoActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel CantAreas;
     private javax.swing.JPanel CantEmpleados;
@@ -905,19 +1330,31 @@ public class MenuEmpleados extends javax.swing.JFrame {
     private javax.swing.JButton btnAyuda;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnBuscarArea;
+    private javax.swing.JButton btnBuscarEmpPago;
+    private javax.swing.JButton btnBuscarPago;
+    private javax.swing.JButton btnCalcularPago;
+    private javax.swing.JButton btnEditarArea;
+    private javax.swing.JButton btnEliminarArea;
     private javax.swing.JButton btnEmpleados;
     private javax.swing.JButton btnGerente;
     private javax.swing.JButton btnGestionJerarquia;
+    private javax.swing.JButton btnListarArea;
     private javax.swing.JButton btnModifiar;
     private javax.swing.JButton btnPagos;
     private javax.swing.JButton btnRegistrar;
+    private javax.swing.JButton btnRegistrarArea;
+    private javax.swing.JButton btnRegistrarPago;
     private javax.swing.JButton btnReporte;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JScrollPane jsEmpleados;
+    private javax.swing.JScrollPane jsPagos;
     private javax.swing.JTabbedPane jtBuscar;
+    private javax.swing.JTabbedPane jtBuscarPago;
     private javax.swing.JLabel lbCantAreas;
     private javax.swing.JLabel lbCantEmpleados;
     private javax.swing.JLabel lbCantJefes;
@@ -925,42 +1362,77 @@ public class MenuEmpleados extends javax.swing.JFrame {
     private javax.swing.JLabel lbCantPagosRealizados;
     private javax.swing.JLabel lbCantSupervisores;
     private javax.swing.JLabel lbID;
+    private javax.swing.JLabel lbID1;
     private javax.swing.JLabel lbIdAreaBuscar;
     private javax.swing.JLabel lbImagen;
     private javax.swing.JLabel lbNombre;
+    private javax.swing.JLabel lbNombre1;
     private javax.swing.JLabel lblApellido;
+    private javax.swing.JLabel lblApellido1;
     private javax.swing.JLabel lblArea;
+    private javax.swing.JLabel lblBono;
     private javax.swing.JLabel lblBuscarOpc;
+    private javax.swing.JLabel lblBuscarOpc1;
     private javax.swing.JLabel lblCargo;
     private javax.swing.JLabel lblCorreo;
+    private javax.swing.JLabel lblCorreo1;
     private javax.swing.JLabel lblDni;
+    private javax.swing.JLabel lblDni1;
     private javax.swing.JLabel lblEstadoBuscar;
+    private javax.swing.JLabel lblEstadoPago;
     private javax.swing.JLabel lblIDBuscar;
+    private javax.swing.JLabel lblIDBuscar1;
     private javax.swing.JLabel lblIdArea;
+    private javax.swing.JLabel lblIdPago;
+    private javax.swing.JLabel lblTarifa;
     private javax.swing.JLabel lblTextoMenu;
+    private javax.swing.JLabel lblTotal;
     private javax.swing.JComboBox<String> listaCargos;
     private javax.swing.JComboBox<String> listaEstadoBuscar;
+    private javax.swing.JComboBox<String> listaEstadoBuscarPago;
+    private javax.swing.JPanel panelArea;
     private javax.swing.JPanel panelAreaBuscar;
     private javax.swing.JPanel panelAreas;
     private javax.swing.JPanel panelBusqueda;
+    private javax.swing.JPanel panelBusquedaPago;
     private javax.swing.JPanel panelCargos;
     private javax.swing.JPanel panelEmpleados;
+    private javax.swing.JPanel panelEstado;
     private javax.swing.JPanel panelEstadoLaboralBuscar;
     private javax.swing.JPanel panelIdBuscar;
+    private javax.swing.JPanel panelIdBuscarArea;
     private javax.swing.JPanel panelMenu;
+    private javax.swing.JPanel panelPagoReg;
+    private javax.swing.JPanel panelPagos;
+    private javax.swing.JPanel panelPagosEmp;
     private javax.swing.JPanel panelSoloEmpl;
+    private javax.swing.JScrollPane scrollAreas;
+    private javax.swing.JTable tablaAreas;
     private javax.swing.JTable tbLista;
+    private javax.swing.JTable tbListaPagos;
+    private javax.swing.JTextField txtApEmpPago;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtArea;
+    private javax.swing.JTextField txtBono;
     private javax.swing.JLabel txtCantJefes;
     private javax.swing.JTextField txtCorreo;
+    private javax.swing.JTextField txtCorreoPago;
     private javax.swing.JTextField txtDNI;
+    private javax.swing.JTextField txtDNIPago;
     private javax.swing.JTextField txtIdArea;
+    private javax.swing.JTextField txtIdArea1;
     private javax.swing.JTextField txtIdAreaBuscar;
+    private javax.swing.JTextField txtIdAreaRegistrar;
     private javax.swing.JTextField txtIdBuscar;
+    private javax.swing.JTextField txtIdBuscarPago;
     private javax.swing.JTextField txtIdEmpleado;
+    private javax.swing.JTextField txtIdEmpleadoPago;
+    private javax.swing.JTextField txtNomEmpPago;
     private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtNombreArea;
     private javax.swing.JLabel txtPagosPend;
     private javax.swing.JLabel txtPagosReal;
+    private javax.swing.JTextField txtTarifa;
+    private javax.swing.JTextField txtTotalPagar;
     // End of variables declaration//GEN-END:variables
 }
