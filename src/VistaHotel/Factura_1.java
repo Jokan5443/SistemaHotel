@@ -1,57 +1,139 @@
-
 package VistaHotel;
+
+import ConexionBaseDeDatos.ConexionBD;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class Factura_1 extends javax.swing.JFrame {
 
     public Factura_1() {
         initComponents();
-        
+
     }
 
-    
- 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    //botón “Buscar”
+    private void buscarReserva(int idReserva) {
+        try (Connection conn = ConexionBaseDeDatos.ConexionBD.conectar()) {
+            if (conn == null) {
+                JOptionPane.showMessageDialog(null, "No se pudo conectar a la base de datos.");
+                return;
+            }
+
+            // ========== DATOS DEL CLIENTE Y RESERVA ==========
+            String sqlClienteReserva = "SELECT c.nombre, c.dni_pasaporte, c.telefono, c.correo, "
+                    + "r.id_reserva, r.fecha_entrada, r.fecha_salida, r.fecha_reserva "
+                    + "FROM Reservas r "
+                    + "JOIN Clientes c ON r.id_cliente = c.id_cliente "
+                    + "WHERE r.id_reserva = ?";
+            try (PreparedStatement psCliente = conn.prepareStatement(sqlClienteReserva)) {
+                psCliente.setInt(1, idReserva);
+                try (ResultSet rs = psCliente.executeQuery()) {
+                    if (rs.next()) {
+                        TxtFa_Nombre.setText(rs.getString("nombre"));
+                        TxtFa_DNI.setText(rs.getString("dni_pasaporte"));
+                        TxtFa_Telefono.setText(rs.getString("telefono"));
+                        TxtFa_Correo.setText(rs.getString("correo"));
+                        TxtFa_ReservaID.setText(String.valueOf(rs.getInt("id_reserva")));
+                        TxtFa_Entrada.setText(rs.getDate("fecha_entrada").toString());
+                        TxtFa_Salida.setText(rs.getDate("fecha_salida").toString());
+                        TxtFa_FechaReserva.setText(rs.getTimestamp("fecha_reserva").toString());
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No se encontró la reserva con ID: " + idReserva);
+                        return;
+                    }
+                }
+            }
+
+            // ========== DATOS DE LA HABITACIÓN ==========
+            String sqlHabitacion = "SELECT h.numero_habitacion, h.tipo, dr.precio "
+                    + "FROM Detalle_Reserva dr "
+                    + "JOIN Habitaciones h ON dr.id_habitacion = h.id_habitacion "
+                    + "WHERE dr.id_reserva = ?";
+            try (PreparedStatement psHab = conn.prepareStatement(sqlHabitacion)) {
+                psHab.setInt(1, idReserva);
+                try (ResultSet rs = psHab.executeQuery()) {
+                    if (rs.next()) {
+                        TxtFa_Nhab.setText(rs.getString("numero_habitacion"));
+                        TxtFa_Tipo.setText(rs.getString("tipo"));
+                        TxtFa_Precio.setText(String.valueOf(rs.getBigDecimal("precio")));
+                    } else {
+                        TxtFa_Nhab.setText("");
+                        TxtFa_Tipo.setText("");
+                        TxtFa_Precio.setText("");
+                    }
+                }
+            }
+
+            // ========== SERVICIOS ADICIONALES ==========
+            DefaultTableModel modeloTabla = (DefaultTableModel) Jt_ServiciosAdicionales.getModel();
+            modeloTabla.setRowCount(0); // Limpiar tabla
+            String sqlServicios = "SELECT s.nombre_servicio, rs.cantidad, (s.precio * rs.cantidad) AS subtotal "
+                    + "FROM Reserva_Servicios rs "
+                    + "JOIN Servicios_Adicionales s ON rs.id_servicio = s.id_servicio "
+                    + "WHERE rs.id_reserva = ?";
+            try (PreparedStatement psServ = conn.prepareStatement(sqlServicios)) {
+                psServ.setInt(1, idReserva);
+                try (ResultSet rs = psServ.executeQuery()) {
+                    while (rs.next()) {
+                        Object[] fila = {
+                            rs.getString("nombre_servicio"),
+                            rs.getInt("cantidad"),
+                            rs.getBigDecimal("subtotal")
+                        };
+                        modeloTabla.addRow(fila);
+                    }
+                }
+            }
+
+            /*
+            // ======== PRODUCTOS RESERVADOS ========
+            String sqlProductos = """
+    SELECT p.nombre, rp.cantidad, (p.precio * rp.cantidad) AS subtotal
+    FROM Reserva_Productos rp
+    JOIN Productos p ON rp.id_producto = p.id_producto
+    WHERE rp.id_reserva = ?
+""";
+
+            try (PreparedStatement psProd = conn.prepareStatement(sqlProductos)) {
+                psProd.setInt(1, idReserva);
+                ResultSet rsProd = psProd.executeQuery();
+
+                while (rsProd.next()) {
+                    Object[] filaProducto = {
+                        rsProd.getString("nombre"),
+                        rsProd.getInt("cantidad"),
+                        rsProd.getBigDecimal("subtotal")
+                    };
+                    modeloTabla.addRow(filaProducto); // Se agrega a la misma tabla Jt_ServiciosAdicionales
+                }
+            }*/
+            // ========== DATOS DE LA FACTURA ==========
+            String sqlFactura = "SELECT subtotal, igv, monto_total FROM Facturas WHERE id_reserva = ?";
+            try (PreparedStatement psFact = conn.prepareStatement(sqlFactura)) {
+                psFact.setInt(1, idReserva);
+                try (ResultSet rs = psFact.executeQuery()) {
+                    if (rs.next()) {
+                        TxtFa_SubTotal.setText(String.valueOf(rs.getBigDecimal("subtotal")));
+                        TxtFa_IGV.setText(String.valueOf(rs.getBigDecimal("igv")));
+                        TxtFa_Total.setText(String.valueOf(rs.getBigDecimal("monto_total")));
+                    } else {
+                        TxtFa_SubTotal.setText("0.00");
+                        TxtFa_IGV.setText("0.00");
+                        TxtFa_Total.setText("0.00");
+                    }
+                }
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al buscar la reserva: " + ex.getMessage());
+        }
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -110,6 +192,11 @@ public class Factura_1 extends javax.swing.JFrame {
         getContentPane().add(TxtFa_IDReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 160, -1));
 
         Btn_Buscar.setText("Buscar");
+        Btn_Buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_BuscarActionPerformed(evt);
+            }
+        });
         getContentPane().add(Btn_Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 50, -1, -1));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Detalles de Reserva"));
@@ -241,6 +328,20 @@ public class Factura_1 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void Btn_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_BuscarActionPerformed
+        String textoId = TxtFa_IDReserva.getText(); // ← este es el campo donde ingresas el ID de reserva
+        if (!textoId.isEmpty()) {
+            try {
+                int idReserva = Integer.parseInt(textoId);
+                buscarReserva(idReserva);
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(null, "El ID de reserva debe ser un número entero.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Por favor, ingresa un ID de reserva.");
+        }
+    }//GEN-LAST:event_Btn_BuscarActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
