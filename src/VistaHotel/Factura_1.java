@@ -8,6 +8,26 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+//OPEN PDF
+//////--------------------//////////////
+import com.lowagie.text.Document;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.Element;
+import com.lowagie.text.Font;
+import com.lowagie.text.FontFactory;
+import com.lowagie.text.Paragraph;
+import com.lowagie.text.pdf.PdfPTable;
+import com.lowagie.text.pdf.PdfWriter;
+//////--------------------//////////////
+import java.awt.Desktop;
+import java.io.File;
+import java.io.FileOutputStream;
+
+import com.lowagie.text.*;
+import com.lowagie.text.pdf.*;
+import java.awt.Color;
+
+
 
 public class Factura_1 extends javax.swing.JFrame {
 
@@ -33,21 +53,21 @@ public class Factura_1 extends javax.swing.JFrame {
             try (PreparedStatement psCliente = conn.prepareStatement(sqlClienteReserva)) {
                 psCliente.setInt(1, idReserva);
                 try (ResultSet rs = psCliente.executeQuery()) {
-                    if (rs.next()) {
-                        TxtFa_Nombre.setText(rs.getString("nombre"));
-                        TxtFa_DNI.setText(rs.getString("dni_pasaporte"));
-                        TxtFa_Telefono.setText(rs.getString("telefono"));
-                        TxtFa_Correo.setText(rs.getString("correo"));
-                        TxtFa_ReservaID.setText(String.valueOf(rs.getInt("id_reserva")));
-                        TxtFa_Entrada.setText(rs.getDate("fecha_entrada").toString());
-                        TxtFa_Salida.setText(rs.getDate("fecha_salida").toString());
-                        TxtFa_FechaReserva.setText(rs.getTimestamp("fecha_reserva").toString());
-                    } else {
-                        JOptionPane.showMessageDialog(null, "No se encontró la reserva con ID: " + idReserva);
-                        return;
-                    }
+                if (rs.next()) {
+                    TxtFa_Nombre.setText(rs.getString("nombre"));
+                    TxtFa_DNI.setText(rs.getString("dni_pasaporte"));
+                    TxtFa_Telefono.setText(rs.getString("telefono"));
+                    TxtFa_Correo.setText(rs.getString("correo"));
+                    TxtFa_ReservaID.setText(String.valueOf(rs.getInt("id_reserva")));
+                    TxtFa_Entrada.setText(rs.getDate("fecha_entrada").toString());
+                    TxtFa_Salida.setText(rs.getDate("fecha_salida").toString());
+                    TxtFa_FechaReserva.setText(rs.getTimestamp("fecha_reserva").toString());
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se encontró la reserva con ID: " + idReserva);
+                    return;
                 }
             }
+        }
 
             // ========== DATOS DE LA HABITACIÓN ==========
             String sqlHabitacion = "SELECT h.numero_habitacion, h.tipo, dr.precio "
@@ -133,6 +153,157 @@ public class Factura_1 extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error al buscar la reserva: " + ex.getMessage());
         }
     }
+    /*
+    //METODO PARA IMPORTAR EL PDF
+    
+    
+    public void generarPDF(int idReserva) {
+    try {
+        Document doc = new Document();
+        String nombreArchivo = "Factura_Reserva_" + idReserva + ".pdf";
+        PdfWriter.getInstance(doc, new FileOutputStream(nombreArchivo));
+        doc.open();
+
+        doc.add(new Paragraph("Factura de Reserva", FontFactory.getFont(FontFactory.HELVETICA_BOLD, 18)));
+        doc.add(new Paragraph(" "));
+
+        doc.add(new Paragraph("ID Reserva: " + TxtFa_ReservaID.getText()));
+        doc.add(new Paragraph("Nombre Cliente: " + TxtFa_Nombre.getText()));
+        doc.add(new Paragraph("DNI/Pasaporte: " + TxtFa_DNI.getText()));
+        doc.add(new Paragraph("Teléfono: " + TxtFa_Telefono.getText()));
+        doc.add(new Paragraph("Correo: " + TxtFa_Correo.getText()));
+        doc.add(new Paragraph("Entrada: " + TxtFa_Entrada.getText()));
+        doc.add(new Paragraph("Salida: " + TxtFa_Salida.getText()));
+        doc.add(new Paragraph("Fecha de Reserva: " + TxtFa_FechaReserva.getText()));
+        doc.add(new Paragraph(" "));
+
+        doc.add(new Paragraph("Habitación: " + TxtFa_Nhab.getText() + " - " + TxtFa_Tipo.getText()));
+        doc.add(new Paragraph("Precio: S/ " + TxtFa_Precio.getText()));
+        doc.add(new Paragraph(" "));
+
+        doc.add(new Paragraph("Servicios Adicionales:"));
+        PdfPTable tabla = new PdfPTable(3);
+        tabla.addCell("Producto");
+        tabla.addCell("Cantidad");
+        tabla.addCell("SubTotal");
+
+        DefaultTableModel modelo = (DefaultTableModel) Jt_ServiciosAdicionales.getModel();
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            tabla.addCell(modelo.getValueAt(i, 0).toString());
+            tabla.addCell(modelo.getValueAt(i, 1).toString());
+            tabla.addCell(modelo.getValueAt(i, 2).toString());
+        }
+        doc.add(tabla);
+
+        doc.add(new Paragraph(" "));
+        doc.add(new Paragraph("Subtotal: S/ " + TxtFa_SubTotal.getText()));
+        doc.add(new Paragraph("IGV: S/ " + TxtFa_IGV.getText()));
+        doc.add(new Paragraph("Total: S/ " + TxtFa_Total.getText()));
+
+        doc.close();
+
+        JOptionPane.showMessageDialog(null, "Factura PDF generada correctamente.");
+
+        // Abrir automáticamente el PDF
+        File archivo = new File(nombreArchivo);
+        if (archivo.exists()) {
+            Desktop.getDesktop().open(archivo);
+        }
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(null, "Error al generar el PDF: " + e.getMessage());
+    }
+}
+    
+    */
+    
+    
+    public void generarPDF(int idReserva) {
+    try {
+        Document doc = new Document(PageSize.A4, 50, 50, 50, 50);
+        String nombreArchivo = "Factura_Reserva_" + idReserva + ".pdf";
+        PdfWriter.getInstance(doc, new FileOutputStream(nombreArchivo));
+        doc.open();
+
+        // Fuente personalizada
+        Font tituloFont = new Font(Font.HELVETICA, 20, Font.BOLD);
+        Font seccionFont = new Font(Font.HELVETICA, 14, Font.BOLD);
+        Font normalFont = new Font(Font.HELVETICA, 12);
+        Font negrita = new Font(Font.HELVETICA, 12, Font.BOLD);
+
+        // Título centrado
+        Paragraph titulo = new Paragraph("FACTURA DE RESERVA", tituloFont);
+        titulo.setAlignment(Element.ALIGN_CENTER);
+        doc.add(titulo);
+        doc.add(Chunk.NEWLINE);
+
+        // Datos cliente
+        doc.add(new Paragraph("Datos del Cliente:", seccionFont));
+        doc.add(new Paragraph("ID Reserva: " + TxtFa_ReservaID.getText(), normalFont));
+        doc.add(new Paragraph("Nombre: " + TxtFa_Nombre.getText(), normalFont));
+        doc.add(new Paragraph("DNI/Pasaporte: " + TxtFa_DNI.getText(), normalFont));
+        doc.add(new Paragraph("Teléfono: " + TxtFa_Telefono.getText(), normalFont));
+        doc.add(new Paragraph("Correo: " + TxtFa_Correo.getText(), normalFont));
+        doc.add(new Paragraph("Fecha de Reserva: " + TxtFa_FechaReserva.getText(), normalFont));
+        doc.add(Chunk.NEWLINE);
+
+        // Datos habitación
+        doc.add(new Paragraph("Datos de la Habitación:", seccionFont));
+        doc.add(new Paragraph("N° Habitación: " + TxtFa_Nhab.getText(), normalFont));
+        doc.add(new Paragraph("Tipo: " + TxtFa_Tipo.getText(), normalFont));
+        doc.add(new Paragraph("Precio por noche: S/ " + TxtFa_Precio.getText(), normalFont));
+        doc.add(new Paragraph("Entrada: " + TxtFa_Entrada.getText(), normalFont));
+        doc.add(new Paragraph("Salida: " + TxtFa_Salida.getText(), normalFont));
+        doc.add(Chunk.NEWLINE);
+
+        // Tabla servicios adicionales
+        doc.add(new Paragraph("Servicios Adicionales:", seccionFont));
+        PdfPTable tabla = new PdfPTable(3);
+        tabla.setWidthPercentage(100);
+        tabla.setSpacingBefore(10f);
+        tabla.setSpacingAfter(10f);
+
+        // Cabeceras
+        String[] headers = {"Producto", "Cantidad", "SubTotal"};
+        for (String h : headers) {
+            PdfPCell cell = new PdfPCell(new Phrase(h, negrita));
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cell.setBackgroundColor(new Color(230, 230, 250));
+            tabla.addCell(cell);
+        }
+
+        DefaultTableModel modelo = (DefaultTableModel) Jt_ServiciosAdicionales.getModel();
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            tabla.addCell(new Phrase(modelo.getValueAt(i, 0).toString(), normalFont));
+            tabla.addCell(new Phrase(modelo.getValueAt(i, 1).toString(), normalFont));
+            tabla.addCell(new Phrase("S/ " + modelo.getValueAt(i, 2).toString(), normalFont));
+        }
+
+        doc.add(tabla);
+
+        // Subtotales y totales
+        Paragraph totales = new Paragraph();
+        totales.setAlignment(Element.ALIGN_RIGHT);
+        totales.add(new Phrase("Subtotal: S/ " + TxtFa_SubTotal.getText() + "\n", negrita));
+        totales.add(new Phrase("IGV: S/ " + TxtFa_IGV.getText() + "\n", negrita));
+        totales.add(new Phrase("Total: S/ " + TxtFa_Total.getText(), negrita));
+        doc.add(totales);
+
+        doc.close();
+
+        JOptionPane.showMessageDialog(null, "Factura PDF generada con éxito.");
+        Desktop.getDesktop().open(new File(nombreArchivo));
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(null, "Error al generar el PDF: " + e.getMessage());
+    }
+}
+
+    
+    
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -144,35 +315,35 @@ public class Factura_1 extends javax.swing.JFrame {
         Btn_Buscar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        TxtFa_ReservaID = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        TxtFa_Entrada = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        TxtFa_FechaReserva = new javax.swing.JTextField();
+        TxtFa_Entrada = new javax.swing.JTextField();
+        TxtFa_ReservaID = new javax.swing.JTextField();
         TxtFa_Salida = new javax.swing.JTextField();
+        TxtFa_FechaReserva = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
-        TxtFa_SubTotal = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        TxtFa_IGV = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
+        TxtFa_IGV = new javax.swing.JTextField();
+        TxtFa_SubTotal = new javax.swing.JTextField();
         TxtFa_Total = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
-        TxtFa_Nombre = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        TxtFa_DNI = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
+        TxtFa_DNI = new javax.swing.JTextField();
         TxtFa_Telefono = new javax.swing.JTextField();
         TxtFa_Correo = new javax.swing.JTextField();
+        TxtFa_Nombre = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
-        TxtFa_Nhab = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
-        TxtFa_Tipo = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
+        TxtFa_Nhab = new javax.swing.JTextField();
+        TxtFa_Tipo = new javax.swing.JTextField();
         TxtFa_Precio = new javax.swing.JTextField();
         Sp_ServiciosAdicionales = new javax.swing.JScrollPane();
         Jt_ServiciosAdicionales = new javax.swing.JTable();
@@ -205,28 +376,28 @@ public class Factura_1 extends javax.swing.JFrame {
         jLabel7.setText("Reserva ID:");
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 24, 72, -1));
 
-        TxtFa_ReservaID.setEnabled(false);
-        jPanel2.add(TxtFa_ReservaID, new org.netbeans.lib.awtextra.AbsoluteConstraints(101, 24, 98, 16));
-
         jLabel8.setText("Entrada:");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 46, 84, -1));
-
-        TxtFa_Entrada.setEnabled(false);
-        jPanel2.add(TxtFa_Entrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(101, 46, 98, 16));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 84, -1));
 
         jLabel9.setText("Fecha/Reserva");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 68, 84, -1));
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 84, -1));
 
         jLabel10.setText("Salida:");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 90, 84, -1));
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 84, -1));
 
-        TxtFa_FechaReserva.setEnabled(false);
-        jPanel2.add(TxtFa_FechaReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(101, 68, 98, 16));
+        TxtFa_Entrada.setEnabled(false);
+        jPanel2.add(TxtFa_Entrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 100, -1));
+
+        TxtFa_ReservaID.setEnabled(false);
+        jPanel2.add(TxtFa_ReservaID, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 100, -1));
 
         TxtFa_Salida.setEnabled(false);
-        jPanel2.add(TxtFa_Salida, new org.netbeans.lib.awtextra.AbsoluteConstraints(101, 90, 98, 16));
+        jPanel2.add(TxtFa_Salida, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 100, -1));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 220, 120));
+        TxtFa_FechaReserva.setEnabled(false);
+        jPanel2.add(TxtFa_FechaReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 100, -1));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 220, 150));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Resumen de Factura"));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -234,22 +405,22 @@ public class Factura_1 extends javax.swing.JFrame {
         jLabel11.setText("Sub Total");
         jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 24, -1, -1));
 
-        TxtFa_SubTotal.setEnabled(false);
-        jPanel3.add(TxtFa_SubTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(73, 24, 98, 16));
-
         jLabel12.setText("IGV:");
-        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 46, -1, -1));
-
-        TxtFa_IGV.setEnabled(false);
-        jPanel3.add(TxtFa_IGV, new org.netbeans.lib.awtextra.AbsoluteConstraints(73, 46, 98, 16));
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
 
         jLabel13.setText("Total:");
-        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 68, -1, -1));
+        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
+
+        TxtFa_IGV.setEnabled(false);
+        jPanel3.add(TxtFa_IGV, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 100, -1));
+
+        TxtFa_SubTotal.setEnabled(false);
+        jPanel3.add(TxtFa_SubTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 100, -1));
 
         TxtFa_Total.setEnabled(false);
-        jPanel3.add(TxtFa_Total, new org.netbeans.lib.awtextra.AbsoluteConstraints(73, 68, 98, 16));
+        jPanel3.add(TxtFa_Total, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, 100, -1));
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 230, 180, 100));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 260, 180, 120));
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos del Cliente"));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -257,28 +428,28 @@ public class Factura_1 extends javax.swing.JFrame {
         jLabel15.setText("Nombre:");
         jPanel4.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 24, 52, -1));
 
-        TxtFa_Nombre.setEnabled(false);
-        jPanel4.add(TxtFa_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(101, 20, 100, 20));
-
         jLabel16.setText("DNI/Pasaporte:");
-        jPanel4.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 46, 84, -1));
-
-        TxtFa_DNI.setEnabled(false);
-        jPanel4.add(TxtFa_DNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(101, 42, 100, 20));
+        jPanel4.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 84, -1));
 
         jLabel17.setText("Telefono:");
-        jPanel4.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 68, 84, -1));
+        jPanel4.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 84, -1));
 
         jLabel18.setText("Correo:");
-        jPanel4.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 90, 84, -1));
+        jPanel4.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 84, -1));
+
+        TxtFa_DNI.setEnabled(false);
+        jPanel4.add(TxtFa_DNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 100, -1));
 
         TxtFa_Telefono.setEnabled(false);
-        jPanel4.add(TxtFa_Telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(101, 64, 100, 20));
+        jPanel4.add(TxtFa_Telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 100, -1));
 
         TxtFa_Correo.setEnabled(false);
-        jPanel4.add(TxtFa_Correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(101, 86, 100, 20));
+        jPanel4.add(TxtFa_Correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 100, -1));
 
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 220, 120));
+        TxtFa_Nombre.setEnabled(false);
+        jPanel4.add(TxtFa_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 100, -1));
+
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 220, 150));
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Habitaciones"));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -286,22 +457,22 @@ public class Factura_1 extends javax.swing.JFrame {
         jLabel19.setText("N hab:");
         jPanel5.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 24, -1, -1));
 
-        TxtFa_Nhab.setEnabled(false);
-        jPanel5.add(TxtFa_Nhab, new org.netbeans.lib.awtextra.AbsoluteConstraints(57, 24, 98, 16));
-
         jLabel20.setText("Tipo:");
-        jPanel5.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 46, -1, -1));
-
-        TxtFa_Tipo.setEnabled(false);
-        jPanel5.add(TxtFa_Tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(57, 46, 98, 16));
+        jPanel5.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
 
         jLabel21.setText("Precio:");
-        jPanel5.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 68, -1, -1));
+        jPanel5.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
+
+        TxtFa_Nhab.setEnabled(false);
+        jPanel5.add(TxtFa_Nhab, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 100, -1));
+
+        TxtFa_Tipo.setEnabled(false);
+        jPanel5.add(TxtFa_Tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 100, -1));
 
         TxtFa_Precio.setEnabled(false);
-        jPanel5.add(TxtFa_Precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 68, 98, 16));
+        jPanel5.add(TxtFa_Precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 100, -1));
 
-        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, 170, 100));
+        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 260, 170, 120));
 
         Sp_ServiciosAdicionales.setBorder(javax.swing.BorderFactory.createTitledBorder("Servicios Adicionales"));
 
@@ -318,13 +489,18 @@ public class Factura_1 extends javax.swing.JFrame {
         ));
         Sp_ServiciosAdicionales.setViewportView(Jt_ServiciosAdicionales);
 
-        getContentPane().add(Sp_ServiciosAdicionales, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 350, 120));
+        getContentPane().add(Sp_ServiciosAdicionales, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 350, 150));
 
         Btn_RegistrarPago.setText("Registrar Pago");
-        getContentPane().add(Btn_RegistrarPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 360, 250, -1));
+        getContentPane().add(Btn_RegistrarPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 420, 250, -1));
 
         Btn_GenerarPDF.setText("Generar PDF / Imprimir");
-        getContentPane().add(Btn_GenerarPDF, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 250, -1));
+        Btn_GenerarPDF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_GenerarPDFActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Btn_GenerarPDF, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, 250, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -342,6 +518,16 @@ public class Factura_1 extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Por favor, ingresa un ID de reserva.");
         }
     }//GEN-LAST:event_Btn_BuscarActionPerformed
+
+    private void Btn_GenerarPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_GenerarPDFActionPerformed
+        int idReserva;
+try {
+    idReserva = Integer.parseInt(TxtFa_ReservaID.getText());
+    generarPDF(idReserva);  // Llama al método que genera el PDF
+} catch (NumberFormatException e) {
+    JOptionPane.showMessageDialog(null, "ID de Reserva inválido.");
+}
+    }//GEN-LAST:event_Btn_GenerarPDFActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
