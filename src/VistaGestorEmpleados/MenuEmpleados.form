@@ -102,25 +102,16 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="btnAsistencias" max="32767" attributes="0"/>
-                                      <Component id="btnPagos" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="btnGestionJerarquia" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="btnReporte" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="btnGerente" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="btnAyuda" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="btnEmpleados" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="btnArchivo" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="btnAreas" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                                  </Group>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="btnEmpleados" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="btnAreas" alignment="0" pref="100" max="32767" attributes="0"/>
+                                  <Component id="btnReporte" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="btnAsistencias" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="btnPagos" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Component id="lbImagen" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnReporte1" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -131,9 +122,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lbImagen" min="-2" pref="119" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnArchivo" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                       <Component id="btnEmpleados" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnAreas" min="-2" max="-2" attributes="0"/>
@@ -142,24 +131,15 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnAsistencias" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnGestionJerarquia" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnGerente" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnReporte" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnAyuda" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
+                      <Component id="btnReporte1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="btnArchivo">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Archivo"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JButton" name="btnEmpleados">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Empleados"/>
@@ -180,27 +160,9 @@
                 <Property name="text" type="java.lang.String" value="Asistencias"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="btnGestionJerarquia">
-              <Properties>
-                <Property name="label" type="java.lang.String" value="Jer&#xe1;rquia"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGestionJerarquiaActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnGerente">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Gerente"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JButton" name="btnReporte">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Reportes"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnAyuda">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Ayuda"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lbImagen">
@@ -210,6 +172,14 @@
                 </Property>
                 <Property name="opaque" type="boolean" value="true"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnReporte1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Salir"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnReporte1ActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -684,6 +654,12 @@
                                           <EmptySpace max="32767" attributes="0"/>
                                           <Component id="btnRegistrar" min="-2" pref="164" max="-2" attributes="0"/>
                                       </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                               <Component id="panelBusqueda" min="-2" max="-2" attributes="0"/>
@@ -701,7 +677,12 @@
                               <Component id="panelAreas" min="-2" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Component id="panelCargos" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="65" pref="65" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                                   <Component id="btnRegistrar" min="-2" pref="47" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -1252,6 +1233,16 @@
                     </Component>
                   </SubComponents>
                 </Container>
+                <Component class="javax.swing.JButton" name="jButton1">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Gerente"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="jButton2">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Jerarquias"/>
+                  </Properties>
+                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="panelArea">
@@ -1275,13 +1266,11 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="btnEliminarArea" pref="130" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="btnRegistrarArea" max="32767" attributes="0"/>
-                                  <Component id="txtIdAreaRegistrar" max="32767" attributes="0"/>
-                                  <Component id="txtNombreArea" max="32767" attributes="0"/>
-                                  <Component id="btnEditarArea" alignment="0" pref="130" max="32767" attributes="0"/>
-                                  <Component id="btnListarArea" alignment="1" pref="130" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="btnRegistrarArea" max="32767" attributes="0"/>
+                              <Component id="txtIdAreaRegistrar" max="32767" attributes="0"/>
+                              <Component id="txtNombreArea" max="32767" attributes="0"/>
+                              <Component id="btnEditarArea" alignment="0" pref="130" max="32767" attributes="0"/>
+                              <Component id="btnListarArea" alignment="1" pref="130" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="scrollAreas" pref="500" max="32767" attributes="0"/>

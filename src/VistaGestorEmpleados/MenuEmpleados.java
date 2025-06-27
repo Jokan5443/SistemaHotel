@@ -5,6 +5,8 @@
 package VistaGestorEmpleados;
 
 import GestionEmpleados.GestorEmpleados;
+import VistaHotel.Reservacion;
+import VistaHotel.VentanaPrincipal;
 import java.util.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -83,16 +85,13 @@ public class MenuEmpleados extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         Menu = new javax.swing.JPanel();
-        btnArchivo = new javax.swing.JButton();
         btnEmpleados = new javax.swing.JButton();
         btnAreas = new javax.swing.JButton();
         btnPagos = new javax.swing.JButton();
         btnAsistencias = new javax.swing.JButton();
-        btnGestionJerarquia = new javax.swing.JButton();
-        btnGerente = new javax.swing.JButton();
         btnReporte = new javax.swing.JButton();
-        btnAyuda = new javax.swing.JButton();
         lbImagen = new javax.swing.JLabel();
+        btnReporte1 = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         panelMenu = new javax.swing.JPanel();
         CantEmpleados = new javax.swing.JPanel();
@@ -152,6 +151,8 @@ public class MenuEmpleados extends javax.swing.JFrame {
         lblEstadoBuscar = new javax.swing.JLabel();
         listaEstadoBuscar = new javax.swing.JComboBox<>();
         lblBuscarOpc = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         panelArea = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -220,8 +221,6 @@ public class MenuEmpleados extends javax.swing.JFrame {
 
         Menu.setBackground(new java.awt.Color(33, 44, 116));
 
-        btnArchivo.setText("Archivo");
-
         btnEmpleados.setText("Empleados");
 
         btnAreas.setText("Areas");
@@ -230,21 +229,17 @@ public class MenuEmpleados extends javax.swing.JFrame {
 
         btnAsistencias.setText("Asistencias");
 
-        btnGestionJerarquia.setLabel("Jerárquia");
-        btnGestionJerarquia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGestionJerarquiaActionPerformed(evt);
-            }
-        });
-
-        btnGerente.setText("Gerente");
-
         btnReporte.setText("Reportes");
-
-        btnAyuda.setText("Ayuda");
 
         lbImagen.setForeground(new java.awt.Color(255, 204, 153));
         lbImagen.setOpaque(true);
+
+        btnReporte1.setText("Salir");
+        btnReporte1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReporte1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout MenuLayout = new javax.swing.GroupLayout(Menu);
         Menu.setLayout(MenuLayout);
@@ -255,20 +250,14 @@ public class MenuEmpleados extends javax.swing.JFrame {
                 .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(btnAsistencias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnPagos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnGestionJerarquia, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(btnReporte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnGerente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(btnEmpleados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnArchivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnAreas, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(lbImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnEmpleados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnAreas, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                            .addComponent(btnReporte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnAsistencias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnPagos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(lbImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnReporte1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         MenuLayout.setVerticalGroup(
@@ -276,9 +265,7 @@ public class MenuEmpleados extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lbImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnArchivo)
-                .addGap(18, 18, 18)
+                .addGap(59, 59, 59)
                 .addComponent(btnEmpleados)
                 .addGap(18, 18, 18)
                 .addComponent(btnAreas)
@@ -287,13 +274,9 @@ public class MenuEmpleados extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btnAsistencias)
                 .addGap(18, 18, 18)
-                .addComponent(btnGestionJerarquia)
-                .addGap(18, 18, 18)
-                .addComponent(btnGerente)
-                .addGap(18, 18, 18)
                 .addComponent(btnReporte)
-                .addGap(18, 18, 18)
-                .addComponent(btnAyuda)
+                .addGap(100, 100, 100)
+                .addComponent(btnReporte1)
                 .addContainerGap())
         );
 
@@ -851,6 +834,10 @@ public class MenuEmpleados extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jButton1.setText("Gerente");
+
+        jButton2.setText("Jerarquias");
+
         javax.swing.GroupLayout panelEmpleadosLayout = new javax.swing.GroupLayout(panelEmpleados);
         panelEmpleados.setLayout(panelEmpleadosLayout);
         panelEmpleadosLayout.setHorizontalGroup(
@@ -868,7 +855,12 @@ public class MenuEmpleados extends javax.swing.JFrame {
                                 .addComponent(panelCargos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEmpleadosLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelEmpleadosLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton2))))
                     .addComponent(panelBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(11, 11, 11))
         );
@@ -881,7 +873,11 @@ public class MenuEmpleados extends javax.swing.JFrame {
                     .addComponent(panelAreas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panelEmpleadosLayout.createSequentialGroup()
                         .addComponent(panelCargos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(65, 65, 65)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton1)
+                            .addComponent(jButton2))
+                        .addGap(36, 36, 36)
                         .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(2, 2, 2)
                 .addComponent(panelBusqueda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -931,12 +927,11 @@ public class MenuEmpleados extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnEliminarArea, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-                    .addGroup(panelAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnRegistrarArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtIdAreaRegistrar)
-                        .addComponent(txtNombreArea)
-                        .addComponent(btnEditarArea, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-                        .addComponent(btnListarArea, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)))
+                    .addComponent(btnRegistrarArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtIdAreaRegistrar)
+                    .addComponent(txtNombreArea)
+                    .addComponent(btnEditarArea, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                    .addComponent(btnListarArea, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(scrollAreas, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
                 .addContainerGap())
@@ -1297,10 +1292,6 @@ public class MenuEmpleados extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnGestionJerarquiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionJerarquiaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnGestionJerarquiaActionPerformed
-
     private void btnBuscarAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarAreaActionPerformed
 
     }//GEN-LAST:event_btnBuscarAreaActionPerformed
@@ -1313,6 +1304,20 @@ public class MenuEmpleados extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRegistrarPagoActionPerformed
 
+    private void btnReporte1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporte1ActionPerformed
+        int respuesta = JOptionPane.showConfirmDialog(
+            MenuEmpleados.this, // Referencia al componente la ventana actual 
+             "¿Deseas realmente salir?", // Mensaje que se muestra al usuario
+             "Confirmación", // Título de la ventana de diálogo
+             JOptionPane.YES_NO_OPTION // Tipo de opciones que se presentan al usuario (Sí y No)
+        );
+        if (respuesta == JOptionPane.YES_OPTION) { // Verifica si el usuario seleccionó "Sí"
+            dispose(); // Cierra la ventana y libera los recursos
+            VentanaPrincipal vprinc = new VentanaPrincipal();
+            vprinc.setVisible(true);
+        }
+    }//GEN-LAST:event_btnReporte1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel CantAreas;
     private javax.swing.JPanel CantEmpleados;
@@ -1324,10 +1329,8 @@ public class MenuEmpleados extends javax.swing.JFrame {
     private javax.swing.JLabel TextoCantAreas;
     private javax.swing.JLabel TextoEmp1;
     private javax.swing.JLabel TextoEmp3;
-    private javax.swing.JButton btnArchivo;
     private javax.swing.JButton btnAreas;
     private javax.swing.JButton btnAsistencias;
-    private javax.swing.JButton btnAyuda;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnBuscarArea;
     private javax.swing.JButton btnBuscarEmpPago;
@@ -1336,8 +1339,6 @@ public class MenuEmpleados extends javax.swing.JFrame {
     private javax.swing.JButton btnEditarArea;
     private javax.swing.JButton btnEliminarArea;
     private javax.swing.JButton btnEmpleados;
-    private javax.swing.JButton btnGerente;
-    private javax.swing.JButton btnGestionJerarquia;
     private javax.swing.JButton btnListarArea;
     private javax.swing.JButton btnModifiar;
     private javax.swing.JButton btnPagos;
@@ -1345,6 +1346,9 @@ public class MenuEmpleados extends javax.swing.JFrame {
     private javax.swing.JButton btnRegistrarArea;
     private javax.swing.JButton btnRegistrarPago;
     private javax.swing.JButton btnReporte;
+    private javax.swing.JButton btnReporte1;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

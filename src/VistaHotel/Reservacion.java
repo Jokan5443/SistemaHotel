@@ -47,6 +47,11 @@ public class Reservacion extends javax.swing.JFrame {
                 BtnRegresarMouseClicked(evt);
             }
         });
+        BtnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegresarActionPerformed(evt);
+            }
+        });
         jPanel2.add(BtnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 430, 130, 40));
 
         BtnReservacion.setBackground(new java.awt.Color(33, 44, 116));
@@ -168,6 +173,10 @@ public class Reservacion extends javax.swing.JFrame {
         JpContent.revalidate();
         JpContent.repaint();
     }//GEN-LAST:event_BtnSalidaHabitacionMouseClicked
+
+    private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnRegresarActionPerformed
 
 //Método para obtener la instancia actual de ReservarHabitacion
     public ReservarHabitacion getReservarHabitacion() {
