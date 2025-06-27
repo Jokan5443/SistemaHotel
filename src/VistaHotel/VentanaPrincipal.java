@@ -1,6 +1,8 @@
 
 package VistaHotel;
 
+import VistaGestorEmpleados.MenuEmpleados;
+import VistaGestorEmpleados.Prueba;
 import javax.swing.JOptionPane;
 import javax.swing.UIClientPropertyKey;
 import javax.swing.UIManager;
@@ -38,6 +40,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel1.setMaximumSize(new java.awt.Dimension(40, 16));
         jLabel1.setMinimumSize(new java.awt.Dimension(40, 16));
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, 240, 200));
 
         jLabel3.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 12)); // NOI18N
@@ -128,6 +135,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // FIN
         
     }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+
+
+   this.dispose();
+        // Crea y muestra el siguiente formulario
+        MenuEmpleados reserwv = new MenuEmpleados();// Reemplaza con tu clase de formulario
+        reserwv.setVisible(true); //  Hace visible la instancia de 'Login2',
+        // FIN
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel1MouseClicked
 
     /**
      * @param args the command line arguments

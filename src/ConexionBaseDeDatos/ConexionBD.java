@@ -13,9 +13,13 @@ public class ConexionBD {
     // Contraseña correspondiente al usuario 
    // private static final String PASSWORD = "KXufvIJGaeouglbc9GsG";
 
-    private static final String URL = "jdbc:mysql://turntable.proxy.rlwy.net:53729/railway";
+ private static final String URL = "jdbc:mysql://turntable.proxy.rlwy.net:53729/railway";
 private static final String USER = "root";
 private static final String PASSWORD = "zirQsUPTyHwVsaBrzRWZZYYHbjplHGud";
+    
+   /* private static final String URL = "jdbc:mysql://localhost:3306/reserva_hotel";
+private static final String USER = "Renzo";
+private static final String PASSWORD = "71944110";*/
     
     
     
