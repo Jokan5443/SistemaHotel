@@ -70,8 +70,8 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="Menu" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jTabbedPane1" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jTabbedPane1" min="-2" pref="1144" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -97,21 +97,23 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jButton4" max="32767" attributes="0"/>
+                          <Component id="lbImagen" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnReporte1" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="btnEmpleados" alignment="0" max="32767" attributes="0"/>
                                   <Component id="btnAreas" alignment="0" pref="100" max="32767" attributes="0"/>
-                                  <Component id="btnReporte" alignment="0" max="32767" attributes="0"/>
                                   <Component id="btnAsistencias" alignment="0" max="32767" attributes="0"/>
                                   <Component id="btnPagos" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <Component id="lbImagen" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btnReporte1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jButton3" alignment="1" max="32767" attributes="0"/>
+                          <Component id="btnReporte" alignment="1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -122,7 +124,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lbImagen" min="-2" pref="119" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                       <Component id="btnEmpleados" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnAreas" min="-2" max="-2" attributes="0"/>
@@ -132,7 +134,11 @@
                       <Component id="btnAsistencias" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnReporte" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jButton4" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       <Component id="btnReporte1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -180,6 +186,16 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnReporte1ActionPerformed"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButton3">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="contratos"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButton4">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Reporte General"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
@@ -261,7 +277,7 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="135" max="32767" attributes="0"/>
+                          <EmptySpace pref="129" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="TextoEmp1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtCantJefes" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1035,7 +1051,7 @@
                                   <Component id="jtBuscar" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jsEmpleados" pref="164" max="32767" attributes="0"/>
+                              <Component id="jsEmpleados" pref="158" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -1273,7 +1289,7 @@
                               <Component id="btnListarArea" alignment="1" pref="130" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="scrollAreas" pref="500" max="32767" attributes="0"/>
+                          <Component id="scrollAreas" pref="906" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -1302,7 +1318,7 @@
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace pref="7" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="scrollAreas" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                       </Group>
@@ -1402,7 +1418,7 @@
                                   <Component id="btnRegistrarPago" min="-2" pref="164" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="0" pref="5" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   <Component id="panelBusquedaPago" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -1416,10 +1432,8 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="btnRegistrarPago" min="-2" pref="47" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="panelPagosEmp" min="-2" max="-2" attributes="0"/>
-                                  <Component id="panelPagoReg" min="-2" pref="162" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="panelPagosEmp" min="-2" max="-2" attributes="0"/>
+                              <Component id="panelPagoReg" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="panelBusquedaPago" max="32767" attributes="0"/>
@@ -1585,26 +1599,26 @@
                                   <Group type="102" attributes="0">
                                       <Component id="lblIdPago" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                                      <Component id="txtIdArea1" pref="180" max="32767" attributes="0"/>
+                                      <Component id="txtIdArea1" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="lblBono" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="txtBono" pref="216" max="32767" attributes="0"/>
+                                      <Component id="txtBono" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="lblTotal" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="txtTotalPagar" pref="172" max="32767" attributes="0"/>
+                                      <Component id="txtTotalPagar" max="32767" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="lblTarifa" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="txtTarifa" pref="213" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
                                       <Component id="btnCalcularPago" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="lblTarifa" min="-2" pref="68" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="txtTarifa" pref="242" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -1620,7 +1634,7 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnCalcularPago" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="64" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="lblTarifa" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtTarifa" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1741,7 +1755,7 @@
                                   <Component id="jtBuscarPago" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jsPagos" pref="157" max="32767" attributes="0"/>
+                              <Component id="jsPagos" pref="121" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -1883,6 +1897,9 @@
                                   </StringArray>
                                 </Property>
                               </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="listaEstadoBuscarPagoActionPerformed"/>
+                              </Events>
                               <AuxValues>
                                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                               </AuxValues>

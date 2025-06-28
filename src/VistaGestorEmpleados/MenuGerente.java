@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author User
  */
-public class MenuEmpleados extends javax.swing.JFrame {
+public class MenuGerente extends javax.swing.JFrame {
 
     /**
      * Creates new form MenuPrincipal
@@ -24,7 +24,7 @@ public class MenuEmpleados extends javax.swing.JFrame {
     public static final List<String[]> empleados = new ArrayList<>();
     public static final GestorEmpleados gestor = new GestorEmpleados();
     
-    public MenuEmpleados() {
+    public MenuGerente() {
         initComponents();
         this.setLocationRelativeTo(null);
         
@@ -92,6 +92,8 @@ public class MenuEmpleados extends javax.swing.JFrame {
         btnReporte = new javax.swing.JButton();
         lbImagen = new javax.swing.JLabel();
         btnReporte1 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         panelMenu = new javax.swing.JPanel();
         CantEmpleados = new javax.swing.JPanel();
@@ -241,6 +243,10 @@ public class MenuEmpleados extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setText("contratos");
+
+        jButton4.setText("Reporte General");
+
         javax.swing.GroupLayout MenuLayout = new javax.swing.GroupLayout(Menu);
         Menu.setLayout(MenuLayout);
         MenuLayout.setHorizontalGroup(
@@ -248,16 +254,18 @@ public class MenuEmpleados extends javax.swing.JFrame {
             .addGroup(MenuLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnReporte1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnEmpleados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnAreas, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                            .addComponent(btnReporte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnAsistencias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnPagos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(lbImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnReporte1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnReporte, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         MenuLayout.setVerticalGroup(
@@ -265,7 +273,7 @@ public class MenuEmpleados extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lbImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59)
+                .addGap(53, 53, 53)
                 .addComponent(btnEmpleados)
                 .addGap(18, 18, 18)
                 .addComponent(btnAreas)
@@ -275,7 +283,11 @@ public class MenuEmpleados extends javax.swing.JFrame {
                 .addComponent(btnAsistencias)
                 .addGap(18, 18, 18)
                 .addComponent(btnReporte)
-                .addGap(100, 100, 100)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton3)
+                .addGap(18, 18, 18)
+                .addComponent(jButton4)
+                .addGap(24, 24, 24)
                 .addComponent(btnReporte1)
                 .addContainerGap())
         );
@@ -507,7 +519,7 @@ public class MenuEmpleados extends javax.swing.JFrame {
         panelMenuLayout.setVerticalGroup(
             panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMenuLayout.createSequentialGroup()
-                .addContainerGap(135, Short.MAX_VALUE)
+                .addContainerGap(129, Short.MAX_VALUE)
                 .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TextoEmp1)
                     .addComponent(txtCantJefes)
@@ -830,7 +842,7 @@ public class MenuEmpleados extends javax.swing.JFrame {
                         .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jsEmpleados, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                .addComponent(jsEmpleados, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -933,7 +945,7 @@ public class MenuEmpleados extends javax.swing.JFrame {
                     .addComponent(btnEditarArea, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
                     .addComponent(btnListarArea, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollAreas, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+                .addComponent(scrollAreas, javax.swing.GroupLayout.DEFAULT_SIZE, 906, Short.MAX_VALUE)
                 .addContainerGap())
         );
         panelAreaLayout.setVerticalGroup(
@@ -957,7 +969,7 @@ public class MenuEmpleados extends javax.swing.JFrame {
                 .addComponent(btnListarArea, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(panelAreaLayout.createSequentialGroup()
-                .addContainerGap(7, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(scrollAreas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19))
         );
@@ -1062,22 +1074,22 @@ public class MenuEmpleados extends javax.swing.JFrame {
                     .addGroup(panelPagoRegLayout.createSequentialGroup()
                         .addComponent(lblIdPago)
                         .addGap(28, 28, 28)
-                        .addComponent(txtIdArea1, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE))
+                        .addComponent(txtIdArea1))
                     .addGroup(panelPagoRegLayout.createSequentialGroup()
                         .addComponent(lblBono)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtBono, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE))
+                        .addComponent(txtBono))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPagoRegLayout.createSequentialGroup()
                         .addComponent(lblTotal)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTotalPagar, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE))
-                    .addGroup(panelPagoRegLayout.createSequentialGroup()
-                        .addComponent(lblTarifa)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTarifa, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE))
+                        .addComponent(txtTotalPagar))
                     .addGroup(panelPagoRegLayout.createSequentialGroup()
                         .addComponent(btnCalcularPago)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(panelPagoRegLayout.createSequentialGroup()
+                        .addComponent(lblTarifa, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtTarifa, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         panelPagoRegLayout.setVerticalGroup(
@@ -1088,7 +1100,7 @@ public class MenuEmpleados extends javax.swing.JFrame {
                     .addComponent(txtIdArea1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCalcularPago)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                 .addGroup(panelPagoRegLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTarifa)
                     .addComponent(txtTarifa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1163,6 +1175,11 @@ public class MenuEmpleados extends javax.swing.JFrame {
         lblEstadoPago.setText("Estado laboral:");
 
         listaEstadoBuscarPago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "REALIZADO", "PENDIENTE" }));
+        listaEstadoBuscarPago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listaEstadoBuscarPagoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelEstadoLayout = new javax.swing.GroupLayout(panelEstado);
         panelEstado.setLayout(panelEstadoLayout);
@@ -1220,7 +1237,7 @@ public class MenuEmpleados extends javax.swing.JFrame {
                         .addComponent(btnBuscarPago, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jtBuscarPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jsPagos, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
+                .addComponent(jsPagos, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1238,7 +1255,7 @@ public class MenuEmpleados extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnRegistrarPago, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPagosLayout.createSequentialGroup()
-                        .addGap(0, 5, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(panelBusquedaPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -1248,9 +1265,8 @@ public class MenuEmpleados extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(panelPagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnRegistrarPago, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panelPagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(panelPagosEmp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(panelPagoReg, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(panelPagosEmp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelPagoReg, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelBusquedaPago, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -1264,8 +1280,8 @@ public class MenuEmpleados extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(Menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1)
-                .addContainerGap())
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1305,8 +1321,7 @@ public class MenuEmpleados extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrarPagoActionPerformed
 
     private void btnReporte1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporte1ActionPerformed
-        int respuesta = JOptionPane.showConfirmDialog(
-            MenuEmpleados.this, // Referencia al componente la ventana actual 
+        int respuesta = JOptionPane.showConfirmDialog(MenuGerente.this, // Referencia al componente la ventana actual 
              "¿Deseas realmente salir?", // Mensaje que se muestra al usuario
              "Confirmación", // Título de la ventana de diálogo
              JOptionPane.YES_NO_OPTION // Tipo de opciones que se presentan al usuario (Sí y No)
@@ -1317,6 +1332,10 @@ public class MenuEmpleados extends javax.swing.JFrame {
             vprinc.setVisible(true);
         }
     }//GEN-LAST:event_btnReporte1ActionPerformed
+
+    private void listaEstadoBuscarPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaEstadoBuscarPagoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listaEstadoBuscarPagoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel CantAreas;
@@ -1349,6 +1368,8 @@ public class MenuEmpleados extends javax.swing.JFrame {
     private javax.swing.JButton btnReporte1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

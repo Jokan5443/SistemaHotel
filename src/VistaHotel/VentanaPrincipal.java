@@ -1,7 +1,7 @@
 
 package VistaHotel;
 
-import VistaGestorEmpleados.MenuEmpleados;
+import VistaGestorEmpleados.MenuGerente;
 import VistaGestorEmpleados.Prueba;
 import javax.swing.JOptionPane;
 import javax.swing.UIClientPropertyKey;
@@ -141,7 +141,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
    this.dispose();
         // Crea y muestra el siguiente formulario
-        MenuEmpleados reserwv = new MenuEmpleados();// Reemplaza con tu clase de formulario
+        MenuGerente reserwv = new MenuGerente();// Reemplaza con tu clase de formulario
         reserwv.setVisible(true); //  Hace visible la instancia de 'Login2',
         // FIN
 
