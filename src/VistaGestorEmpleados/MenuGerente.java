@@ -167,6 +167,17 @@ public class MenuGerente extends javax.swing.JFrame {
         scrollAreas = new javax.swing.JScrollPane();
         tablaAreas = new javax.swing.JTable();
         panelPagos = new javax.swing.JPanel();
+        panelPagoReg = new javax.swing.JPanel();
+        lblIdPago = new javax.swing.JLabel();
+        txtIdArea1 = new javax.swing.JTextField();
+        btnCalcularPago = new javax.swing.JButton();
+        txtTarifa = new javax.swing.JTextField();
+        lblBono = new javax.swing.JLabel();
+        txtBono = new javax.swing.JTextField();
+        lblTotal = new javax.swing.JLabel();
+        txtTotalPagar = new javax.swing.JTextField();
+        lblTarifa = new javax.swing.JLabel();
+        btnRegistrarPago = new javax.swing.JButton();
         panelPagosEmp = new javax.swing.JPanel();
         lbID1 = new javax.swing.JLabel();
         txtIdEmpleadoPago = new javax.swing.JTextField();
@@ -179,17 +190,6 @@ public class MenuGerente extends javax.swing.JFrame {
         lblCorreo1 = new javax.swing.JLabel();
         txtCorreoPago = new javax.swing.JTextField();
         btnBuscarEmpPago = new javax.swing.JButton();
-        panelPagoReg = new javax.swing.JPanel();
-        lblIdPago = new javax.swing.JLabel();
-        txtIdArea1 = new javax.swing.JTextField();
-        btnCalcularPago = new javax.swing.JButton();
-        lblTarifa = new javax.swing.JLabel();
-        txtTarifa = new javax.swing.JTextField();
-        lblBono = new javax.swing.JLabel();
-        txtBono = new javax.swing.JTextField();
-        lblTotal = new javax.swing.JLabel();
-        txtTotalPagar = new javax.swing.JTextField();
-        btnRegistrarPago = new javax.swing.JButton();
         panelBusquedaPago = new javax.swing.JPanel();
         btnBuscarPago = new javax.swing.JButton();
         jsPagos = new javax.swing.JScrollPane();
@@ -221,7 +221,7 @@ public class MenuGerente extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(128, 135, 182));
 
-        Menu.setBackground(new java.awt.Color(33, 44, 116));
+        Menu.setBackground(new java.awt.Color(0, 0, 0));
 
         btnEmpleados.setText("Empleados");
 
@@ -257,23 +257,24 @@ public class MenuGerente extends javax.swing.JFrame {
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lbImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnReporte1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnEmpleados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnAreas, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                            .addComponent(btnAsistencias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnPagos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnReporte, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(MenuLayout.createSequentialGroup()
+                        .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnPagos, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btnEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnAreas, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnAsistencias))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addComponent(btnReporte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         MenuLayout.setVerticalGroup(
             MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lbImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
+                .addGap(18, 18, 18)
                 .addComponent(btnEmpleados)
                 .addGap(18, 18, 18)
                 .addComponent(btnAreas)
@@ -283,11 +284,11 @@ public class MenuGerente extends javax.swing.JFrame {
                 .addComponent(btnAsistencias)
                 .addGap(18, 18, 18)
                 .addComponent(btnReporte)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jButton3)
                 .addGap(18, 18, 18)
                 .addComponent(jButton4)
-                .addGap(24, 24, 24)
+                .addGap(53, 53, 53)
                 .addComponent(btnReporte1)
                 .addContainerGap())
         );
@@ -976,81 +977,6 @@ public class MenuGerente extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Areas", panelArea);
 
-        panelPagosEmp.setBackground(new java.awt.Color(255, 255, 255));
-        panelPagosEmp.setBorder(javax.swing.BorderFactory.createTitledBorder("Empleados"));
-
-        lbID1.setText("ID:");
-
-        lbNombre1.setText("Nombre:");
-
-        lblApellido1.setText("Apellido:");
-
-        lblDni1.setText("DNI:");
-
-        lblCorreo1.setText("Correo:");
-
-        btnBuscarEmpPago.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnBuscarEmpPago.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ver.png"))); // NOI18N
-        btnBuscarEmpPago.setText("Buscar");
-
-        javax.swing.GroupLayout panelPagosEmpLayout = new javax.swing.GroupLayout(panelPagosEmp);
-        panelPagosEmp.setLayout(panelPagosEmpLayout);
-        panelPagosEmpLayout.setHorizontalGroup(
-            panelPagosEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelPagosEmpLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(panelPagosEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelPagosEmpLayout.createSequentialGroup()
-                        .addComponent(btnBuscarEmpPago, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 15, Short.MAX_VALUE))
-                    .addGroup(panelPagosEmpLayout.createSequentialGroup()
-                        .addGroup(panelPagosEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbNombre1)
-                            .addComponent(lbID1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(14, 14, 14)
-                        .addGroup(panelPagosEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNomEmpPago)
-                            .addComponent(txtIdEmpleadoPago)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPagosEmpLayout.createSequentialGroup()
-                        .addComponent(lblCorreo1)
-                        .addGap(22, 22, 22)
-                        .addComponent(txtCorreoPago))
-                    .addGroup(panelPagosEmpLayout.createSequentialGroup()
-                        .addGroup(panelPagosEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblApellido1)
-                            .addComponent(lblDni1))
-                        .addGap(12, 12, 12)
-                        .addGroup(panelPagosEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtDNIPago)
-                            .addComponent(txtApEmpPago))))
-                .addContainerGap())
-        );
-        panelPagosEmpLayout.setVerticalGroup(
-            panelPagosEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelPagosEmpLayout.createSequentialGroup()
-                .addGroup(panelPagosEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbID1)
-                    .addComponent(txtIdEmpleadoPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelPagosEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbNombre1)
-                    .addComponent(txtNomEmpPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelPagosEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblApellido1)
-                    .addComponent(txtApEmpPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelPagosEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDni1)
-                    .addComponent(txtDNIPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelPagosEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblCorreo1)
-                    .addComponent(txtCorreoPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnBuscarEmpPago, javax.swing.GroupLayout.PREFERRED_SIZE, 29, Short.MAX_VALUE))
-        );
-
         panelPagoReg.setBackground(new java.awt.Color(255, 255, 255));
         panelPagoReg.setBorder(javax.swing.BorderFactory.createTitledBorder("Nomina Pago"));
 
@@ -1058,11 +984,11 @@ public class MenuGerente extends javax.swing.JFrame {
 
         btnCalcularPago.setText("Calcular");
 
-        lblTarifa.setText("Tarifa:");
-
         lblBono.setText("Bono:");
 
         lblTotal.setText("Total a pagar:");
+
+        lblTarifa.setText("Tarifa:");
 
         javax.swing.GroupLayout panelPagoRegLayout = new javax.swing.GroupLayout(panelPagoReg);
         panelPagoReg.setLayout(panelPagoRegLayout);
@@ -1087,10 +1013,13 @@ public class MenuGerente extends javax.swing.JFrame {
                         .addComponent(btnCalcularPago)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(panelPagoRegLayout.createSequentialGroup()
-                        .addComponent(lblTarifa, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(86, 86, 86)
                         .addComponent(txtTarifa, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(panelPagoRegLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(lblTarifa, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelPagoRegLayout.setVerticalGroup(
             panelPagoRegLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1100,10 +1029,10 @@ public class MenuGerente extends javax.swing.JFrame {
                     .addComponent(txtIdArea1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCalcularPago)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
-                .addGroup(panelPagoRegLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTarifa)
-                    .addComponent(txtTarifa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37)
+                .addComponent(lblTarifa)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addComponent(txtTarifa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelPagoRegLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblBono)
@@ -1123,6 +1052,50 @@ public class MenuGerente extends javax.swing.JFrame {
                 btnRegistrarPagoActionPerformed(evt);
             }
         });
+
+        javax.swing.GroupLayout panelPagosLayout = new javax.swing.GroupLayout(panelPagos);
+        panelPagos.setLayout(panelPagosLayout);
+        panelPagosLayout.setHorizontalGroup(
+            panelPagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPagosLayout.createSequentialGroup()
+                .addGroup(panelPagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelPagosLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnRegistrarPago, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelPagosLayout.createSequentialGroup()
+                        .addGap(1042, 1042, 1042)
+                        .addComponent(panelPagoReg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        panelPagosLayout.setVerticalGroup(
+            panelPagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPagosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panelPagoReg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnRegistrarPago, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(166, 166, 166))
+        );
+
+        jTabbedPane1.addTab("Pagos", panelPagos);
+
+        panelPagosEmp.setBackground(new java.awt.Color(255, 255, 255));
+        panelPagosEmp.setBorder(javax.swing.BorderFactory.createTitledBorder("Empleados"));
+
+        lbID1.setText("ID:");
+
+        lbNombre1.setText("Nombre:");
+
+        lblApellido1.setText("Apellido:");
+
+        lblDni1.setText("DNI:");
+
+        lblCorreo1.setText("Correo:");
+
+        btnBuscarEmpPago.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnBuscarEmpPago.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ver.png"))); // NOI18N
+        btnBuscarEmpPago.setText("Buscar");
 
         panelBusquedaPago.setBackground(new java.awt.Color(255, 255, 255));
         panelBusquedaPago.setBorder(javax.swing.BorderFactory.createTitledBorder("PanelBusqueda"));
@@ -1231,47 +1204,77 @@ public class MenuGerente extends javax.swing.JFrame {
             .addGroup(panelBusquedaPagoLayout.createSequentialGroup()
                 .addGroup(panelBusquedaPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelBusquedaPagoLayout.createSequentialGroup()
-                        .addGap(4, 4, 4)
                         .addComponent(lblBuscarOpc1)
-                        .addGap(6, 6, 6)
+                        .addGap(10, 10, 10)
                         .addComponent(btnBuscarPago, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jtBuscarPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jsPagos, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                .addComponent(jsPagos, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout panelPagosLayout = new javax.swing.GroupLayout(panelPagos);
-        panelPagos.setLayout(panelPagosLayout);
-        panelPagosLayout.setHorizontalGroup(
-            panelPagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelPagosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelPagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelPagosLayout.createSequentialGroup()
-                        .addComponent(panelPagosEmp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(panelPagoReg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnRegistrarPago, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPagosLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(panelBusquedaPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
-        panelPagosLayout.setVerticalGroup(
-            panelPagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelPagosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelPagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnRegistrarPago, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelPagosEmp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelPagoReg, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        javax.swing.GroupLayout panelPagosEmpLayout = new javax.swing.GroupLayout(panelPagosEmp);
+        panelPagosEmp.setLayout(panelPagosEmpLayout);
+        panelPagosEmpLayout.setHorizontalGroup(
+            panelPagosEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPagosEmpLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(panelPagosEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelPagosEmpLayout.createSequentialGroup()
+                        .addComponent(btnBuscarEmpPago, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 15, Short.MAX_VALUE))
+                    .addGroup(panelPagosEmpLayout.createSequentialGroup()
+                        .addGroup(panelPagosEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbNombre1)
+                            .addComponent(lbID1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(14, 14, 14)
+                        .addGroup(panelPagosEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNomEmpPago)
+                            .addComponent(txtIdEmpleadoPago)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPagosEmpLayout.createSequentialGroup()
+                        .addComponent(lblCorreo1)
+                        .addGap(22, 22, 22)
+                        .addComponent(txtCorreoPago))
+                    .addGroup(panelPagosEmpLayout.createSequentialGroup()
+                        .addGroup(panelPagosEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblApellido1)
+                            .addComponent(lblDni1))
+                        .addGap(12, 12, 12)
+                        .addGroup(panelPagosEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtDNIPago)
+                            .addComponent(txtApEmpPago))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelBusquedaPago, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(panelBusquedaPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
-
-        jTabbedPane1.addTab("Pagos", panelPagos);
+        panelPagosEmpLayout.setVerticalGroup(
+            panelPagosEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPagosEmpLayout.createSequentialGroup()
+                .addGroup(panelPagosEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbID1)
+                    .addComponent(txtIdEmpleadoPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelPagosEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbNombre1)
+                    .addComponent(txtNomEmpPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelPagosEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblApellido1)
+                    .addComponent(txtApEmpPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelPagosEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelBusquedaPago, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(panelPagosEmpLayout.createSequentialGroup()
+                        .addGroup(panelPagosEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblDni1)
+                            .addComponent(txtDNIPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelPagosEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblCorreo1)
+                            .addComponent(txtCorreoPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnBuscarEmpPago, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE))))
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -1280,15 +1283,22 @@ public class MenuGerente extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(Menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelPagosEmp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1144, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(Menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(panelPagosEmp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(68, 68, 68)))
                 .addContainerGap())
         );
 
