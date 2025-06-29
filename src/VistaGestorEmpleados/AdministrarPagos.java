@@ -33,13 +33,13 @@ public class AdministrarPagos extends javax.swing.JPanel {
         lblTarifa = new javax.swing.JLabel();
         txtTarifa = new javax.swing.JTextField();
         lblBono = new javax.swing.JLabel();
-        txtBono = new javax.swing.JTextField();
         lblTotal = new javax.swing.JLabel();
-        txtTotalPagar = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtTarifa1 = new javax.swing.JTextField();
+        txtTarifa2 = new javax.swing.JTextField();
+        txtTarifa3 = new javax.swing.JTextField();
+        txtTarifa5 = new javax.swing.JTextField();
         panelBusquedaPago = new javax.swing.JPanel();
         btnBuscarPago = new javax.swing.JButton();
         jsPagos = new javax.swing.JScrollPane();
@@ -53,105 +53,151 @@ public class AdministrarPagos extends javax.swing.JPanel {
         listaEstadoBuscarPago = new javax.swing.JComboBox<>();
         lblBuscarOpc1 = new javax.swing.JLabel();
 
-        panelPagoReg.setBackground(new java.awt.Color(255, 255, 255));
-        panelPagoReg.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nomina Pago", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        setBackground(new java.awt.Color(0, 0, 153));
+
+        panelPagoReg.setBackground(new java.awt.Color(0, 0, 0));
+        panelPagoReg.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nomina Pago", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         panelPagoReg.setForeground(new java.awt.Color(0, 0, 0));
 
-        lblIdPago.setForeground(new java.awt.Color(0, 0, 0));
+        lblIdPago.setForeground(new java.awt.Color(255, 255, 255));
         lblIdPago.setText("Id Empleado:");
+
+        txtIdArea1.setBackground(new java.awt.Color(102, 102, 102));
+        txtIdArea1.setForeground(new java.awt.Color(153, 153, 153));
+        txtIdArea1.setDisabledTextColor(new java.awt.Color(255, 255, 255));
 
         btnCalcularPago.setText("Calcular");
 
-        lblTarifa.setForeground(new java.awt.Color(0, 0, 0));
+        lblTarifa.setForeground(new java.awt.Color(255, 255, 255));
         lblTarifa.setText("Tarifa x Hora:");
 
+        txtTarifa.setBackground(new java.awt.Color(102, 102, 102));
         txtTarifa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTarifaActionPerformed(evt);
             }
         });
 
-        lblBono.setForeground(new java.awt.Color(0, 0, 0));
+        lblBono.setForeground(new java.awt.Color(255, 255, 255));
         lblBono.setText("Bono:");
 
-        lblTotal.setForeground(new java.awt.Color(0, 0, 0));
+        lblTotal.setForeground(new java.awt.Color(255, 255, 255));
         lblTotal.setText("Total a pagar:");
 
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("HorasTrabajadas:");
 
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Descuentos:");
+
+        txtTarifa1.setBackground(new java.awt.Color(102, 102, 102));
+        txtTarifa1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTarifa1ActionPerformed(evt);
+            }
+        });
+
+        txtTarifa2.setBackground(new java.awt.Color(102, 102, 102));
+        txtTarifa2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTarifa2ActionPerformed(evt);
+            }
+        });
+
+        txtTarifa3.setBackground(new java.awt.Color(102, 102, 102));
+        txtTarifa3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTarifa3ActionPerformed(evt);
+            }
+        });
+
+        txtTarifa5.setBackground(new java.awt.Color(102, 102, 102));
+        txtTarifa5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTarifa5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelPagoRegLayout = new javax.swing.GroupLayout(panelPagoReg);
         panelPagoReg.setLayout(panelPagoRegLayout);
         panelPagoRegLayout.setHorizontalGroup(
             panelPagoRegLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelPagoRegLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPagoRegLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnCalcularPago)
+                .addGap(15, 15, 15))
+            .addGroup(panelPagoRegLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelPagoRegLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelPagoRegLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panelPagoRegLayout.createSequentialGroup()
+                            .addGap(27, 27, 27)
+                            .addComponent(jLabel2))
+                        .addComponent(jLabel1)
+                        .addComponent(lblTotal, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(lblTarifa, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblBono)
+                    .addComponent(lblIdPago))
+                .addGap(18, 18, 18)
                 .addGroup(panelPagoRegLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtTarifa5)
+                    .addComponent(txtTarifa2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtTarifa3, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPagoRegLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(txtTarifa1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelPagoRegLayout.createSequentialGroup()
                         .addGroup(panelPagoRegLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblBono, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblTarifa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblIdPago, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblTotal, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(panelPagoRegLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtIdArea1)
-                            .addComponent(txtTarifa)
-                            .addComponent(txtBono, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtTotalPagar)
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE))
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPagoRegLayout.createSequentialGroup()
-                        .addComponent(btnCalcularPago)
-                        .addGap(15, 15, 15))))
+                            .addComponent(txtTarifa, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtIdArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         panelPagoRegLayout.setVerticalGroup(
             panelPagoRegLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelPagoRegLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
                 .addGroup(panelPagoRegLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblIdPago)
-                    .addComponent(txtIdArea1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(txtIdArea1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblIdPago))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelPagoRegLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTarifa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelPagoRegLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtBono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTarifa))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelPagoRegLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTotalPagar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblBono))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panelPagoRegLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
                 .addGap(12, 12, 12)
+                .addGroup(panelPagoRegLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTarifa)
+                    .addComponent(txtTarifa3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addGroup(panelPagoRegLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtTarifa2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblBono))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelPagoRegLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtTarifa1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addComponent(btnCalcularPago)
                 .addGap(18, 18, 18)
                 .addGroup(panelPagoRegLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTotal)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTarifa5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17))
         );
 
-        panelBusquedaPago.setBackground(new java.awt.Color(255, 255, 255));
-        panelBusquedaPago.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "PanelBusqueda", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        panelBusquedaPago.setBackground(new java.awt.Color(0, 0, 0));
+        panelBusquedaPago.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "PanelBusqueda", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
 
+        btnBuscarPago.setBackground(new java.awt.Color(0, 0, 153));
         btnBuscarPago.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnBuscarPago.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscarPago.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ver.png"))); // NOI18N
         btnBuscarPago.setText("Buscar");
 
-        jsPagos.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lista Empleados", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        jsPagos.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lista Empleados", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         jsPagos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        tbListaPagos.setForeground(new java.awt.Color(0, 0, 0));
         tbListaPagos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -221,7 +267,7 @@ public class AdministrarPagos extends javax.swing.JPanel {
 
         jtBuscarPago.addTab("Estado", panelEstado);
 
-        lblBuscarOpc1.setForeground(new java.awt.Color(0, 0, 0));
+        lblBuscarOpc1.setForeground(new java.awt.Color(255, 255, 255));
         lblBuscarOpc1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblBuscarOpc1.setText("Buscar por(en blanco para todos):");
 
@@ -240,7 +286,7 @@ public class AdministrarPagos extends javax.swing.JPanel {
                                 .addComponent(btnBuscarPago, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(panelBusquedaPagoLayout.createSequentialGroup()
-                                .addComponent(lblBuscarOpc1, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                                .addComponent(lblBuscarOpc1, javax.swing.GroupLayout.DEFAULT_SIZE, 569, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addComponent(jtBuscarPago, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -255,7 +301,7 @@ public class AdministrarPagos extends javax.swing.JPanel {
                         .addComponent(btnBuscarPago, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jtBuscarPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jsPagos, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
+                .addComponent(jsPagos, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -264,21 +310,18 @@ public class AdministrarPagos extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(panelBusquedaPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(panelPagoReg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(16, Short.MAX_VALUE))
+                    .addComponent(panelPagoReg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelBusquedaPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addGap(8, 8, 8)
                 .addComponent(panelPagoReg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(panelBusquedaPago, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -292,14 +335,28 @@ public class AdministrarPagos extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_listaEstadoBuscarPagoActionPerformed
 
+    private void txtTarifa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTarifa1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTarifa1ActionPerformed
+
+    private void txtTarifa2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTarifa2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTarifa2ActionPerformed
+
+    private void txtTarifa3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTarifa3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTarifa3ActionPerformed
+
+    private void txtTarifa5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTarifa5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTarifa5ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarPago;
     private javax.swing.JButton btnCalcularPago;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JScrollPane jsPagos;
     private javax.swing.JTabbedPane jtBuscarPago;
     private javax.swing.JLabel lblBono;
@@ -315,10 +372,12 @@ public class AdministrarPagos extends javax.swing.JPanel {
     private javax.swing.JPanel panelIdBuscarArea;
     private javax.swing.JPanel panelPagoReg;
     private javax.swing.JTable tbListaPagos;
-    private javax.swing.JTextField txtBono;
     private javax.swing.JTextField txtIdArea1;
     private javax.swing.JTextField txtIdBuscarPago;
     private javax.swing.JTextField txtTarifa;
-    private javax.swing.JTextField txtTotalPagar;
+    private javax.swing.JTextField txtTarifa1;
+    private javax.swing.JTextField txtTarifa2;
+    private javax.swing.JTextField txtTarifa3;
+    private javax.swing.JTextField txtTarifa5;
     // End of variables declaration//GEN-END:variables
 }
